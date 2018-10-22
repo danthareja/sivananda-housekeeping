@@ -1,0 +1,19 @@
+# Prisma manages the following read-only fields:
+#   id
+#   createdAt
+#   updatedAt
+
+type Room {
+  id: ID! @unique
+  retreatGuruId: Int! @unique
+  name: String!
+  dirty: Boolean!
+  givenKey: Boolean!
+  cleaningTime: Int!
+  cleanedAt: DateTime
+  housekeeper: String
+  order: Int
+  comments: [String!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

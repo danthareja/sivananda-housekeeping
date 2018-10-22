@@ -1,0 +1,35 @@
+{
+  "name": "sivananda-housekeeping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/danthareja/sivananda-housekeeping.git",
+  "author": "Dan Thareja <danthareja@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "8.11.x",
+    "npm": "5.6.x"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "postinstall": "prisma generate",
+    "heroku-postbuild": "prisma deploy"
+  },
+  "dependencies": {
+    "apollo-server": "^2.1.0",
+    "apollo-server-express": "^2.1.0",
+    "axios": "^0.18.0",
+    "dataloader": "^1.4.0",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2",
+    "lodash": "^4.17.11",
+    "merge-graphql-schemas": "^1.5.7",
+    "moment": "^2.22.2",
+    "prisma-client-lib": "^0.2.59"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "nodemon": "^1.18.4",
+    "prisma": "^1.18.1"
+  }
+}

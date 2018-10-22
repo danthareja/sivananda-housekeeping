@@ -1,0 +1,8 @@
+type DepartingGuest implements Guest {
+  id: Int!
+  name: String!
+  isSpecial: Boolean!
+  flightTime: String
+  lateCheckout: String
+  # movingTo: Room
+}

@@ -1,0 +1,13 @@
+type Room {
+  id: Int!
+  name: String!
+  dirty: Boolean!
+  givenKey: Boolean!
+  cleaningTime: Int!
+  cleanedAt: String
+  housekeeper: String
+  order: Int
+  comments: [String!]!
+  arrivals: [ArrivingGuest!]!
+  departures: [DepartingGuest!]!
+}

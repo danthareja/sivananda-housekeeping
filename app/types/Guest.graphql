@@ -1,0 +1,6 @@
+interface Guest {
+  id: Int!
+  name: String!
+  isSpecial: Boolean!
+  flightTime: String
+}

@@ -1,0 +1,16 @@
+# To deploy to dev:
+#   $ docker-compose up -d
+#   $ prisma deploy -e .env
+
+endpoint: ${env:PRISMA_ENDPOINT}
+datamodel: ./app/connectors/prisma/datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ./app/connectors/prisma/client
+  - generator: graphql-schema
+    output: ./app/connectors/prisma
+
+hooks:
+  post-deploy:
+    - npx prisma generate
