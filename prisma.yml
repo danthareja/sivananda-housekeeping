@@ -7,9 +7,9 @@ datamodel: ./app/connectors/prisma/datamodel.prisma
 
 generate:
   - generator: javascript-client
-    output: ./app/connectors/prisma/client
+    output: ./app/connectors/prisma/generated/client
   - generator: graphql-schema
-    output: ./app/connectors/prisma
+    output: ./app/connectors/prisma/generated
 
 hooks:
   post-deploy:
