@@ -8,7 +8,7 @@ class DepartingGuest extends Guest {
   }
 
   getFlightTime() {
-    return _.get(this.registration, 'flight_departure_time_from_nassau')
+    return _.get(this.registration, 'questions.flight_departure_time_from_nassau')
   }
 
   // TODO

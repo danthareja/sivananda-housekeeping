@@ -8,7 +8,7 @@ class ArrivingGuest extends Guest {
   }
 
   getFlightTime() {
-    return _.get(this.registration, 'flight_arrival_time_in_nassau_2')
+    return _.get(this.registration, 'questions.flight_arrival_time_in_nassau_2')
   }
 
   getMovingFrom() {
