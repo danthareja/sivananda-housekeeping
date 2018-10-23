@@ -88,8 +88,8 @@ class Room {
 
   static async fetch(ctx) {
     const [rooms, registrations] = await Promise.all([
-      ctx.prisma.rooms(),
-      ctx.retreatGuru.getRoomRegistrations()
+      ctx.dataSources.prisma.rooms(),
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations()
     ]);
 
     const roomsById = _.keyBy(rooms, 'retreatGuruId')
