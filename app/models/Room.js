@@ -7,6 +7,11 @@ class Room {
   constructor(room, registrations) {
     this.room = room;
     this.registrations = registrations;
+    this.registrationsByGuest = _.groupBy(registrations, this._uniqueGuestKey)
+  }
+
+  _uniqueGuestKey(registration) {
+    return `${registration.full_name}`;
   }
 
   getId() {
@@ -46,18 +51,26 @@ class Room {
   }
 
   getArrivals() {
+    const date = moment().format('YYYY-MM-DD');
     return this.registrations
-      .filter(registration => registration.start_date === moment().format('YYYY-MM-DD'))
-      .map(registration => new ArrivingGuest(registration))
+      .filter(registration => registration.start_date === date)
+      .map(registration => {
+        const movingFromRegistration = this.registrationsByGuest[this._uniqueGuestKey(registration)].find(registration => registration.end_date === date)
+        return new ArrivingGuest(registration, movingFromRegistration)
+      })
   }
 
   getDepartures() {
+    const date = moment().format('YYYY-MM-DD');
     return this.registrations
-      .filter(registration => registration.end_date === moment().format('YYYY-MM-DD'))
-      .map(registration => new DepartingGuest(registration))
+      .filter(registration => registration.end_date === date)
+      .map(registration => {
+        const movingToRegistration = this.registrationsByGuest[this._uniqueGuestKey(registration)].find(registration => registration.start_date === date)
+        return new DepartingGuest(registration, movingToRegistration)
+      })
   }
 
-  static async query(ctx) {
+  static async fetch(ctx) {
     const [rooms, registrations] = await Promise.all([
       ctx.prisma.rooms(),
       ctx.retreatGuru.getRoomRegistrations()

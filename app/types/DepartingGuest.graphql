@@ -4,5 +4,5 @@ type DepartingGuest implements Guest {
   isSpecial: Boolean!
   flightTime: String
   lateCheckout: String
-  # movingTo: Room
+  movingTo: String
 }

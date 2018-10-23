@@ -15,5 +15,8 @@ module.exports = {
     lateCheckout(guest, _, ctx) {
       return guest.getLateCheckout();
     },
+    movingTo(guest, _, ctx) {
+      return guest.getMovingTo();
+    }
   }
 };

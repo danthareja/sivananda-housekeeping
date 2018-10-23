@@ -12,5 +12,8 @@ module.exports = {
     isSpecial(guest, _, ctx) {
       return guest.getIsSpecial();
     },
+    movingFrom(guest, _, ctx) {
+      return guest.getMovingFrom();
+    }
   }
 };

@@ -1,13 +1,23 @@
+const _ = require('lodash');
 const Guest = require('./Guest');
 
 class DepartingGuest extends Guest {
+  constructor(registration, movingToRegistration) {
+    super(registration);
+    this.movingToRegistration = movingToRegistration;
+  }
+
   getFlightTime() {
-    return this.registration.flight_departure_time_from_nassau
+    return _.get(this.registration, 'flight_departure_time_from_nassau')
   }
 
   // TODO
   getLateCheckout() {
     return false;
+  }
+
+  getMovingTo() {
+    return _.get(this.movingToRegistration, 'room')
   }
 }
 
