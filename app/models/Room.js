@@ -22,16 +22,32 @@ class Room {
     return this.room.name;
   }
 
+  getLodgingId() {
+    return this.room.lodgingId;
+  }
+
+  getLodgingName() {
+    return this.room.lodgingName;
+  }
+
+  getLocation() {
+    return this.room.location;
+  }
+
+  getCleaningTime() {
+    return this.room.cleaningTime;
+  }
+
+  getCartCost() {
+    return this.room.cartCost;
+  }
+
   getDirty() {
     return this.room.dirty;
   }
 
   getGivenKey() {
     return this.room.givenKey;
-  }
-
-  getCleaningTime() {
-    return this.room.cleaningTime;
   }
 
   getCleanedAt() {

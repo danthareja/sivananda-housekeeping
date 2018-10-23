@@ -1,9 +1,13 @@
 type Room {
   id: Int!
   name: String!
+  lodgingId: Int!
+  lodgingName: String!
+  location: String!
+  cleaningTime: Int!
+  cartCost: Int!
   dirty: Boolean!
   givenKey: Boolean!
-  cleaningTime: Int!
   cleanedAt: String
   housekeeper: String
   order: Int

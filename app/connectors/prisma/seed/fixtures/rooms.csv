@@ -1,0 +1,179 @@
+room_id,room_name,primary_lodging_type_id,primary_lodging_type_name,cleaning_time,rooms_per_cart,location
+5996,Ashram Ground Tent Durga Devi,5991,Ashram Supplied Ground Tent,0,0,-
+5993,Ashram Ground Tent Mangala,5991,Ashram Supplied Ground Tent,0,0,-
+5995,Ashram Ground Tent Marita,5991,Ashram Supplied Ground Tent,0,0,-
+5992,Ashram Ground Tent Narayan,5991,Ashram Supplied Ground Tent,0,0,-
+6044,Ashram Ground Tent New York,5991,Ashram Supplied Ground Tent,0,0,-
+5994,Ashram Ground Tent TTC Assistant,5991,Ashram Supplied Ground Tent,0,0,-
+92,Beach Hut E1,35,Beach Hut (Shared),15,3,north
+93,Beach Hut E2,35,Beach Hut (Shared),15,3,north
+94,Beach Hut E3,35,Beach Hut (Shared),15,3,north
+95,Beach Hut E4,35,Beach Hut (Shared),15,3,north
+96,Beach Hut E5,35,Beach Hut (Shared),15,3,north
+97,Beach Hut E6,35,Beach Hut (Shared),15,3,north
+403,Beach Hut W1,35,Beach Hut (Shared),15,3,north
+404,Beach Hut W2,35,Beach Hut (Shared),15,3,north
+405,Beach Hut W3,35,Beach Hut (Shared),15,3,north
+406,Beach Hut W4,35,Beach Hut (Shared),15,3,north
+407,Beach Hut W5,35,Beach Hut (Shared),15,3,north
+408,Beach Hut W6,35,Beach Hut (Shared),15,3,north
+114,Ganga 1,36,Beachfront Deluxe Room (Private),90,2,north
+115,Ganga 2,36,Beachfront Deluxe Room (Private),90,2,north
+116,Ganga 3,36,Beachfront Deluxe Room (Private),90,2,north
+117,Ganga 4,36,Beachfront Deluxe Room (Private),90,2,north
+433,Yamuna 1,36,Beachfront Deluxe Room (Private),90,2,north
+434,Yamuna 2,36,Beachfront Deluxe Room (Private),90,2,north
+436,Yamuna 4,36,Beachfront Deluxe Room (Private),90,2,north
+53,0,38,Dormitory,20,2,main house
+190,Meditation Room,38,Dormitory,20,1,main house
+251,OM3,38,Dormitory,20,2,west
+257,OM9,38,Dormitory,20,2,west
+258,Om Sweet Om,38,Dormitory,20,2,north west
+402,Vishnu,38,Dormitory,20,2,north west
+64,11,40,Garden Room (Shared),15,3,main house
+66,14,40,Garden Room (Shared),15,3,west
+67,15,40,Garden Room (Shared),15,3,west
+74,22,40,Garden Room (Shared),15,3,west
+75,24,40,Garden Room (Shared),15,3,west
+250,OM2,40,Garden Room (Shared),15,3,west
+256,OM8,40,Garden Room (Shared),15,3,west
+249,OM11,40,Garden Room (Shared),15,3,west
+70,18,37,Garden Room (Shared) with Bathroom,30,3,bay
+71,19,37,Garden Room (Shared) with Bathroom,30,3,bay
+72,20,37,Garden Room (Shared) with Bathroom,30,3,bay
+77,23a,37,Garden Room (Shared) with Bathroom,30,3,bay
+78,23b,37,Garden Room (Shared) with Bathroom,30,3,bay
+54,1,41,Garden Room Double (Private),12,5,main house
+55,2,41,Garden Room Double (Private),12,5,main house
+58,5,41,Garden Room Double (Private),12,5,main house
+59,6,41,Garden Room Double (Private),12,5,main house
+60,7,41,Garden Room Double (Private),12,5,main house
+62,9,41,Garden Room Double (Private),12,5,main house
+63,10,41,Garden Room Double (Private),12,5,main house
+65,12,41,Garden Room Double (Private),12,5,main house
+252,OM4,41,Garden Room Double (Private),12,5,west
+248,OM10,41,Garden Room Double (Private),12,5,west
+56,3,46,Garden Room Single (Private),12,5,main house
+57,4,46,Garden Room Single (Private),12,5,main house
+73,21,46,Garden Room Single (Private),12,5,west
+76,25,46,Garden Room Single (Private),12,5,bay
+118,Gopala,46,Garden Room Single (Private),12,5,main house
+247,OM1,46,Garden Room Single (Private),12,5,west
+253,OM5,46,Garden Room Single (Private),12,5,west
+255,OM7,46,Garden Room Single (Private),12,5,west
+259,Saraswati 1,44,Ocean View Deluxe Room (Private),90,2,north west
+260,Saraswati 2,44,Ocean View Deluxe Room (Private),90,2,north west
+261,Saraswati 3,44,Ocean View Deluxe Room (Private),90,2,north west
+262,Saraswati 4,44,Ocean View Deluxe Room (Private),90,2,north west
+263,Saraswati 5,44,Ocean View Deluxe Room (Private),90,2,north west
+264,Saraswati 6,44,Ocean View Deluxe Room (Private),90,2,north west
+265,Saraswati 7,44,Ocean View Deluxe Room (Private),90,2,north west
+266,Saraswati 8,44,Ocean View Deluxe Room (Private),90,2,north west
+79,Platform A-10,47,Platform Tent,10,5,south east
+267,Platform A-11,47,Platform Tent,10,5,south east
+269,Platform A-13,47,Platform Tent,10,5,south east
+270,Platform A-14,47,Platform Tent,10,5,south east
+272,Platform B-1 (WBC),47,Platform Tent,10,5,north west
+271,Platform B-2 (WBC),47,Platform Tent,10,5,north west
+273,Platform B-3 (WBC),47,Platform Tent,10,5,north west
+274,Platform B-4 (WBC),47,Platform Tent,10,5,north west
+275,Platform B-5 (WBC),47,Platform Tent,10,5,north west
+276,Platform G-1 (WBC),47,Platform Tent,10,5,north east
+277,Platform G-2,47,Platform Tent,10,5,north east
+278,Platform G-3,47,Platform Tent,10,5,north east
+279,Platform G-4,47,Platform Tent,10,5,north east
+280,Platform G-5,47,Platform Tent,10,5,north east
+281,Platform G-6,47,Platform Tent,10,5,north east
+282,Platform G-7,47,Platform Tent,10,5,north east
+283,Platform G-8,47,Platform Tent,10,5,north east
+284,Platform G-9,47,Platform Tent,10,5,north east
+285,Platform G-10,47,Platform Tent,10,5,north east
+286,Platform G-11 (WBC),47,Platform Tent,10,5,north east
+5973,The Glorious Republic of Ganeshastan,47,Platform Tent,10,5,north west
+82,Dwaraka 01,42,Staff Residence,25,5,south east
+84,Dwaraka 02,42,Staff Residence,25,5,south east
+85,Dwaraka 03,42,Staff Residence,25,5,south east
+86,Dwaraka 04,42,Staff Residence,25,5,south east
+87,Dwaraka 05,42,Staff Residence,25,5,south east
+88,Dwaraka 06,42,Staff Residence,25,5,south east
+89,Dwaraka 07,42,Staff Residence,25,5,south east
+90,Dwaraka 08,42,Staff Residence,25,5,south east
+91,Dwaraka 09,42,Staff Residence,25,5,south east
+83,Dwaraka 10,42,Staff Residence,25,5,south east
+127,Kutir Hamsa,42,Staff Residence,0,5,-
+119,Kutir Iswari,42,Staff Residence,25,5,south east
+129,Kutir Jnaneshwari Chaitanya,42,Staff Residence,0,5,-
+130,Kutir Lakshmi,42,Staff Residence,10,5,-
+588,Kutir Priest,42,Staff Residence,0,5,-
+126,Kutir Rukmini Chaitanya,42,Staff Residence,0,5,-
+128,Kutir Swami Brahmananda,42,Staff Residence,0,5,-
+131,Kutir Swami Hridyananda,42,Staff Residence,0,5,-
+435,Yamuna 3,42,Staff Residence,0,5,-
+98,Tent Hut East 01,49,Tent Hut Double (Private),10,5,east
+106,Tent Hut East 02,49,Tent Hut Double (Private),10,5,east
+107,Tent Hut East 03,49,Tent Hut Double (Private),10,5,east
+108,Tent Hut East 04,49,Tent Hut Double (Private),10,5,east
+409,Tent Hut West 01,49,Tent Hut Double (Private),10,5,west
+420,Tent Hut West 02,49,Tent Hut Double (Private),10,5,west
+426,Tent Hut West 03,49,Tent Hut Double (Private),10,5,west
+427,Tent Hut West 04,49,Tent Hut Double (Private),10,5,west
+428,Tent Hut West 05,49,Tent Hut Double (Private),10,5,west
+429,Tent Hut West 06,49,Tent Hut Double (Private),10,5,west
+109,Tent Hut East 05,48,Tent Hut Single (Private),10,5,east
+110,Tent Hut East 06,48,Tent Hut Single (Private),10,5,east
+111,Tent Hut East 07,48,Tent Hut Single (Private),10,5,east
+112,Tent Hut East 08,48,Tent Hut Single (Private),10,5,east
+113,Tent Hut East 09,48,Tent Hut Single (Private),10,5,east
+99,Tent Hut East 10,48,Tent Hut Single (Private),10,5,east
+100,Tent Hut East 11,48,Tent Hut Single (Private),10,5,east
+101,Tent Hut East 12,48,Tent Hut Single (Private),10,5,east
+102,Tent Hut East 13,48,Tent Hut Single (Private),10,5,east
+103,Tent Hut East 14,48,Tent Hut Single (Private),10,5,east
+104,Tent Hut East 15,48,Tent Hut Single (Private),10,5,east
+105,Tent Hut East 16,48,Tent Hut Single (Private),10,5,east
+219,Tent Hut North 01,48,Tent Hut Single (Private),10,5,north east
+230,Tent Hut North 02,48,Tent Hut Single (Private),10,5,north east
+240,Tent Hut North 03,48,Tent Hut Single (Private),10,5,north east
+241,Tent Hut North 04,48,Tent Hut Single (Private),10,5,north east
+242,Tent Hut North 05,48,Tent Hut Single (Private),10,5,north east
+243,Tent Hut North 06,48,Tent Hut Single (Private),10,5,north east
+244,Tent Hut North 07,48,Tent Hut Single (Private),10,5,north east
+245,Tent Hut North 08,48,Tent Hut Single (Private),10,5,north east
+246,Tent Hut North 09,48,Tent Hut Single (Private),10,5,north east
+220,Tent Hut North 10,48,Tent Hut Single (Private),10,5,north east
+221,Tent Hut North 11,48,Tent Hut Single (Private),10,5,north east
+222,Tent Hut North 12,48,Tent Hut Single (Private),10,5,north east
+223,Tent Hut North 13,48,Tent Hut Single (Private),10,5,north east
+224,Tent Hut North 14,48,Tent Hut Single (Private),10,5,north east
+225,Tent Hut North 15,48,Tent Hut Single (Private),10,5,north east
+226,Tent Hut North 16,48,Tent Hut Single (Private),10,5,north east
+227,Tent Hut North 17,48,Tent Hut Single (Private),10,5,north east
+228,Tent Hut North 18,48,Tent Hut Single (Private),10,5,north east
+229,Tent Hut North 19,48,Tent Hut Single (Private),10,5,north east
+231,Tent Hut North 20,48,Tent Hut Single (Private),10,5,north east
+232,Tent Hut North 21,48,Tent Hut Single (Private),10,5,north east
+233,Tent Hut North 22,48,Tent Hut Single (Private),10,5,north east
+234,Tent Hut North 23,48,Tent Hut Single (Private),10,5,north east
+235,Tent Hut North 24,48,Tent Hut Single (Private),10,5,north east
+236,Tent Hut North 25,48,Tent Hut Single (Private),10,5,north east
+237,Tent Hut North 26,48,Tent Hut Single (Private),10,5,north east
+238,Tent Hut North 27,48,Tent Hut Single (Private),10,5,north east
+239,Tent Hut North 28,48,Tent Hut Single (Private),10,5,north east
+430,Tent Hut West 07,48,Tent Hut Single (Private),10,5,west
+431,Tent Hut West 08,48,Tent Hut Single (Private),10,5,west
+432,Tent Hut West 09,48,Tent Hut Single (Private),10,5,west
+410,Tent Hut West 10,48,Tent Hut Single (Private),10,5,west
+411,Tent Hut West 11,48,Tent Hut Single (Private),10,5,west
+412,Tent Hut West 12,48,Tent Hut Single (Private),10,5,west
+413,Tent Hut West 13,48,Tent Hut Single (Private),10,5,west
+414,Tent Hut West 14,48,Tent Hut Single (Private),10,5,west
+415,Tent Hut West 15,48,Tent Hut Single (Private),10,5,west
+416,Tent Hut West 16,48,Tent Hut Single (Private),10,5,west
+417,Tent Hut West 17,48,Tent Hut Single (Private),10,5,west
+418,Tent Hut West 18,48,Tent Hut Single (Private),10,5,west
+419,Tent Hut West 19,48,Tent Hut Single (Private),10,5,west
+421,Tent Hut West 20,48,Tent Hut Single (Private),10,5,west
+422,Tent Hut West 21,48,Tent Hut Single (Private),10,5,west
+423,Tent Hut West 22,48,Tent Hut Single (Private),10,5,west
+424,Tent Hut West 23,48,Tent Hut Single (Private),10,5,west
+425,Tent Hut West 24,48,Tent Hut Single (Private),10,5,west

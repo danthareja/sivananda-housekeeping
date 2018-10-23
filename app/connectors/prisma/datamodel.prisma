@@ -1,19 +1,16 @@
-# Prisma manages the following read-only fields:
-#   id
-#   createdAt
-#   updatedAt
-
 type Room {
-  id: ID! @unique
-  retreatGuruId: Int! @unique
-  name: String!
+  id: ID! @unique # Prisma manages this field
+  retreatGuruId: Int @unique # We use this field interally
+  name: String! # from seed
+  lodgingId: Int! # from seed
+  lodgingName: String! # from seed
+  location: String! # from seed
+  cleaningTime: Int! # from seed
+  cartCost: Int! # from seed
   dirty: Boolean!
   givenKey: Boolean!
-  cleaningTime: Int!
   cleanedAt: DateTime
   housekeeper: String
   order: Int
   comments: [String!]!
-  createdAt: DateTime!
-  updatedAt: DateTime!
 }
