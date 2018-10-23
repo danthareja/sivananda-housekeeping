@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "dev": "nodemon index.js --ignore client",
     "postinstall": "prisma generate",
     "heroku-postbuild": "prisma deploy"
   },

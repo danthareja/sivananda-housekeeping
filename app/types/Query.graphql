@@ -1,3 +1,4 @@
 type Query {
   rooms: [Room!]!
+  room(id: Int!): Room
 }

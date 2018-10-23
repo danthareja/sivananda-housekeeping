@@ -103,6 +103,42 @@ class Room {
       })
       .value();
   }
+
+  static async clean(ctx, id) {
+    let [room, registrations] = await Promise.all([
+      ctx.dataSources.prisma.room({
+        retreatGuruId: id
+      }),
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id)
+    ])
+
+    const update = {
+      data: {
+        dirty: !room.dirty
+      },
+      where: {
+        retreatGuruId: id
+      }
+    }
+
+    if (room.dirty) {
+      update.data.cleanedAt = new Date()
+    }
+    
+    room = await ctx.dataSources.prisma.updateRoom(update)
+
+    return new Room(room, registrations)
+  }
+
+  static async findById(ctx, id) {
+    const [room, registrations] = await Promise.all([
+      ctx.dataSources.prisma.room({
+        retreatGuruId: id
+      }),
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id)
+    ])
+    return new Room(room, registrations);
+  }
 }
 
 module.exports = Room;
