@@ -10,7 +10,11 @@ module.exports = {
       return guest.isSpecial();
     },
     flightTime(guest, _, ctx) {
-      return guest.flightTime();
+      const flightTime = guest.flightTime();
+      if (flightTime) {
+        return flightTime.format('h:mm a');
+      }
+      return null;
     },
     movingFrom(guest, _, ctx) {
       return guest.movingFrom();

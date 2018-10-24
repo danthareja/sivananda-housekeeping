@@ -15,6 +15,6 @@ type Room {
   givenKeyAt: DateTime
 
   housekeeper: String
-  order: Int
+  priority: Int
   comments: [String!]!
 }

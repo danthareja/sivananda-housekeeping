@@ -56,7 +56,6 @@ const RoomCleanButton = ({ id }) => {
               ) : (
                 <Button
                   block
-                  type="primary"
                   icon="smile"
                   loading={loading}
                   onClick={cleanRoom}

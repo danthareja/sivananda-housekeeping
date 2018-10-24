@@ -15,6 +15,26 @@ class Room {
     return `${registration.full_name}`;
   }
 
+  _earliestArrivalTime() {
+    const arrivals = this.arrivingGuests();
+
+    if (arrivals.length === 0) {
+      return null;
+    }
+
+    return _.chain(arrivals)
+      .map(arrival => {
+        const arrivalTime = arrival.flightTime();
+        if (arrivalTime) {
+          return arrivalTime.unix();
+        }
+        return null;
+      })
+      .sortBy()
+      .first()
+      .value();
+  }
+
   id() {
     return this.room.retreatGuruId;
   }
@@ -63,8 +83,8 @@ class Room {
     return this.room.housekeeper;
   }
 
-  order() {
-    return this.room.order;
+  priority() {
+    return this.room.priority;
   }
 
   comments() {
@@ -105,6 +125,8 @@ class Room {
       .map(registration => new StayingGuest(registration));
   }
 
+  // Queries
+
   static async fetch(ctx) {
     const [rooms, registrations] = await Promise.all([
       ctx.dataSources.prisma.rooms(),
@@ -125,58 +147,6 @@ class Room {
       .value();
   }
 
-  static async clean(ctx, id) {
-    let [room, registrations] = await Promise.all([
-      ctx.dataSources.prisma.room({
-        retreatGuruId: id,
-      }),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id),
-    ]);
-
-    const update = {
-      data: {
-        cleaned: !room.cleaned,
-      },
-      where: {
-        retreatGuruId: id,
-      },
-    };
-
-    if (!room.cleaned) {
-      update.data.cleanedAt = new Date();
-    }
-
-    room = await ctx.dataSources.prisma.updateRoom(update);
-
-    return new Room(room, registrations);
-  }
-
-  static async giveKey(ctx, id) {
-    let [room, registrations] = await Promise.all([
-      ctx.dataSources.prisma.room({
-        retreatGuruId: id,
-      }),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id),
-    ]);
-
-    const update = {
-      data: {
-        givenKey: !room.givenKey,
-      },
-      where: {
-        retreatGuruId: id,
-      },
-    };
-
-    if (!room.givenKey) {
-      update.data.givenKeyAt = new Date();
-    }
-
-    room = await ctx.dataSources.prisma.updateRoom(update);
-
-    return new Room(room, registrations);
-  }
-
   static async findById(ctx, id) {
     const [room, registrations] = await Promise.all([
       ctx.dataSources.prisma.room({
@@ -185,6 +155,73 @@ class Room {
       ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id),
     ]);
     return new Room(room, registrations);
+  }
+
+  // Mutations
+
+  static async clean(ctx, id) {
+    const room = await Room.findById(ctx, id);
+    const cleaned = room.cleaned();
+    const cleanedAt = room.cleanedAt();
+
+    return new Room(
+      await ctx.dataSources.prisma.updateRoom({
+        data: {
+          cleaned: !cleaned,
+          cleanedAt: cleaned ? cleanedAt : new Date(),
+        },
+        where: {
+          retreatGuruId: id,
+        },
+      }),
+      room.registrations
+    );
+  }
+
+  static async giveKey(ctx, id) {
+    const room = await Room.findById(ctx, id);
+    const givenKey = room.givenKey();
+    const givenKeyAt = room.givenKeyAt();
+
+    return new Room(
+      await ctx.dataSources.prisma.updateRoom({
+        data: {
+          givenKey: !givenKey,
+          givenKeyAt: givenKey ? givenKeyAt : new Date(),
+        },
+        where: {
+          retreatGuruId: id,
+        },
+      }),
+      room.registrations
+    );
+  }
+
+  static async automaticallyPrioritize(ctx) {
+    const rooms = _.sortBy(await Room.fetch(ctx), [
+      room => room._earliestArrivalTime(),
+      room => -room.arrivingGuests().length,
+    ]);
+
+    // TODO: speed this up with some concurrency
+    let updated = [];
+    for (let [index, room] of rooms.entries()) {
+      updated.push(
+        new Room(
+          await ctx.dataSources.prisma.updateRoom({
+            data: {
+              priority: index + 1,
+            },
+            where: {
+              retreatGuruId: room.id(),
+            },
+          }),
+          room.registrations
+        )
+      );
+    }
+
+    return updated;
   }
 }
 

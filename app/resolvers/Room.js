@@ -38,8 +38,8 @@ module.exports = {
     housekeeper(room, _, ctx) {
       return room.housekeeper();
     },
-    order(room, _, ctx) {
-      return room.order();
+    priority(room, _, ctx) {
+      return room.priority();
     },
     comments(room, _, ctx) {
       return room.comments();

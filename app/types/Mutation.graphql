@@ -1,4 +1,5 @@
 type Mutation {
+  automaticallyPrioritizeRooms: [Room!]!
   cleanRoom(id: Int!): Room
   giveRoomKey(id: Int!): Room
 }

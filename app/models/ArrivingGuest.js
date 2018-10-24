@@ -8,12 +8,13 @@ class ArrivingGuest extends Guest {
   }
 
   flightTime() {
-    return _.get(
-      this.registration,
-      'questions.flight_arrival_time_in_nassau_2'
+    return this._formatFlightTime(
+      this.registration.start_date,
+      this.registration.questions.flight_arrival_time_in_nassau_2
     );
   }
 
+  // Using _.get returns gracefully when movingFromRegistration is undefined
   movingFrom() {
     return _.get(this.movingFromRegistration, 'room');
   }

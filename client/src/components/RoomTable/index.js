@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import { message, Table } from 'antd';
 
 import columns from './columns';
+import title from './title/index.js'; // not sure why index.js is needed here...
 
 const GET_ROOMS = gql`
   query GetRooms {
@@ -20,7 +21,7 @@ const GET_ROOMS = gql`
       givenKey
       givenKeyAt
       housekeeper
-      order
+      priority
       comments
       arrivingGuests {
         id
@@ -46,7 +47,7 @@ const GET_ROOMS = gql`
 `;
 
 const RoomTable = () => (
-  <Query query={GET_ROOMS}>
+  <Query query={GET_ROOMS} pollInterval={3000}>
     {({ loading, error, data }) => {
       if (error) {
         message.error(error.message);
@@ -55,8 +56,11 @@ const RoomTable = () => (
 
       return (
         <Table
-          dataSource={data.rooms}
+          dataSource={
+            data.rooms && data.rooms.sort((a, b) => a.priority - b.priority)
+          }
           columns={columns}
+          title={title}
           loading={loading}
           rowKey="id"
         />

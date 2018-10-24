@@ -14,7 +14,7 @@ type Room {
   givenKey: Boolean!
   givenKeyAt: String
   housekeeper: String
-  order: Int
+  priority: Int
   comments: [String!]!
 
   # dynamic from RetreatGuru

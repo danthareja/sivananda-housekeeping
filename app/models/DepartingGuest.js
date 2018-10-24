@@ -8,9 +8,9 @@ class DepartingGuest extends Guest {
   }
 
   flightTime() {
-    return _.get(
-      this.registration,
-      'questions.flight_departure_time_from_nassau'
+    return this._formatFlightTime(
+      this.registration.end_date,
+      this.registration.questions.flight_departure_time_from_nassau
     );
   }
 
@@ -19,6 +19,7 @@ class DepartingGuest extends Guest {
     return false;
   }
 
+  // Using _.get returns gracefully when movingFromRegistration is undefined
   movingTo() {
     return _.get(this.movingToRegistration, 'room');
   }
