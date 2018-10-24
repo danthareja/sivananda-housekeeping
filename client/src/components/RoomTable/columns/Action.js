@@ -1,15 +1,17 @@
 import React from 'react';
-import { Divider } from 'antd';
 import RoomCleanButton from './components/RoomCleanButton';
 import RoomKeyButton from './components/RoomKeyButton';
 
 export default {
   title: 'Action',
   key: 'action',
+  fixed: 'right',
+  width: '110px',
+  align: 'center',
   render: (text, room) => (
     <span>
       <RoomCleanButton id={room.id} />
-      <Divider type="vertical"/>
+      <div style={{height: '6px'}}></div>
       <RoomKeyButton id={room.id} />
     </span>
   ),

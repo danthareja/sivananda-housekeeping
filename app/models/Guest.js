@@ -3,19 +3,15 @@ class Guest {
     this.registration = registration;
   }
 
-  getId() {
+  id() {
     return this.registration.id;
   }
 
-  getName() {
+  name() {
     return this.registration.full_name;
   }
 
-  getFlightTime() {
-    throw new Error('Not implemented');
-  }
-
-  getIsSpecial() {
+  isSpecial() {
     return this.registration.program_categories.indexOf('speaker') > -1
   }
 }

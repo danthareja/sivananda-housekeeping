@@ -1,5 +1,5 @@
 module.exports = {
-  ArrivingGuest: {
+  StayingGuest: {
     id(guest, _, ctx) {
       return guest.id();
     },
@@ -8,12 +8,6 @@ module.exports = {
     },
     isSpecial(guest, _, ctx) {
       return guest.isSpecial();
-    },
-    flightTime(guest, _, ctx) {
-      return guest.flightTime();
-    },
-    movingFrom(guest, _, ctx) {
-      return guest.movingFrom();
     }
   }
 };

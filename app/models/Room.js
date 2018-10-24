@@ -2,6 +2,7 @@ const _ = require('lodash');
 const moment = require('moment');
 const ArrivingGuest = require('./ArrivingGuest')
 const DepartingGuest = require('./DepartingGuest')
+const StayingGuest = require('./StayingGuest')
 
 class Room {
   constructor(room, registrations) {
@@ -14,59 +15,63 @@ class Room {
     return `${registration.full_name}`;
   }
 
-  getId() {
+  id() {
     return this.room.retreatGuruId;
   }
 
-  getName() {
+  name() {
     return this.room.name;
   }
 
-  getLodgingId() {
+  lodgingId() {
     return this.room.lodgingId;
   }
 
-  getLodgingName() {
+  lodgingName() {
     return this.room.lodgingName;
   }
 
-  getLocation() {
+  location() {
     return this.room.location;
   }
 
-  getCleaningTime() {
+  cleaningTime() {
     return this.room.cleaningTime;
   }
 
-  getCartCost() {
-    return this.room.cartCost;
+  cleaningCartCost() {
+    return this.room.cleaningCartCost;
   }
 
-  getDirty() {
-    return this.room.dirty;
+  cleaned() {
+    return this.room.cleaned;
   }
 
-  getGivenKey() {
-    return this.room.givenKey;
-  }
-
-  getCleanedAt() {
+  cleanedAt() {
     return this.room.cleanedAt;
   }
 
-  getHousekeeper() {
+  givenKey() {
+    return this.room.givenKey;
+  }
+
+  givenKeyAt() {
+    return this.room.givenKeyAt;
+  }
+
+  housekeeper() {
     return this.room.housekeeper;
   }
 
-  getOrder() {
+  order() {
     return this.room.order;
   }
 
-  getComments() {
+  comments() {
     return this.room.comments;
   }
 
-  getArrivals() {
+  arrivingGuests() {
     const date = moment().format('YYYY-MM-DD');
     return this.registrations
       .filter(registration => registration.start_date === date)
@@ -76,7 +81,7 @@ class Room {
       })
   }
 
-  getDepartures() {
+  departingGuests() {
     const date = moment().format('YYYY-MM-DD');
     return this.registrations
       .filter(registration => registration.end_date === date)
@@ -84,6 +89,13 @@ class Room {
         const movingToRegistration = this.registrationsByGuest[this._uniqueGuestKey(registration)].find(registration => registration.start_date === date)
         return new DepartingGuest(registration, movingToRegistration)
       })
+  }
+
+  stayingGuests() {
+    const date = moment().format('YYYY-MM-DD');
+    return this.registrations
+      .filter(registration => registration.end_date !== date && registration.start_date !== date)
+      .map(registration => new StayingGuest(registration))
   }
 
   static async fetch(ctx) {
@@ -114,14 +126,14 @@ class Room {
 
     const update = {
       data: {
-        dirty: !room.dirty
+        cleaned: !room.cleaned
       },
       where: {
         retreatGuruId: id
       }
     }
 
-    if (room.dirty) {
+    if (!room.cleaned) {
       update.data.cleanedAt = new Date()
     }
     
@@ -138,14 +150,20 @@ class Room {
       ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id)
     ])
 
-    room = await ctx.dataSources.prisma.updateRoom({
+    const update = {
       data: {
         givenKey: !room.givenKey
       },
       where: {
         retreatGuruId: id
       }
-    })
+    }
+
+    if (!room.givenKey) {
+      update.data.givenKeyAt = new Date()
+    }
+
+    room = await ctx.dataSources.prisma.updateRoom(update)
 
     return new Room(room, registrations)
   }

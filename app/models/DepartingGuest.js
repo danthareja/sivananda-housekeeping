@@ -7,16 +7,16 @@ class DepartingGuest extends Guest {
     this.movingToRegistration = movingToRegistration;
   }
 
-  getFlightTime() {
+  flightTime() {
     return _.get(this.registration, 'questions.flight_departure_time_from_nassau')
   }
 
   // TODO
-  getLateCheckout() {
+  lateCheckout() {
     return false;
   }
 
-  getMovingTo() {
+  movingTo() {
     return _.get(this.movingToRegistration, 'room')
   }
 }

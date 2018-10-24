@@ -1,4 +1,4 @@
-interface Guest {
+type StayingGuest implements Guest {
   id: Int!
   name: String!
   isSpecial: Boolean!

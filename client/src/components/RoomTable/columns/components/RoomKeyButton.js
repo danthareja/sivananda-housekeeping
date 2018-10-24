@@ -8,6 +8,7 @@ query GetRoom($id:Int!) {
   room(id:$id) {
     id
     givenKey
+    givenKeyAt
   }
 }
 `
@@ -17,6 +18,7 @@ mutation GiveRoomKey($id: Int!) {
   giveRoomKey(id: $id){
     id
     givenKey
+    givenKeyAt
   }
 }
 `;
@@ -26,10 +28,10 @@ const RoomCleanButton = ({ id }) => {
     <Query query={GET_ROOM} variables={{ id }}>
       {({ loading, error, data }) => {
         if (error) {
-          return <Button disabled={true}>Error</Button>
+          return <Button block disabled>Error</Button>
         }
         if (loading) {
-          return <Button loading={true} />
+          return <Button block loading />
         }
         return (
           <Mutation mutation={GIVE_ROOM_KEY} variables={{ id }}>
@@ -38,8 +40,8 @@ const RoomCleanButton = ({ id }) => {
                 message.error(error.message)
               }
               return data.room.givenKey
-                ? <Button type="danger" icon="key" loading={loading} onClick={giveRoomKey}>Take Keys</Button>  
-                : <Button type="primary" icon="key" loading={loading} onClick={giveRoomKey}>Give Keys</Button>
+                ? <Button block type="danger" icon="key" loading={loading} onClick={giveRoomKey}>Take Keys</Button>  
+                : <Button block type="primary" icon="key" loading={loading} onClick={giveRoomKey}>Give Keys</Button>
             }}
           </Mutation>
         )

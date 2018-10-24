@@ -7,47 +7,44 @@ export default {
   title: 'Arrivals',
   key: 'arrivals',
   render: (text, room) => {
-    if (room.arrivals.length === 0) {
+    if (room.arrivingGuests.length === 0) {
       return <span style={{color: '#52c41a'}}>None</span>
-    }
-    if (room.arrivals.length === 1) {
-      return <Arrival data={room.arrivals[0]} />
     }
     return <List
       size="small"
-      itemLayout="vertical"
-      dataSource={room.arrivals}
-      renderItem={arrival => (
+      grid={{ gutter: 8, xs: 1, sm: 1, md: 2, lg: 2, xl: 2, xxl: 2 }}
+      dataSource={room.arrivingGuests}
+      renderItem={guest => (
         <List.Item>
-          <Arrival data={arrival} />
+          <ArrivingGuest guest={guest} />
         </List.Item>
       )}
     />
   }
 };
 
-const Arrival = ({ data }) => (
+const ArrivingGuest = ({ guest }) => (
   <div>
-    <GuestName guest={data} />
-    {data.movingFrom
-      ? <ArrivalRoomMove data={data} />
-      : <ArrivalFlightTime data={data} />
+    <GuestName guest={guest} />
+    {guest.movingFrom
+      ? <ArrivingGuestRoomMove guest={guest} />
+      : <ArrivingGuestFlightTime guest={guest} />
     }
   </div>
 )
 
-const ArrivalRoomMove = ({ data }) => (
+const ArrivingGuestRoomMove = ({ guest }) => (
   <div>
     <Icon type="swap" style={{marginRight: '6px'}} />
-    <span>{data.movingFrom}</span>
+    <span>{guest.movingFrom}</span>
   </div>
 )
 
-const ArrivalFlightTime = ({ data }) => (
+const ArrivingGuestFlightTime = ({ guest }) => (
   <div>
     <Icon type="rocket" style={{marginRight: '6px'}} />
-    {data.flightTime
-      ? <span>{data.flightTime}</span>
+    {guest.flightTime
+      ? <span>{guest.flightTime}</span>
       : <span>-</span>
     }
   </div>

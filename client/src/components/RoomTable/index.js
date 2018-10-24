@@ -14,26 +14,32 @@ query GetRooms{
     lodgingName
     location
     cleaningTime
-    cartCost
-    dirty
-    givenKey
+    cleaningCartCost
+    cleaned
     cleanedAt
+    givenKey
+    givenKeyAt
     housekeeper
     order
     comments
-    arrivals{
+    arrivingGuests{
       id
       name
       isSpecial
       flightTime
       movingFrom
     }
-    departures{
+    departingGuests{
       id
       name
       isSpecial
       flightTime
       movingTo
+    }
+    stayingGuests{
+      id
+      name
+      isSpecial
     }
   }
 }

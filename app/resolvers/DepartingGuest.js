@@ -1,22 +1,22 @@
 module.exports = {
   DepartingGuest: {
     id(guest, _, ctx) {
-      return guest.getId();
+      return guest.id();
     },
     name(guest, _, ctx) {
-      return guest.getName();
-    },
-    flightTime(guest, _, ctx) {
-      return guest.getFlightTime();
+      return guest.name();
     },
     isSpecial(guest, _, ctx) {
-      return guest.getIsSpecial();
+      return guest.isSpecial();
+    },
+    flightTime(guest, _, ctx) {
+      return guest.flightTime();
     },
     lateCheckout(guest, _, ctx) {
-      return guest.getLateCheckout();
+      return guest.lateCheckout();
     },
     movingTo(guest, _, ctx) {
-      return guest.getMovingTo();
+      return guest.movingTo();
     }
   }
 };

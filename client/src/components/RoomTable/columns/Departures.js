@@ -7,47 +7,75 @@ export default {
   title: 'Departures',
   key: 'departure',
   render: (text, room) => {
-    if (room.departures.length === 0) {
-      return <span style={{color: '#52c41a'}}>Already Vacant</span>
-    }
-    if (room.departures.length === 1) {
-      return <Departure data={room.departures[0]} />
-    }
-    return <List
-      size="small"
-      itemLayout="vertical"
-      dataSource={room.departures}
-      renderItem={departure => (
-        <List.Item>
-          <Departure data={departure} />
-        </List.Item>
-      )}
-    />
+    return (
+      <div>
+        <DepartingGuestList guests={room.departingGuests} />
+        <StayingGuestList guests={room.stayingGuests} />
+      </div>
+    )
   }
 };
 
-const Departure = ({ data }) => (
+const StayingGuestList = ({ guests }) => {
+  if (guests.length === 0) {
+    return null;
+  }
+
+  return (
+    <div>
+      <div style={{marginRight: '8px'}}>Staying:</div>
+      <List
+          size="small"
+          grid={{ gutter: 8, xs: 1, sm: 1, md: 1, lg: 2, xl: 2, xxl: 2 }}
+          dataSource={guests}
+          renderItem={guest => (
+            <List.Item>
+              <GuestName guest={guest} />
+            </List.Item>
+          )}
+        />
+    </div>
+  )
+}
+
+const DepartingGuestList = ({ guests }) => {
+  if (guests.length === 0) {
+    return <span style={{color: '#52c41a'}}>None</span>
+  }
+  return <List
+    size="small"
+    grid={{ gutter: 8, xs: 1, sm: 1, md: 1, lg: 2, xl: 2, xxl: 2 }}
+    dataSource={guests}
+    renderItem={guest => (
+      <List.Item>
+        <DepartingGuest guest={guest} />
+      </List.Item>
+    )}
+  />
+}
+
+const DepartingGuest = ({ guest }) => (
   <div>
-    <GuestName guest={data} />
-    {data.movingTo
-      ? <DepartureRoomMove data={data} />
-      : <DepartureFlightTime data={data} />
+    <GuestName guest={guest} />
+    {guest.movingTo
+      ? <DepartingGuestRoomMove guest={guest} />
+      : <DepartingGuestFlightTime guest={guest} />
     }
   </div>
 )
 
-const DepartureRoomMove = ({ data }) => (
+const DepartingGuestRoomMove = ({ guest }) => (
   <div>
     <Icon type="swap" style={{marginRight: '6px'}} />
-    <span>{data.movingTo}</span>
+    <span>{guest.movingTo}</span>
   </div>
 )
 
-const DepartureFlightTime = ({ data }) => (
+const DepartingGuestFlightTime = ({ guest }) => (
   <div>
     <Icon type="rocket" style={{marginRight: '6px'}} />
-    {data.flightTime
-      ? <span>{data.flightTime}</span>
+    {guest.flightTime
+      ? <span>{guest.flightTime}</span>
       : <span>-</span>
     }
   </div>

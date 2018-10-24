@@ -1,15 +1,19 @@
 type Room {
   id: ID! @unique # Prisma manages this field
-  retreatGuruId: Int @unique # We use this field interally
+
+  retreatGuruId: Int @unique # from seed
   name: String! # from seed
   lodgingId: Int! # from seed
   lodgingName: String! # from seed
   location: String! # from seed
   cleaningTime: Int! # from seed
-  cartCost: Int! # from seed
-  dirty: Boolean!
-  givenKey: Boolean!
+  cleaningCartCost: Int! # from seed
+
+  cleaned: Boolean!
   cleanedAt: DateTime
+  givenKey: Boolean!
+  givenKeyAt: DateTime
+
   housekeeper: String
   order: Int
   comments: [String!]!

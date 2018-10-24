@@ -7,11 +7,11 @@ class ArrivingGuest extends Guest {
     this.movingFromReservation = movingFromReservation;
   }
 
-  getFlightTime() {
+  flightTime() {
     return _.get(this.registration, 'questions.flight_arrival_time_in_nassau_2')
   }
 
-  getMovingFrom() {
+  movingFrom() {
     return _.get(this.movingFromRegistration, 'room');
   }
 }

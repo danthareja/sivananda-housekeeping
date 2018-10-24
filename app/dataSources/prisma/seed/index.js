@@ -29,8 +29,8 @@ function transformRoomRow(row) {
     lodgingName: row.primary_lodging_type_name,
     location: row.location,
     cleaningTime: parseInt(row.cleaning_time),
-    cartCost: parseInt(row.rooms_per_cart),
-    dirty: false,
+    cleaningCartCost: parseInt(row.rooms_per_cart),
+    cleaned: false,
     givenKey: false,
   }
 }

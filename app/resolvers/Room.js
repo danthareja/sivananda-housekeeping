@@ -3,49 +3,55 @@ const { Room } = require('../models');
 module.exports = {
   Room: {
     id(room, _, ctx) {
-      return room.getId();
+      return room.id();
     },
     name(room, _, ctx) {
-      return room.getName();
+      return room.name();
     },
     lodgingId(room, _, ctx) {
-      return room.getLodgingId();
+      return room.lodgingId();
     },
     lodgingName(room, _, ctx) {
-      return room.getLodgingName();
+      return room.lodgingName();
     },
     location(room, _, ctx) {
-      return room.getLocation();
+      return room.location();
     },
     cleaningTime(room, _, ctx) {
-      return room.getCleaningTime();
+      return room.cleaningTime();
     },
-    cartCost(room, _, ctx) {
-      return room.getCartCost();
+    cleaningCartCost(room, _, ctx) {
+      return room.cleaningCartCost();
     },
-    dirty(room, _, ctx) {
-      return room.getDirty();
-    },
-    givenKey(room, _, ctx) {
-      return room.getGivenKey();
+    cleaned(room, _, ctx) {
+      return room.cleaned();
     },
     cleanedAt(room, _, ctx) {
-      return room.getCleanedAt();
+      return room.cleanedAt();
+    },
+    givenKey(room, _, ctx) {
+      return room.givenKey();
+    },
+    givenKeyAt(room, _, ctx) {
+      return room.givenKeyAt();
     },
     housekeeper(room, _, ctx) {
-      return room.getHousekeeper();
+      return room.housekeeper();
     },
     order(room, _, ctx) {
-      return room.getOrder();
+      return room.order();
     },
     comments(room, _, ctx) {
-      return room.getComments();
+      return room.comments();
     },
-    arrivals(room, _, ctx) {
-      return room.getArrivals();
+    arrivingGuests(room, _, ctx) {
+      return room.arrivingGuests();
     },
-    departures(room, _, ctx) {
-      return room.getDepartures()
-    }
+    departingGuests(room, _, ctx) {
+      return room.departingGuests();
+    },
+    stayingGuests(room, _, ctx) {
+      return room.stayingGuests();
+    },
   }
 };
