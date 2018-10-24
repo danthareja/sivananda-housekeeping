@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import { message, Button } from 'antd';
 
-
 const GET_ROOM = gql`
 query GetRoom($id:Int!) {
   room(id:$id) {
@@ -41,8 +40,8 @@ const RoomCleanButton = ({ id }) => {
                 message.error(error.message)
               }
               return data.room.dirty
-                ? <Button type="primary" icon="check-circle" loading={loading} onClick={updateRoom}>Mark Clean</Button>
-                : <Button type="danger" icon="close-circle" loading={loading} onClick={updateRoom}>Mark Dirty</Button>  
+                ? <Button type="primary" icon="smile" loading={loading} onClick={updateRoom}>Mark Clean</Button>
+                : <Button type="danger" icon="frown" loading={loading} onClick={updateRoom}>Mark Dirty</Button>  
             }}
           </Mutation>
         )
