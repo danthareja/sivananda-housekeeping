@@ -5,7 +5,7 @@ import ApolloClient from 'apollo-boost';
 import RoomTable from './components/RoomTable';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: '/graphql',
 });
 
 class App extends Component {

@@ -13,6 +13,7 @@
     "react-scripts": "2.0.5",
     "react-table": "^6.8.6"
   },
+  "proxy": "http://localhost:4000/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

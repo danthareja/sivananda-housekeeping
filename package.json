@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js --ignore client",
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && cd client && npm install && npm run build",
     "heroku-postbuild": "prisma deploy"
   },
   "husky": {
