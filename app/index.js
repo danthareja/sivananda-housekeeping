@@ -14,10 +14,10 @@ const server = new ApolloServer({
   dataSources() {
     return {
       prisma,
-      retreatGuruAPI: new RetreatGuruAPI()
-    }
+      retreatGuruAPI: new RetreatGuruAPI(),
+    };
   },
-})
+});
 
 server.applyMiddleware({ app });
 

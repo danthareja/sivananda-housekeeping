@@ -7,6 +7,6 @@ module.exports = {
     },
     giveRoomKey(root, { id }, ctx) {
       return Room.giveKey(ctx, id);
-    }
-  }
+    },
+  },
 };

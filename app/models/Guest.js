@@ -12,7 +12,7 @@ class Guest {
   }
 
   isSpecial() {
-    return this.registration.program_categories.indexOf('speaker') > -1
+    return this.registration.program_categories.indexOf('speaker') > -1;
   }
 }
 

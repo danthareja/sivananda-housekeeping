@@ -9,31 +9,37 @@ export default {
   render: (text, room) => (
     <div>
       <div>
-        <Tooltip placement="right" title={
-          room.cleanedAt
-            ? `Last cleaned ${moment(room.cleanedAt).fromNow()}`
-            : 'Never cleaned'
+        <Tooltip
+          placement="right"
+          title={
+            room.cleanedAt
+              ? `Last cleaned ${moment(room.cleanedAt).fromNow()}`
+              : 'Never cleaned'
           }
         >
-          {room.cleaned
-            ? <span style={{color: '#52c41a'}}>Clean</span>
-            : <span style={{color: '#f5222d'}}>Dirty</span>
-          }
+          {room.cleaned ? (
+            <span style={{ color: '#52c41a' }}>Clean</span>
+          ) : (
+            <span style={{ color: '#f5222d' }}>Dirty</span>
+          )}
         </Tooltip>
       </div>
       <div>
-        <Tooltip placement="right" title={
-          room.givenKeyAt
-            ? `Last given key ${moment(room.givenKeyAt).fromNow()}`
-            : 'Never given key'
+        <Tooltip
+          placement="right"
+          title={
+            room.givenKeyAt
+              ? `Last given key ${moment(room.givenKeyAt).fromNow()}`
+              : 'Never given key'
           }
         >
-          {room.givenKey
-            ? <span style={{color: '#52c41a'}}>with keys</span>
-            : <span style={{color: '#f5222d'}}>without keys</span>
-          }
+          {room.givenKey ? (
+            <span style={{ color: '#52c41a' }}>with keys</span>
+          ) : (
+            <span style={{ color: '#f5222d' }}>without keys</span>
+          )}
         </Tooltip>
       </div>
     </div>
-  )
-}
+  ),
+};

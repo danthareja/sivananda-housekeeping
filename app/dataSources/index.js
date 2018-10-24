@@ -3,5 +3,5 @@ const RetreatGuruAPI = require('./RetreatGuruAPI');
 
 module.exports = {
   prisma,
-  RetreatGuruAPI
+  RetreatGuruAPI,
 };

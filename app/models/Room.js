@@ -1,14 +1,14 @@
 const _ = require('lodash');
 const moment = require('moment');
-const ArrivingGuest = require('./ArrivingGuest')
-const DepartingGuest = require('./DepartingGuest')
-const StayingGuest = require('./StayingGuest')
+const ArrivingGuest = require('./ArrivingGuest');
+const DepartingGuest = require('./DepartingGuest');
+const StayingGuest = require('./StayingGuest');
 
 class Room {
   constructor(room, registrations) {
     this.room = room;
     this.registrations = registrations;
-    this.registrationsByGuest = _.groupBy(registrations, this._uniqueGuestKey)
+    this.registrationsByGuest = _.groupBy(registrations, this._uniqueGuestKey);
   }
 
   _uniqueGuestKey(registration) {
@@ -76,9 +76,11 @@ class Room {
     return this.registrations
       .filter(registration => registration.start_date === date)
       .map(registration => {
-        const movingFromRegistration = this.registrationsByGuest[this._uniqueGuestKey(registration)].find(registration => registration.end_date === date)
-        return new ArrivingGuest(registration, movingFromRegistration)
-      })
+        const movingFromRegistration = this.registrationsByGuest[
+          this._uniqueGuestKey(registration)
+        ].find(registration => registration.end_date === date);
+        return new ArrivingGuest(registration, movingFromRegistration);
+      });
   }
 
   departingGuests() {
@@ -86,30 +88,37 @@ class Room {
     return this.registrations
       .filter(registration => registration.end_date === date)
       .map(registration => {
-        const movingToRegistration = this.registrationsByGuest[this._uniqueGuestKey(registration)].find(registration => registration.start_date === date)
-        return new DepartingGuest(registration, movingToRegistration)
-      })
+        const movingToRegistration = this.registrationsByGuest[
+          this._uniqueGuestKey(registration)
+        ].find(registration => registration.start_date === date);
+        return new DepartingGuest(registration, movingToRegistration);
+      });
   }
 
   stayingGuests() {
     const date = moment().format('YYYY-MM-DD');
     return this.registrations
-      .filter(registration => registration.end_date !== date && registration.start_date !== date)
-      .map(registration => new StayingGuest(registration))
+      .filter(
+        registration =>
+          registration.end_date !== date && registration.start_date !== date
+      )
+      .map(registration => new StayingGuest(registration));
   }
 
   static async fetch(ctx) {
     const [rooms, registrations] = await Promise.all([
       ctx.dataSources.prisma.rooms(),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations()
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(),
     ]);
 
-    const roomsById = _.keyBy(rooms, 'retreatGuruId')
+    const roomsById = _.keyBy(rooms, 'retreatGuruId');
     return _.chain(registrations)
       .groupBy('room_id')
       .map((registrations, roomId) => {
         if (!roomsById[roomId]) {
-          throw new Error(`Room ${roomId} does not exist in the database yet. Please add it.`)
+          throw new Error(
+            `Room ${roomId} does not exist in the database yet. Please add it.`
+          );
         }
         return new Room(roomsById[roomId], registrations);
       })
@@ -119,62 +128,62 @@ class Room {
   static async clean(ctx, id) {
     let [room, registrations] = await Promise.all([
       ctx.dataSources.prisma.room({
-        retreatGuruId: id
+        retreatGuruId: id,
       }),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id)
-    ])
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id),
+    ]);
 
     const update = {
       data: {
-        cleaned: !room.cleaned
+        cleaned: !room.cleaned,
       },
       where: {
-        retreatGuruId: id
-      }
-    }
+        retreatGuruId: id,
+      },
+    };
 
     if (!room.cleaned) {
-      update.data.cleanedAt = new Date()
+      update.data.cleanedAt = new Date();
     }
-    
-    room = await ctx.dataSources.prisma.updateRoom(update)
 
-    return new Room(room, registrations)
+    room = await ctx.dataSources.prisma.updateRoom(update);
+
+    return new Room(room, registrations);
   }
 
   static async giveKey(ctx, id) {
     let [room, registrations] = await Promise.all([
       ctx.dataSources.prisma.room({
-        retreatGuruId: id
+        retreatGuruId: id,
       }),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id)
-    ])
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id),
+    ]);
 
     const update = {
       data: {
-        givenKey: !room.givenKey
+        givenKey: !room.givenKey,
       },
       where: {
-        retreatGuruId: id
-      }
-    }
+        retreatGuruId: id,
+      },
+    };
 
     if (!room.givenKey) {
-      update.data.givenKeyAt = new Date()
+      update.data.givenKeyAt = new Date();
     }
 
-    room = await ctx.dataSources.prisma.updateRoom(update)
+    room = await ctx.dataSources.prisma.updateRoom(update);
 
-    return new Room(room, registrations)
+    return new Room(room, registrations);
   }
 
   static async findById(ctx, id) {
     const [room, registrations] = await Promise.all([
       ctx.dataSources.prisma.room({
-        retreatGuruId: id
+        retreatGuruId: id,
       }),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id)
-    ])
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id),
+    ]);
     return new Room(room, registrations);
   }
 }

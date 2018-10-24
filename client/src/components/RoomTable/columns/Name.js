@@ -8,5 +8,5 @@ export default {
     <Tooltip title={room.lodgingName} placement="right">
       <span>{room.name}</span>
     </Tooltip>
-  )
-}
+  ),
+};

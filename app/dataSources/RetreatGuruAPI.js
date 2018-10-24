@@ -14,13 +14,13 @@ class RetreatGuruAPI extends RESTDataSource {
 
   async getRoomRegistrations(roomId) {
     const date = moment().format('YYYY-MM-DD');
-    
+
     const roomCategories = {
-      'attc': true,
-      'children': true,
-      'ky': true,
-      'ttc': true,
-      'speaker': true,
+      attc: true,
+      children: true,
+      ky: true,
+      ttc: true,
+      speaker: true,
       'yvp-lodging': true,
     };
 
@@ -29,25 +29,27 @@ class RetreatGuruAPI extends RESTDataSource {
       {
         limit: 0,
         min_stay: date,
-        max_stay: date
+        max_stay: date,
       },
       {
         cacheOptions: {
-          ttl: 60
-        }
+          ttl: 60,
+        },
       }
-    )
+    );
 
-    return registrations.filter(registration =>
-      (registration.start_date === date || registration.end_date === date) &&
-      (registration.status === 'reserved' || registration.status === 'arrived' || registration.status === 'checked-out') &&
-      registration.program_categories.some(category => roomCategories[category]) &&
-      (roomId ? registration.room_id === roomId : true)
+    return registrations.filter(
+      registration =>
+        (registration.start_date === date || registration.end_date === date) &&
+        (registration.status === 'reserved' ||
+          registration.status === 'arrived' ||
+          registration.status === 'checked-out') &&
+        registration.program_categories.some(
+          category => roomCategories[category]
+        ) &&
+        (roomId ? registration.room_id === roomId : true)
     );
   }
 }
-
-
-
 
 module.exports = RetreatGuruAPI;

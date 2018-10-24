@@ -8,7 +8,10 @@ class DepartingGuest extends Guest {
   }
 
   flightTime() {
-    return _.get(this.registration, 'questions.flight_departure_time_from_nassau')
+    return _.get(
+      this.registration,
+      'questions.flight_departure_time_from_nassau'
+    );
   }
 
   // TODO
@@ -17,7 +20,7 @@ class DepartingGuest extends Guest {
   }
 
   movingTo() {
-    return _.get(this.movingToRegistration, 'room')
+    return _.get(this.movingToRegistration, 'room');
   }
 }
 

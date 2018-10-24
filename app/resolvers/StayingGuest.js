@@ -8,6 +8,6 @@ module.exports = {
     },
     isSpecial(guest, _, ctx) {
       return guest.isSpecial();
-    }
-  }
+    },
+  },
 };

@@ -17,6 +17,6 @@ module.exports = {
     },
     movingTo(guest, _, ctx) {
       return guest.movingTo();
-    }
-  }
+    },
+  },
 };

@@ -11,8 +11,8 @@ export default {
   render: (text, room) => (
     <span>
       <RoomCleanButton id={room.id} />
-      <div style={{height: '6px'}}></div>
+      <div style={{ height: '6px' }} />
       <RoomKeyButton id={room.id} />
     </span>
   ),
-}
+};

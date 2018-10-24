@@ -7,6 +7,6 @@ module.exports = {
     },
     room(root, { id }, ctx) {
       return Room.findById(ctx, id);
-    }
-  }
+    },
+  },
 };

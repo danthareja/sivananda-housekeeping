@@ -53,5 +53,5 @@ module.exports = {
     stayingGuests(room, _, ctx) {
       return room.stayingGuests();
     },
-  }
+  },
 };

@@ -1,4 +1,4 @@
-const _ = require('lodash')
+const _ = require('lodash');
 const Guest = require('./Guest');
 
 class ArrivingGuest extends Guest {
@@ -8,7 +8,10 @@ class ArrivingGuest extends Guest {
   }
 
   flightTime() {
-    return _.get(this.registration, 'questions.flight_arrival_time_in_nassau_2')
+    return _.get(
+      this.registration,
+      'questions.flight_arrival_time_in_nassau_2'
+    );
   }
 
   movingFrom() {

@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
+  require('dotenv').config();
 }
 
 const fs = require('fs');
@@ -7,17 +7,16 @@ const path = require('path');
 const parse = require('csv-parse/lib/sync');
 const axios = require('axios');
 
-
 (async () => {
-  const rooms = parseFixture('rooms.csv').map(transformRoomRow)
+  const rooms = parseFixture('rooms.csv').map(transformRoomRow);
   for (let room of rooms) {
-    console.log(await createRoom(room))
+    console.log(await createRoom(room));
   }
-})()
+})();
 
 function parseFixture(filename) {
   return parse(fs.readFileSync(path.join(__dirname, 'fixtures', filename)), {
-    columns: true
+    columns: true,
   });
 }
 
@@ -32,7 +31,7 @@ function transformRoomRow(row) {
     cleaningCartCost: parseInt(row.rooms_per_cart),
     cleaned: false,
     givenKey: false,
-  }
+  };
 }
 
 async function createRoom(data) {
@@ -42,14 +41,14 @@ async function createRoom(data) {
         name
       }
     }
-  `
+  `;
 
   const result = await axios.post(process.env.PRISMA_ENDPOINT, {
     query,
     variables: {
-      data
-    }
-  })
+      data,
+    },
+  });
 
   return result.data;
 }

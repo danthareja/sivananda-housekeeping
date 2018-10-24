@@ -14,6 +14,6 @@ module.exports = {
     },
     movingFrom(guest, _, ctx) {
       return guest.movingFrom();
-    }
-  }
+    },
+  },
 };
