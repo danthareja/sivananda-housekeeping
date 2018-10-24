@@ -130,6 +130,26 @@ class Room {
     return new Room(room, registrations)
   }
 
+  static async giveKey(ctx, id) {
+    let [room, registrations] = await Promise.all([
+      ctx.dataSources.prisma.room({
+        retreatGuruId: id
+      }),
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id)
+    ])
+
+    room = await ctx.dataSources.prisma.updateRoom({
+      data: {
+        givenKey: !room.givenKey
+      },
+      where: {
+        retreatGuruId: id
+      }
+    })
+
+    return new Room(room, registrations)
+  }
+
   static async findById(ctx, id) {
     const [room, registrations] = await Promise.all([
       ctx.dataSources.prisma.room({

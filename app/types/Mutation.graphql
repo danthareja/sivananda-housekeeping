@@ -1,3 +1,4 @@
 type Mutation {
   cleanRoom(id: Int!): Room
+  giveRoomKey(id: Int!): Room
 }

@@ -7,18 +7,16 @@ const GET_ROOM = gql`
 query GetRoom($id:Int!) {
   room(id:$id) {
     id
-    dirty
-    cleanedAt
+    givenKey
   }
 }
 `
 
-const CLEAN_ROOM = gql`
-mutation CleanRoom($id: Int!) {
-  cleanRoom(id: $id){
+const GIVE_ROOM_KEY = gql`
+mutation GiveRoomKey($id: Int!) {
+  giveRoomKey(id: $id){
     id
-    dirty
-    cleanedAt
+    givenKey
   }
 }
 `;
@@ -34,14 +32,14 @@ const RoomCleanButton = ({ id }) => {
           return <Button loading={true} />
         }
         return (
-          <Mutation mutation={CLEAN_ROOM} variables={{ id }}>
-            {(cleanRoom, { error, loading }) => {
+          <Mutation mutation={GIVE_ROOM_KEY} variables={{ id }}>
+            {(giveRoomKey, { error, loading }) => {
               if (error) {
                 message.error(error.message)
               }
-              return data.room.dirty
-                ? <Button type="primary" icon="smile" loading={loading} onClick={cleanRoom}>Mark Clean</Button>
-                : <Button type="danger" icon="frown" loading={loading} onClick={cleanRoom}>Mark Dirty</Button>  
+              return data.room.givenKey
+                ? <Button type="danger" icon="key" loading={loading} onClick={giveRoomKey}>Take Keys</Button>  
+                : <Button type="primary" icon="key" loading={loading} onClick={giveRoomKey}>Give Keys</Button>
             }}
           </Mutation>
         )

@@ -5,5 +5,8 @@ module.exports = {
     cleanRoom(root, { id }, ctx) {
       return Room.clean(ctx, id);
     },
+    giveRoomKey(root, { id }, ctx) {
+      return Room.giveKey(ctx, id);
+    }
   }
 };
