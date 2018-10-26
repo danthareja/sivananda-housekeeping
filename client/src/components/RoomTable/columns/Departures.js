@@ -76,7 +76,13 @@ const DepartingGuestRoomMove = ({ guest }) => (
 
 const DepartingGuestFlightTime = ({ guest }) => (
   <div>
-    <Icon type="rocket" style={{ marginRight: '6px' }} />
+    <span
+      role="img"
+      aria-label="plane-departing"
+      style={{ marginRight: '6px' }}
+    >
+      🛫
+    </span>
     {guest.flightTime ? <span>{guest.flightTime}</span> : <span>-</span>}
   </div>
 );
