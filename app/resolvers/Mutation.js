@@ -2,14 +2,14 @@ const { Room } = require('../models');
 
 module.exports = {
   Mutation: {
-    automaticallyPrioritizeRooms(root, _, ctx) {
-      return Room.automaticallyPrioritize(ctx);
+    automaticallyPrioritizeRooms(root, { date }, ctx) {
+      return Room.automaticallyPrioritize(ctx, date);
     },
-    cleanRoom(root, { id }, ctx) {
-      return Room.clean(ctx, id);
+    cleanRoom(root, { id, date }, ctx) {
+      return Room.clean(ctx, id, date);
     },
-    giveRoomKey(root, { id }, ctx) {
-      return Room.giveKey(ctx, id);
+    giveRoomKey(root, { id, date }, ctx) {
+      return Room.giveKey(ctx, id, date);
     },
   },
 };

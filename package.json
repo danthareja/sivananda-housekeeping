@@ -13,8 +13,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js --ignore client",
     "postinstall": "prisma generate && cd client && npm install && npm run build",
-    "heroku-postbuild": "prisma deploy",
-    "reset": "prisma seed --reset"
+    "heroku-postbuild": "prisma deploy -f"
   },
   "husky": {
     "hooks": {
@@ -28,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "apollo-datasource": "^0.1.3",
     "apollo-datasource-rest": "^0.1.5",
     "apollo-server": "^2.1.0",
     "apollo-server-express": "^2.1.0",

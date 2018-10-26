@@ -5,11 +5,11 @@ const DepartingGuest = require('./DepartingGuest');
 const StayingGuest = require('./StayingGuest');
 
 class Room {
-  constructor(room, registrations) {
+  constructor(room, reservation, registrations) {
     this.room = room;
-    this.registrations = registrations.filter(
-      r => r.room_id === room.retreatGuruId
-    );
+    this.reservation = reservation;
+    this.reservationDate = reservation.key.split(':')[1];
+    this.registrations = registrations.filter(r => r.room_id === room.room_id);
     this.registrationsByGuest = _.groupBy(registrations, this._uniqueGuestKey);
   }
 
@@ -38,19 +38,19 @@ class Room {
   }
 
   id() {
-    return this.room.retreatGuruId;
+    return this.room.room_id;
   }
 
   name() {
-    return this.room.name;
+    return this.room.room_name;
   }
 
   lodgingId() {
-    return this.room.lodgingId;
+    return this.room.lodging_id;
   }
 
   lodgingName() {
-    return this.room.lodgingName;
+    return this.room.lodging_name;
   }
 
   location() {
@@ -58,184 +58,152 @@ class Room {
   }
 
   cleaningTime() {
-    return this.room.cleaningTime;
+    return this.room.cleaning_time;
   }
 
   cleaningCartCost() {
-    return this.room.cleaningCartCost;
+    return this.room.cleaning_cart_cost;
   }
 
   cleaned() {
-    return this.room.cleaned;
+    return this.reservation.cleaned;
   }
 
   cleanedAt() {
-    return this.room.cleanedAt;
+    return this.reservation.cleanedAt;
   }
 
   givenKey() {
-    return this.room.givenKey;
+    return this.reservation.givenKey;
   }
 
   givenKeyAt() {
-    return this.room.givenKeyAt;
+    return this.reservation.givenKeyAt;
   }
 
   housekeeper() {
-    return this.room.housekeeper;
+    return this.reservation.housekeeper;
   }
 
   priority() {
-    return this.room.priority;
+    return this.reservation.priority;
   }
 
   comments() {
-    return this.room.comments;
+    return this.reservation.comments;
   }
 
   arrivingGuests() {
-    const date = moment().format('YYYY-MM-DD');
     return this.registrations
-      .filter(registration => registration.start_date === date)
+      .filter(registration => registration.start_date === this.reservationDate)
       .map(registration => {
         const movingFromRegistration = this.registrationsByGuest[
           this._uniqueGuestKey(registration)
-        ].find(registration => registration.end_date === date);
+        ].find(registration => registration.end_date === this.reservationDate);
         return new ArrivingGuest(registration, movingFromRegistration);
       });
   }
 
   departingGuests() {
-    const date = moment().format('YYYY-MM-DD');
     return this.registrations
-      .filter(registration => registration.end_date === date)
+      .filter(registration => registration.end_date === this.reservationDate)
       .map(registration => {
         const movingToRegistration = this.registrationsByGuest[
           this._uniqueGuestKey(registration)
-        ].find(registration => registration.start_date === date);
+        ].find(
+          registration => registration.start_date === this.reservationDate
+        );
         return new DepartingGuest(registration, movingToRegistration);
       });
   }
 
   stayingGuests() {
-    const date = moment().format('YYYY-MM-DD');
     return this.registrations
       .filter(
         registration =>
-          registration.end_date !== date && registration.start_date !== date
+          registration.end_date !== this.reservationDate &&
+          registration.start_date !== this.reservationDate
       )
       .map(registration => new StayingGuest(registration));
   }
 
   // Queries
 
-  static async fetch(ctx) {
-    const date = moment().format('YYYY-MM-DD');
+  static async fetch(ctx, date = moment().format('YYYY-MM-DD')) {
+    const registrations = await ctx.dataSources.retreatGuru.getRoomRegistrations(
+      date
+    );
 
-    const [rooms, registrations] = await Promise.all([
-      ctx.dataSources.prisma.rooms(),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(date),
-    ]);
+    // We only want to return rooms that have arrivals or departures today
+    // But we need to use registrations for all dates to calculate room moves
+    const roomIds = _.chain(registrations)
+      .filter(
+        registration =>
+          registration.start_date === date || registration.end_date === date
+      )
+      .map(registration => registration.room_id)
+      .uniq()
+      .value();
 
-    const roomsById = _.keyBy(rooms, 'retreatGuruId');
-    return (
-      _.chain(registrations)
-        // We only want to return rooms that have arrivals or departures today
-        // But we need to use registrations for all dates to calculate room moves
-        .filter(
-          registration =>
-            registration.start_date === date || registration.end_date === date
-        )
-        .groupBy('room_id')
-        .map((_, roomId) => {
-          if (!roomsById[roomId]) {
-            throw new Error(
-              `Room ${roomId} does not exist in the database yet. Please add it.`
-            );
-          }
-          return new Room(roomsById[roomId], registrations);
-        })
-        .value()
+    return Promise.all(
+      roomIds.map(async roomId => {
+        const room = ctx.dataSources.local.getRoom(roomId);
+        const reservation = await ctx.dataSources.prisma.getReservation(
+          roomId,
+          date
+        );
+        return new Room(room, reservation, registrations);
+      })
     );
   }
 
-  static async fetchById(ctx, id) {
-    const date = moment().format('YYYY-MM-DD');
-
-    const [room, registrations] = await Promise.all([
-      ctx.dataSources.prisma.room({
-        retreatGuruId: id,
-      }),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(date),
+  static async fetchById(ctx, id, date = moment().format('YYYY-MM-DD')) {
+    const [room, reservation, registrations] = await Promise.all([
+      ctx.dataSources.local.getRoom(id),
+      ctx.dataSources.prisma.getReservation(id, date),
+      ctx.dataSources.retreatGuru.getRoomRegistrations(date),
     ]);
-    return new Room(room, registrations);
+    return new Room(room, reservation, registrations);
   }
 
   // Mutations
 
-  static async clean(ctx, id) {
-    const room = await Room.fetchById(ctx, id);
-    const cleaned = room.cleaned();
-    const cleanedAt = room.cleanedAt();
-
-    return new Room(
-      await ctx.dataSources.prisma.updateRoom({
-        data: {
-          cleaned: !cleaned,
-          cleanedAt: cleaned ? cleanedAt : new Date(),
-        },
-        where: {
-          retreatGuruId: id,
-        },
-      }),
-      room.registrations
-    );
+  static async clean(ctx, id, date = moment().format('YYYY-MM-DD')) {
+    const [room, reservation, registrations] = await Promise.all([
+      ctx.dataSources.local.getRoom(id),
+      ctx.dataSources.prisma.clean(id, date),
+      ctx.dataSources.retreatGuru.getRoomRegistrations(date),
+    ]);
+    return new Room(room, reservation, registrations);
   }
 
-  static async giveKey(ctx, id) {
-    const room = await Room.fetchById(ctx, id);
-    const givenKey = room.givenKey();
-    const givenKeyAt = room.givenKeyAt();
-
-    return new Room(
-      await ctx.dataSources.prisma.updateRoom({
-        data: {
-          givenKey: !givenKey,
-          givenKeyAt: givenKey ? givenKeyAt : new Date(),
-        },
-        where: {
-          retreatGuruId: id,
-        },
-      }),
-      room.registrations
-    );
+  static async giveKey(ctx, id, date = moment().format('YYYY-MM-DD')) {
+    const [room, reservation, registrations] = await Promise.all([
+      ctx.dataSources.local.getRoom(id),
+      ctx.dataSources.prisma.giveKey(id, date),
+      ctx.dataSources.retreatGuru.getRoomRegistrations(date),
+    ]);
+    return new Room(room, reservation, registrations);
   }
 
-  static async automaticallyPrioritize(ctx) {
-    const rooms = _.sortBy(await Room.fetch(ctx), [
+  static async automaticallyPrioritize(
+    ctx,
+    date = moment().format('YYYY-MM-DD')
+  ) {
+    const rooms = _.sortBy(await Room.fetch(ctx, date), [
       room => room._earliestArrivalTime(),
       room => -room.arrivingGuests().length,
     ]);
 
-    // TODO: speed this up with some concurrency
-    let updated = [];
-    for (let [index, room] of rooms.entries()) {
-      updated.push(
-        new Room(
-          await ctx.dataSources.prisma.updateRoom({
-            data: {
-              priority: index + 1,
-            },
-            where: {
-              retreatGuruId: room.id(),
-            },
-          }),
+    return await Promise.all(
+      rooms.map(async (room, index) => {
+        return new Room(
+          room.room,
+          await ctx.dataSources.prisma.prioritize(room.id(), date, index + 1),
           room.registrations
-        )
-      );
-    }
-
-    return updated;
+        );
+      })
+    );
   }
 }
 

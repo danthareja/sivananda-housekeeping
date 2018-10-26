@@ -4,7 +4,7 @@ const { ApolloServer } = require('apollo-server-express');
 const resolvers = require('./resolvers');
 const typeDefs = require('./types');
 
-const { prisma, RetreatGuruAPI } = require('./dataSources');
+const { LocalAPI, PrismaAPI, RetreatGuruAPI } = require('./dataSources');
 
 const app = express();
 
@@ -19,8 +19,9 @@ const server = new ApolloServer({
   resolvers,
   dataSources() {
     return {
-      prisma,
-      retreatGuruAPI: new RetreatGuruAPI(),
+      local: new LocalAPI(),
+      prisma: new PrismaAPI(),
+      retreatGuru: new RetreatGuruAPI(),
     };
   },
 });

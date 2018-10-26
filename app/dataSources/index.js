@@ -1,7 +1,9 @@
-const prisma = require('./prisma');
-const RetreatGuruAPI = require('./RetreatGuruAPI');
+const LocalAPI = require('./local');
+const PrismaAPI = require('./prisma');
+const RetreatGuruAPI = require('./retreatGuru');
 
 module.exports = {
-  prisma,
+  LocalAPI,
+  PrismaAPI,
   RetreatGuruAPI,
 };

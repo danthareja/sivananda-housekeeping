@@ -1,16 +1,9 @@
-type Room {
-  id: ID! @unique # Prisma manages this field
-
-  retreatGuruId: Int @unique # from seed
-  name: String! # from seed
-  lodgingId: Int! # from seed
-  lodgingName: String! # from seed
-  location: String! # from seed
-  cleaningTime: Int! # from seed
-  cleaningCartCost: Int! # from seed
+type Reservation {
+  key: String! @unique # "${roomId}:${date}" ex. "97:2018-10-31"
 
   cleaned: Boolean!
   cleanedAt: DateTime
+
   givenKey: Boolean!
   givenKeyAt: DateTime
 

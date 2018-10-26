@@ -11,9 +11,6 @@ generate:
   - generator: graphql-schema
     output: app/dataSources/prisma/generated
 
-seed:
-  run: node app/dataSources/prisma/seed/index.js
-
 hooks:
   post-deploy:
     - npx prisma generate

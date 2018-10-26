@@ -1,5 +1,5 @@
 type Mutation {
-  automaticallyPrioritizeRooms: [Room!]!
-  cleanRoom(id: Int!): Room
-  giveRoomKey(id: Int!): Room
+  automaticallyPrioritizeRooms(date: String): [Room!]!
+  cleanRoom(id: Int!, date: String): Room
+  giveRoomKey(id: Int!, date: String): Room
 }

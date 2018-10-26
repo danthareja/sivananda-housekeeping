@@ -1,10 +1,10 @@
-room_id,room_name,primary_lodging_type_id,primary_lodging_type_name,cleaning_time,rooms_per_cart,location
-5996,Ashram Ground Tent Durga Devi,5991,Ashram Supplied Ground Tent,0,0,-
-5993,Ashram Ground Tent Mangala,5991,Ashram Supplied Ground Tent,0,0,-
-5995,Ashram Ground Tent Marita,5991,Ashram Supplied Ground Tent,0,0,-
-5992,Ashram Ground Tent Narayan,5991,Ashram Supplied Ground Tent,0,0,-
-6044,Ashram Ground Tent New York,5991,Ashram Supplied Ground Tent,0,0,-
-5994,Ashram Ground Tent TTC Assistant,5991,Ashram Supplied Ground Tent,0,0,-
+room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,location
+5996,Ashram Ground Tent Durga Devi,5991,Ashram Supplied Ground Tent,0,0,
+5993,Ashram Ground Tent Mangala,5991,Ashram Supplied Ground Tent,0,0,
+5995,Ashram Ground Tent Marita,5991,Ashram Supplied Ground Tent,0,0,
+5992,Ashram Ground Tent Narayan,5991,Ashram Supplied Ground Tent,0,0,
+6044,Ashram Ground Tent New York,5991,Ashram Supplied Ground Tent,0,0,
+5994,Ashram Ground Tent TTC Assistant,5991,Ashram Supplied Ground Tent,0,0,
 92,Beach Hut E1,35,Beach Hut (Shared),15,3,north
 93,Beach Hut E2,35,Beach Hut (Shared),15,3,north
 94,Beach Hut E3,35,Beach Hut (Shared),15,3,north
@@ -69,26 +69,26 @@ room_id,room_name,primary_lodging_type_id,primary_lodging_type_name,cleaning_tim
 264,Saraswati 6,44,Ocean View Deluxe Room (Private),90,2,north west
 265,Saraswati 7,44,Ocean View Deluxe Room (Private),90,2,north west
 266,Saraswati 8,44,Ocean View Deluxe Room (Private),90,2,north west
-79,Platform A-10,47,Platform Tent,10,5,south east
-267,Platform A-11,47,Platform Tent,10,5,south east
-269,Platform A-13,47,Platform Tent,10,5,south east
-270,Platform A-14,47,Platform Tent,10,5,south east
-272,Platform B-1 (WBC),47,Platform Tent,10,5,north west
-271,Platform B-2 (WBC),47,Platform Tent,10,5,north west
-273,Platform B-3 (WBC),47,Platform Tent,10,5,north west
-274,Platform B-4 (WBC),47,Platform Tent,10,5,north west
-275,Platform B-5 (WBC),47,Platform Tent,10,5,north west
-276,Platform G-1 (WBC),47,Platform Tent,10,5,north east
-277,Platform G-2,47,Platform Tent,10,5,north east
-278,Platform G-3,47,Platform Tent,10,5,north east
-279,Platform G-4,47,Platform Tent,10,5,north east
-280,Platform G-5,47,Platform Tent,10,5,north east
-281,Platform G-6,47,Platform Tent,10,5,north east
-282,Platform G-7,47,Platform Tent,10,5,north east
-283,Platform G-8,47,Platform Tent,10,5,north east
-284,Platform G-9,47,Platform Tent,10,5,north east
-285,Platform G-10,47,Platform Tent,10,5,north east
-286,Platform G-11 (WBC),47,Platform Tent,10,5,north east
+79,Platform A10,47,Platform Tent,10,5,south east
+267,Platform A11,47,Platform Tent,10,5,south east
+269,Platform A13,47,Platform Tent,10,5,south east
+270,Platform A14,47,Platform Tent,10,5,south east
+272,Platform B1 (WBC),47,Platform Tent,10,5,north west
+271,Platform B2 (WBC),47,Platform Tent,10,5,north west
+273,Platform B3 (WBC),47,Platform Tent,10,5,north west
+274,Platform B4 (WBC),47,Platform Tent,10,5,north west
+275,Platform B5 (WBC),47,Platform Tent,10,5,north west
+276,Platform G1 (WBC),47,Platform Tent,10,5,north east
+277,Platform G2,47,Platform Tent,10,5,north east
+278,Platform G3,47,Platform Tent,10,5,north east
+279,Platform G4,47,Platform Tent,10,5,north east
+280,Platform G5,47,Platform Tent,10,5,north east
+281,Platform G6,47,Platform Tent,10,5,north east
+282,Platform G7,47,Platform Tent,10,5,north east
+283,Platform G8,47,Platform Tent,10,5,north east
+284,Platform G9,47,Platform Tent,10,5,north east
+285,Platform G10,47,Platform Tent,10,5,north east
+286,Platform G11 (WBC),47,Platform Tent,10,5,north east
 5973,The Glorious Republic of Ganeshastan,47,Platform Tent,10,5,north west
 82,Dwaraka 01,42,Staff Residence,25,5,south east
 84,Dwaraka 02,42,Staff Residence,25,5,south east
@@ -100,15 +100,15 @@ room_id,room_name,primary_lodging_type_id,primary_lodging_type_name,cleaning_tim
 90,Dwaraka 08,42,Staff Residence,25,5,south east
 91,Dwaraka 09,42,Staff Residence,25,5,south east
 83,Dwaraka 10,42,Staff Residence,25,5,south east
-127,Kutir Hamsa,42,Staff Residence,0,5,-
+127,Kutir Hamsa,42,Staff Residence,0,5,
 119,Kutir Iswari,42,Staff Residence,25,5,south east
-129,Kutir Jnaneshwari Chaitanya,42,Staff Residence,0,5,-
-130,Kutir Lakshmi,42,Staff Residence,10,5,-
-588,Kutir Priest,42,Staff Residence,0,5,-
-126,Kutir Rukmini Chaitanya,42,Staff Residence,0,5,-
-128,Kutir Swami Brahmananda,42,Staff Residence,0,5,-
-131,Kutir Swami Hridyananda,42,Staff Residence,0,5,-
-435,Yamuna 3,42,Staff Residence,0,5,-
+129,Kutir Jnaneshwari Chaitanya,42,Staff Residence,0,5,
+130,Kutir Lakshmi,42,Staff Residence,10,5,
+588,Kutir Priest,42,Staff Residence,0,5,
+126,Kutir Rukmini Chaitanya,42,Staff Residence,0,5,
+128,Kutir Swami Brahmananda,42,Staff Residence,0,5,
+131,Kutir Swami Hridyananda,42,Staff Residence,0,5,
+435,Yamuna 3,42,Staff Residence,0,5,
 98,Tent Hut East 01,49,Tent Hut Double (Private),10,5,east
 106,Tent Hut East 02,49,Tent Hut Double (Private),10,5,east
 107,Tent Hut East 03,49,Tent Hut Double (Private),10,5,east

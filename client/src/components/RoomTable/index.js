@@ -11,11 +11,7 @@ const GET_ROOMS = gql`
     rooms {
       id
       name
-      lodgingId
       lodgingName
-      location
-      cleaningTime
-      cleaningCartCost
       cleaned
       cleanedAt
       givenKey

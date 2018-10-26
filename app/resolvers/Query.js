@@ -2,11 +2,11 @@ const { Room } = require('../models');
 
 module.exports = {
   Query: {
-    rooms(root, _, ctx) {
-      return Room.fetch(ctx);
+    rooms(root, { date }, ctx) {
+      return Room.fetch(ctx, date);
     },
-    room(root, { id }, ctx) {
-      return Room.fetchById(ctx, id);
+    room(root, { id, date }, ctx) {
+      return Room.fetchById(ctx, id, date);
     },
   },
 };
