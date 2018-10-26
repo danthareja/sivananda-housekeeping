@@ -2,9 +2,9 @@ const _ = require('lodash');
 const Guest = require('./Guest');
 
 class ArrivingGuest extends Guest {
-  constructor(registration, movingFromReservation) {
+  constructor(registration, movingFromRegistration) {
     super(registration);
-    this.movingFromReservation = movingFromReservation;
+    this.movingFromRegistration = movingFromRegistration;
   }
 
   flightTime() {

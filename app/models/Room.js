@@ -7,7 +7,9 @@ const StayingGuest = require('./StayingGuest');
 class Room {
   constructor(room, registrations) {
     this.room = room;
-    this.registrations = registrations;
+    this.registrations = registrations.filter(
+      r => r.room_id === room.retreatGuruId
+    );
     this.registrationsByGuest = _.groupBy(registrations, this._uniqueGuestKey);
   }
 
@@ -128,31 +130,43 @@ class Room {
   // Queries
 
   static async fetch(ctx) {
+    const date = moment().format('YYYY-MM-DD');
+
     const [rooms, registrations] = await Promise.all([
       ctx.dataSources.prisma.rooms(),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(),
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(date),
     ]);
 
     const roomsById = _.keyBy(rooms, 'retreatGuruId');
-    return _.chain(registrations)
-      .groupBy('room_id')
-      .map((registrations, roomId) => {
-        if (!roomsById[roomId]) {
-          throw new Error(
-            `Room ${roomId} does not exist in the database yet. Please add it.`
-          );
-        }
-        return new Room(roomsById[roomId], registrations);
-      })
-      .value();
+    return (
+      _.chain(registrations)
+        // We only want to return rooms that have arrivals or departures today
+        // But we need to use registrations for all dates to calculate room moves
+        .filter(
+          registration =>
+            registration.start_date === date || registration.end_date === date
+        )
+        .groupBy('room_id')
+        .map((_, roomId) => {
+          if (!roomsById[roomId]) {
+            throw new Error(
+              `Room ${roomId} does not exist in the database yet. Please add it.`
+            );
+          }
+          return new Room(roomsById[roomId], registrations);
+        })
+        .value()
+    );
   }
 
-  static async findById(ctx, id) {
+  static async fetchById(ctx, id) {
+    const date = moment().format('YYYY-MM-DD');
+
     const [room, registrations] = await Promise.all([
       ctx.dataSources.prisma.room({
         retreatGuruId: id,
       }),
-      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(id),
+      ctx.dataSources.retreatGuruAPI.getRoomRegistrations(date),
     ]);
     return new Room(room, registrations);
   }
