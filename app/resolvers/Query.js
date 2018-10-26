@@ -6,7 +6,7 @@ module.exports = {
       return Room.fetch(ctx);
     },
     room(root, { id }, ctx) {
-      return Room.findById(ctx, id);
+      return Room.fetchById(ctx, id);
     },
   },
 };
