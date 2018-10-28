@@ -1,0 +1,48 @@
+{
+  "name": "sivananda-housekeeping",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "ENGINE_API_KEY": {
+      "required": true
+    },
+    "NODE_ENV": {
+      "required": true
+    },
+    "PRISMA_CLOUD_SESSION_KEY": {
+      "required": true
+    },
+    "PRISMA_ENDPOINT": {
+      "required": true
+    },
+    "REACT_APP_AUTH0_CALLBACK_URL": {
+      "required": true
+    },
+    "REACT_APP_AUTH0_CLIENT_ID": {
+      "required": true
+    },
+    "REACT_APP_AUTH0_DOMAIN": {
+      "required": true
+    },
+    "RETREAT_GURU_API_TOKEN": {
+      "required": true
+    },
+    "RETREAT_GURU_API_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
