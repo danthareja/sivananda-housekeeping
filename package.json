@@ -11,8 +11,13 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js --ignore client",
-    "postinstall": "prisma generate && cd client && npm install && npm run build",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "nodemon index.js --ignore client",
+    "dev:client": "cd client && npm start",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "prisma generate",
+    "build:client": "cd client && npm run build",
+    "postinstall": "npm run build",
     "heroku-postbuild": "prisma deploy -f"
   },
   "husky": {
@@ -41,6 +46,7 @@
     "prisma-client-lib": "^0.2.59"
   },
   "devDependencies": {
+    "concurrently": "^4.0.1",
     "dotenv": "^6.0.0",
     "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
