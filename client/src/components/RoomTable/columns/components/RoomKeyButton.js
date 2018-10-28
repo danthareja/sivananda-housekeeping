@@ -3,16 +3,6 @@ import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import { message, Button } from 'antd';
 
-const GET_ROOM = gql`
-  query GetRoom($id: Int!) {
-    room(id: $id) {
-      id
-      givenKey
-      givenKeyAt
-    }
-  }
-`;
-
 const GIVE_ROOM_KEY = gql`
   mutation GiveRoomKey($id: Int!) {
     giveRoomKey(id: $id) {
@@ -23,51 +13,30 @@ const GIVE_ROOM_KEY = gql`
   }
 `;
 
-const RoomCleanButton = ({ id }) => {
+const RoomCleanButton = ({ room }) => {
   return (
-    <Query query={GET_ROOM} variables={{ id }}>
-      {({ loading, error, data }) => {
+    <Mutation mutation={GIVE_ROOM_KEY} variables={{ id: room.id }}>
+      {(giveRoomKey, { error, loading }) => {
         if (error) {
-          return (
-            <Button block disabled>
-              Error
-            </Button>
-          );
+          message.error(error.message);
         }
-        if (loading) {
-          return <Button block loading />;
-        }
-        return (
-          <Mutation mutation={GIVE_ROOM_KEY} variables={{ id }}>
-            {(giveRoomKey, { error, loading }) => {
-              if (error) {
-                message.error(error.message);
-              }
-              return data.room.givenKey ? (
-                <Button
-                  block
-                  type="danger"
-                  icon="key"
-                  loading={loading}
-                  onClick={giveRoomKey}
-                >
-                  Take Keys
-                </Button>
-              ) : (
-                <Button
-                  block
-                  icon="key"
-                  loading={loading}
-                  onClick={giveRoomKey}
-                >
-                  Give Keys
-                </Button>
-              );
-            }}
-          </Mutation>
+        return room.givenKey ? (
+          <Button
+            block
+            type="danger"
+            icon="key"
+            loading={loading}
+            onClick={giveRoomKey}
+          >
+            Take Keys
+          </Button>
+        ) : (
+          <Button block icon="key" loading={loading} onClick={giveRoomKey}>
+            Give Keys
+          </Button>
         );
       }}
-    </Query>
+    </Mutation>
   );
 };
 

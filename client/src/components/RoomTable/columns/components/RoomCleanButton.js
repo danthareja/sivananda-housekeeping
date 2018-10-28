@@ -3,16 +3,6 @@ import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import { message, Button } from 'antd';
 
-const GET_ROOM = gql`
-  query GetRoom($id: Int!) {
-    room(id: $id) {
-      id
-      cleaned
-      cleanedAt
-    }
-  }
-`;
-
 const CLEAN_ROOM = gql`
   mutation CleanRoom($id: Int!) {
     cleanRoom(id: $id) {
@@ -23,51 +13,30 @@ const CLEAN_ROOM = gql`
   }
 `;
 
-const RoomCleanButton = ({ id }) => {
+const RoomCleanButton = ({ room }) => {
   return (
-    <Query query={GET_ROOM} variables={{ id }}>
-      {({ loading, error, data }) => {
+    <Mutation mutation={CLEAN_ROOM} variables={{ id: room.id }}>
+      {(cleanRoom, { error, loading }) => {
         if (error) {
-          return (
-            <Button block disabled>
-              Error
-            </Button>
-          );
+          message.error(error.message);
         }
-        if (loading) {
-          return <Button block loading />;
-        }
-        return (
-          <Mutation mutation={CLEAN_ROOM} variables={{ id }}>
-            {(cleanRoom, { error, loading }) => {
-              if (error) {
-                message.error(error.message);
-              }
-              return data.room.cleaned ? (
-                <Button
-                  block
-                  type="danger"
-                  icon="frown"
-                  loading={loading}
-                  onClick={cleanRoom}
-                >
-                  Mark Dirty
-                </Button>
-              ) : (
-                <Button
-                  block
-                  icon="smile"
-                  loading={loading}
-                  onClick={cleanRoom}
-                >
-                  Mark Clean
-                </Button>
-              );
-            }}
-          </Mutation>
+        return room.cleaned ? (
+          <Button
+            block
+            type="danger"
+            icon="frown"
+            loading={loading}
+            onClick={cleanRoom}
+          >
+            Mark Dirty
+          </Button>
+        ) : (
+          <Button block icon="smile" loading={loading} onClick={cleanRoom}>
+            Mark Clean
+          </Button>
         );
       }}
-    </Query>
+    </Mutation>
   );
 };
 

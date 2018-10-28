@@ -58,6 +58,7 @@ const RoomTable = () => (
           columns={columns}
           title={title}
           loading={loading}
+          pagination={false}
           rowKey="id"
         />
       );

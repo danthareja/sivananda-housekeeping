@@ -10,9 +10,9 @@ export default {
   align: 'center',
   render: (text, room) => (
     <span>
-      <RoomCleanButton id={room.id} />
+      <RoomCleanButton room={room} />
       <div style={{ height: '6px' }} />
-      <RoomKeyButton id={room.id} />
+      <RoomKeyButton room={room} />
     </span>
   ),
 };
