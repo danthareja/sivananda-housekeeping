@@ -17,15 +17,8 @@ ID = "sivananda-housekeeping"
   # Default build command.
   command = "npm run build"
 
-# Production context: all deploys from the Production branch set in your site's
-# deploy settings will inherit these settings.
-[context.production.environment]
+[build.environment]
   REACT_APP_GRAPHQL_ENDPOINT = "https://sivananda-housekeeping.herokuapp.com/graphql"
-
-# Deploy Preview context: all deploys resulting from a pull/merge request will
-# inherit these settings.
-[context.deploy-preview.environment]
-  REACT_APP_GRAPHQL_ENDPOINT = "https://sivananda-housekeeping-staging.herokuapp.com/graphql"
 
 # Redirects and headers are GLOBAL for all builds – they do not get scoped to 
 # contexts no matter where you define them in the file.
