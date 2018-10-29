@@ -40,7 +40,10 @@ class DatabaseAPI extends DataSource {
 
     if (reservation) {
       await this.cache.set(key, JSON.stringify(reservation));
-      return reservation;
+      return _.mapValues(
+        reservation,
+        value => (value instanceof Date ? value.toISOString() : value)
+      );
     }
 
     reservation = await Reservation.create({
@@ -50,7 +53,10 @@ class DatabaseAPI extends DataSource {
       givenKey: false,
     });
     await this.cache.set(key, JSON.stringify(reservation));
-    return reservation;
+    return _.mapValues(
+      reservation,
+      value => (value instanceof Date ? value.toISOString() : value)
+    );
   }
 
   async updateReservation(roomId, date, patch) {
