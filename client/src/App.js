@@ -5,7 +5,7 @@ import ApolloClient from 'apollo-boost';
 import RoomTable from './components/RoomTable';
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT || 'http://localhost:4000',
 });
 
 class App extends Component {
