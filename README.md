@@ -13,7 +13,7 @@ Make sure the following software exists on your computer:
 #### Start MongoDB
 
 ```
-monggod
+mongod
 ```
 
 This process will keep running in the background until you restart your machine
