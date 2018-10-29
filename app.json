@@ -1,19 +1,15 @@
 {
   "name": "sivananda-housekeeping",
   "description": "",
-  "scripts": {
-  },
+  "scripts": {},
   "env": {
     "ENGINE_API_KEY": {
       "required": true
     },
+    "MONGODB_URI": {
+      "required": true
+    },
     "NODE_ENV": {
-      "required": true
-    },
-    "PRISMA_CLOUD_SESSION_KEY": {
-      "required": true
-    },
-    "PRISMA_ENDPOINT": {
       "required": true
     },
     "REACT_APP_AUTH0_CALLBACK_URL": {
@@ -37,9 +33,7 @@
       "quantity": 1
     }
   },
-  "addons": [
-
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"

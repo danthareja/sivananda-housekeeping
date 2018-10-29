@@ -8,7 +8,6 @@ class Room {
   constructor(room, reservation, registrations) {
     this.room = room;
     this.reservation = reservation;
-    this.reservationDate = reservation.key.split(':')[1];
     this.registrations = registrations.filter(r => r.room_id === room.room_id);
     this.registrationsByGuest = _.groupBy(registrations, this._uniqueGuestKey);
   }
@@ -95,23 +94,23 @@ class Room {
 
   arrivingGuests() {
     return this.registrations
-      .filter(registration => registration.start_date === this.reservationDate)
+      .filter(registration => registration.start_date === this.reservation.date)
       .map(registration => {
         const movingFromRegistration = this.registrationsByGuest[
           this._uniqueGuestKey(registration)
-        ].find(registration => registration.end_date === this.reservationDate);
+        ].find(registration => registration.end_date === this.reservation.date);
         return new ArrivingGuest(registration, movingFromRegistration);
       });
   }
 
   departingGuests() {
     return this.registrations
-      .filter(registration => registration.end_date === this.reservationDate)
+      .filter(registration => registration.end_date === this.reservation.date)
       .map(registration => {
         const movingToRegistration = this.registrationsByGuest[
           this._uniqueGuestKey(registration)
         ].find(
-          registration => registration.start_date === this.reservationDate
+          registration => registration.start_date === this.reservation.date
         );
         return new DepartingGuest(registration, movingToRegistration);
       });
@@ -121,8 +120,8 @@ class Room {
     return this.registrations
       .filter(
         registration =>
-          registration.end_date !== this.reservationDate &&
-          registration.start_date !== this.reservationDate
+          registration.end_date !== this.reservation.date &&
+          registration.start_date !== this.reservation.date
       )
       .map(registration => new StayingGuest(registration));
   }
@@ -139,7 +138,9 @@ class Room {
     const roomIds = _.chain(registrations)
       .filter(
         registration =>
-          registration.start_date === date || registration.end_date === date
+          (registration.start_date === date ||
+            registration.end_date === date) &&
+          !registration.room.includes('Tent Space')
       )
       .map(registration => registration.room_id)
       .uniq()
@@ -148,7 +149,7 @@ class Room {
     return Promise.all(
       roomIds.map(async roomId => {
         const room = ctx.dataSources.local.getRoom(roomId);
-        const reservation = await ctx.dataSources.prisma.getReservation(
+        const reservation = await ctx.dataSources.database.getReservation(
           roomId,
           date
         );
@@ -160,7 +161,7 @@ class Room {
   static async fetchById(ctx, id, date = moment().format('YYYY-MM-DD')) {
     const [room, reservation, registrations] = await Promise.all([
       ctx.dataSources.local.getRoom(id),
-      ctx.dataSources.prisma.getReservation(id, date),
+      ctx.dataSources.database.getReservation(id, date),
       ctx.dataSources.retreatGuru.getRoomRegistrations(date),
     ]);
     return new Room(room, reservation, registrations);
@@ -171,7 +172,7 @@ class Room {
   static async clean(ctx, id, date = moment().format('YYYY-MM-DD')) {
     const [room, reservation, registrations] = await Promise.all([
       ctx.dataSources.local.getRoom(id),
-      ctx.dataSources.prisma.clean(id, date),
+      ctx.dataSources.database.clean(id, date),
       ctx.dataSources.retreatGuru.getRoomRegistrations(date),
     ]);
     return new Room(room, reservation, registrations);
@@ -180,7 +181,7 @@ class Room {
   static async giveKey(ctx, id, date = moment().format('YYYY-MM-DD')) {
     const [room, reservation, registrations] = await Promise.all([
       ctx.dataSources.local.getRoom(id),
-      ctx.dataSources.prisma.giveKey(id, date),
+      ctx.dataSources.database.giveKey(id, date),
       ctx.dataSources.retreatGuru.getRoomRegistrations(date),
     ]);
     return new Room(room, reservation, registrations);
@@ -199,7 +200,7 @@ class Room {
       rooms.map(async (room, index) => {
         return new Room(
           room.room,
-          await ctx.dataSources.prisma.prioritize(room.id(), date, index + 1),
+          await ctx.dataSources.database.prioritize(room.id(), date, index + 1),
           room.registrations
         );
       })

@@ -5,7 +5,7 @@ const { InMemoryLRUCache } = require('apollo-server-caching');
 const resolvers = require('./resolvers');
 const typeDefs = require('./types');
 
-const { LocalAPI, PrismaAPI, RetreatGuruAPI } = require('./dataSources');
+const { DatabaseAPI, LocalAPI, RetreatGuruAPI } = require('./dataSources');
 
 const app = express();
 
@@ -20,18 +20,18 @@ const server = new ApolloServer({
   }),
   dataSources() {
     return {
+      database: new DatabaseAPI(),
       local: new LocalAPI(),
-      prisma: new PrismaAPI(),
       retreatGuru: new RetreatGuruAPI(),
     };
   },
 });
 
+server.applyMiddleware({ app });
+
 // Default routing requests to the client
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
-
-server.applyMiddleware({ app });
 
 module.exports = app;

@@ -73,6 +73,3 @@ typings/
 
 # Serverless directories
 .serverless
-
-# Prisma
-app/dataSources/prisma/generated

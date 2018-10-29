@@ -36,9 +36,6 @@ class Guest {
     }
 
     // All guesses failed
-    console.log(
-      `Couldn't guess format of flight time for ${this.name()}: ${timeish}`
-    );
     return null;
   }
 
