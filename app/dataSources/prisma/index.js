@@ -34,12 +34,12 @@ class PrismaAPI extends DataSource {
 
     let reservation = await this.cache.get(key);
     if (reservation) {
-      return reservation;
+      return JSON.parse(reservation);
     }
 
     reservation = await this._client.reservation({ key });
     if (reservation) {
-      await this.cache.set(key, reservation);
+      await this.cache.set(key, JSON.stringify(reservation));
       return reservation;
     }
 
@@ -48,7 +48,7 @@ class PrismaAPI extends DataSource {
       cleaned: false,
       givenKey: false,
     });
-    await this.cache.set(key, reservation);
+    await this.cache.set(key, JSON.stringify(reservation));
     return reservation;
   }
 
@@ -58,7 +58,7 @@ class PrismaAPI extends DataSource {
       data,
       where: { key },
     });
-    await this.cache.set(key, reservation);
+    await this.cache.set(key, JSON.stringify(reservation));
     return reservation;
   }
 
