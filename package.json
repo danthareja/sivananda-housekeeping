@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "dev:server": "nodemon index.js --ignore client --ignore bin",
+    "dev:server": "NODE_ENV=development nodemon index.js --ignore client --ignore bin",
     "dev:client": "cd client && npm start",
     "postinstall": "cd client && npm install && npm run build"
   },

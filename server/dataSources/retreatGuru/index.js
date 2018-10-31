@@ -9,6 +9,7 @@ class RetreatGuruAPI extends RESTDataSource {
 
   willSendRequest(request) {
     request.params.set('token', process.env.RETREAT_GURU_API_TOKEN);
+    request.headers.set('Cache-Control', 'no-cache');
   }
 
   async getRoomRegistrations(date) {
