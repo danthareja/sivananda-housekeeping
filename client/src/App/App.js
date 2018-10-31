@@ -1,11 +1,14 @@
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import client from './apollo';
 import RoomTable from './components/RoomTable';
 
-const App = ({ auth }) => {
+const App = ({ auth, match, location, history }) => {
+  if (location.pathname !== '/dashboard') {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <ApolloProvider client={client}>
       <div className="App">
