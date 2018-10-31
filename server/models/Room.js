@@ -130,12 +130,7 @@ class Room {
     const roomIds = _.chain(registrations)
       .filter(
         registration =>
-          (registration.start_date === date ||
-            registration.end_date === date) &&
-          !(
-            registration.room.includes('Tent Space') ||
-            registration.room.includes('Nassau')
-          )
+          registration.start_date === date || registration.end_date === date
       )
       .map(registration => registration.room_id)
       .uniq()
