@@ -180,11 +180,18 @@ class DatabaseAPI extends DataSource {
   }
 
   async prioritize(roomId, date, priority) {
+    console.log('prioritizing', priority);
     const [room, roomDay] = await Promise.all([
-      this._updateRoom(roomId, {
-        priority,
-      }),
-      this._getRoomDay(roomId, date),
+      this._getRoom(roomId),
+      this._updateRoomDay(
+        {
+          roomId,
+          date,
+        },
+        {
+          priority,
+        }
+      ),
     ]);
     return Object.assign({}, room, roomDay);
   }

@@ -14,7 +14,9 @@ class Room {
   }
 
   _earliestArrivalTime() {
-    const arrivals = this.arrivingGuests();
+    const arrivals = this.arrivingGuests().filter(
+      arrival => (arrival.movingFrom() ? false : true)
+    );
 
     if (arrivals.length === 0) {
       return null;
@@ -181,6 +183,18 @@ class Room {
 
     return await Promise.all(
       rooms.map(async (room, index) => {
+        console.log(
+          'room',
+          room.name(),
+          '_earliestArrivalTime',
+          room._earliestArrivalTime()
+        );
+        console.log(
+          'room',
+          room.name(),
+          '_earliestArrivalTime',
+          room._earliestArrivalTime()
+        );
         return new Room(
           await ctx.dataSources.database.prioritize(room.id(), date, index + 1),
           room.registrations
