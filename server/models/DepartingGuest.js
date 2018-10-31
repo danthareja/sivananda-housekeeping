@@ -19,7 +19,8 @@ class DepartingGuest extends Guest {
     return false;
   }
 
-  // Using _.get returns gracefully when movingFromRegistration is undefined
+  // movingToRegistration can be undefined
+  // using _.get returns gracefully in this case
   movingTo() {
     return _.get(this.movingToRegistration, 'room');
   }

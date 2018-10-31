@@ -2,9 +2,10 @@ const _ = require('lodash');
 const Guest = require('./Guest');
 
 class ArrivingGuest extends Guest {
-  constructor(registration, movingFromRegistration) {
+  constructor(registration, movingFromRegistration, guest) {
     super(registration);
     this.movingFromRegistration = movingFromRegistration;
+    this.guest = guest;
   }
 
   flightTime() {
@@ -14,9 +15,22 @@ class ArrivingGuest extends Guest {
     );
   }
 
-  // Using _.get returns gracefully when movingFromRegistration is undefined
+  // movingFromRegistration and guest can be undefined
+  // using _.get returns gracefully in this case
   movingFrom() {
     return _.get(this.movingFromRegistration, 'room');
+  }
+
+  givenRoomKey() {
+    return _.get(this.guest, 'givenRoomKey');
+  }
+
+  givenRoomKeyAt() {
+    return _.get(this.guest, 'givenRoomKeyAt');
+  }
+
+  givenRoomKeyBy() {
+    return _.get(this.guest, 'givenRoomKeyBy');
   }
 }
 

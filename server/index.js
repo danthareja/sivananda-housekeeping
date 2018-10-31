@@ -5,7 +5,7 @@ const { InMemoryLRUCache } = require('apollo-server-caching');
 const authenticate = require('./authenticate');
 const resolvers = require('./resolvers');
 const typeDefs = require('./types');
-const { DatabaseAPI, LocalAPI, RetreatGuruAPI } = require('./dataSources');
+const { DatabaseAPI, RetreatGuruAPI } = require('./dataSources');
 
 const app = express();
 
@@ -26,7 +26,6 @@ const server = new ApolloServer({
   dataSources() {
     return {
       database: new DatabaseAPI(),
-      local: new LocalAPI(),
       retreatGuru: new RetreatGuruAPI(),
     };
   },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, Icon } from 'antd';
 import GuestName from './components/GuestName';
+import RoomKeyButton from './components/RoomKeyButton';
 
 // Colors from: https://ant.design/docs/react/customize-theme
 export default {
@@ -17,7 +18,7 @@ export default {
         dataSource={room.arrivingGuests}
         renderItem={guest => (
           <List.Item>
-            <ArrivingGuest guest={guest} />
+            <ArrivingGuest roomId={room.id} guest={guest} />
           </List.Item>
         )}
       />
@@ -25,7 +26,7 @@ export default {
   },
 };
 
-const ArrivingGuest = ({ guest }) => (
+const ArrivingGuest = ({ roomId, guest }) => (
   <div>
     <GuestName guest={guest} />
     {guest.movingFrom ? (
@@ -33,6 +34,7 @@ const ArrivingGuest = ({ guest }) => (
     ) : (
       <ArrivingGuestFlightTime guest={guest} />
     )}
+    <RoomKeyButton roomId={roomId} guest={guest} />
   </div>
 );
 

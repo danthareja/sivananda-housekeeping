@@ -19,5 +19,14 @@ module.exports = {
     movingFrom(guest, _, ctx) {
       return guest.movingFrom();
     },
+    givenRoomKey(guest, _, ctx) {
+      return guest.givenRoomKey();
+    },
+    givenRoomKeyBy(guest, _, ctx) {
+      return guest.givenRoomKeyBy();
+    },
+    givenRoomKeyAt(guest, _, ctx) {
+      return guest.givenRoomKeyAt();
+    },
   },
 };

@@ -14,8 +14,7 @@ const GET_ROOMS = gql`
       lodgingName
       cleaned
       cleanedAt
-      givenKey
-      givenKeyAt
+      cleanedBy
       housekeeper
       priority
       comments
@@ -25,6 +24,9 @@ const GET_ROOMS = gql`
         isSpecial
         flightTime
         movingFrom
+        givenRoomKey
+        givenRoomKeyAt
+        givenRoomKeyBy
       }
       departingGuests {
         id

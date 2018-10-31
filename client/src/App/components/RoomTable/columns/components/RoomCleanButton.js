@@ -9,6 +9,7 @@ const CLEAN_ROOM = gql`
       id
       cleaned
       cleanedAt
+      cleanedBy
     }
   }
 `;

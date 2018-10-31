@@ -1,5 +1,5 @@
 type Room {
-  # static from prisma seed
+  # static from database
   id: Int!
   name: String!
   lodgingId: Int!
@@ -8,11 +8,10 @@ type Room {
   cleaningTime: Int!
   cleaningCartCost: Int!
 
-  # dynamic from prisma
+  # dynamic from Database
   cleaned: Boolean!
   cleanedAt: String
-  givenKey: Boolean!
-  givenKeyAt: String
+  cleanedBy: String
   housekeeper: String
   priority: Int
   comments: [String!]!

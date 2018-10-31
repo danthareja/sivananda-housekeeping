@@ -5,15 +5,12 @@ const DepartingGuest = require('./DepartingGuest');
 const StayingGuest = require('./StayingGuest');
 
 class Room {
-  constructor(room, reservation, registrations) {
+  constructor(room, registrations) {
     this.room = room;
-    this.reservation = reservation;
-    this.registrations = registrations.filter(r => r.room_id === room.room_id);
-    this.registrationsByGuest = _.groupBy(registrations, this._uniqueGuestKey);
-  }
-
-  _uniqueGuestKey(registration) {
-    return `${registration.full_name}`;
+    this.date = room.date;
+    this.guests = _.keyBy(room.guests, 'name');
+    this.registrations = registrations.filter(r => r.room_id === room.id);
+    this.registrationsByGuest = _.groupBy(registrations, 'full_name');
   }
 
   _earliestArrivalTime() {
@@ -37,19 +34,19 @@ class Room {
   }
 
   id() {
-    return this.room.room_id;
+    return this.room.id;
   }
 
   name() {
-    return this.room.room_name;
+    return this.room.name;
   }
 
   lodgingId() {
-    return this.room.lodging_id;
+    return this.room.lodgingId;
   }
 
   lodgingName() {
-    return this.room.lodging_name;
+    return this.room.lodgingName;
   }
 
   location() {
@@ -57,61 +54,56 @@ class Room {
   }
 
   cleaningTime() {
-    return this.room.cleaning_time;
+    return this.room.cleaningTime;
   }
 
   cleaningCartCost() {
-    return this.room.cleaning_cart_cost;
+    return this.room.cleaningCartCost;
   }
 
   cleaned() {
-    return this.reservation.cleaned;
+    return this.room.isClean;
   }
 
   cleanedAt() {
-    return this.reservation.cleanedAt;
+    return this.room.lastCleanedAt;
   }
 
-  givenKey() {
-    return this.reservation.givenKey;
-  }
-
-  givenKeyAt() {
-    return this.reservation.givenKeyAt;
+  cleanedBy() {
+    return this.room.lastCleanedBy;
   }
 
   housekeeper() {
-    return this.reservation.housekeeper;
+    return this.room.housekeeper;
   }
 
   priority() {
-    return this.reservation.priority;
+    return this.room.priority;
   }
 
   comments() {
-    return this.reservation.comments;
+    return this.room.comments;
   }
 
   arrivingGuests() {
     return this.registrations
-      .filter(registration => registration.start_date === this.reservation.date)
+      .filter(registration => registration.start_date === this.date)
       .map(registration => {
         const movingFromRegistration = this.registrationsByGuest[
-          this._uniqueGuestKey(registration)
-        ].find(registration => registration.end_date === this.reservation.date);
-        return new ArrivingGuest(registration, movingFromRegistration);
+          registration.full_name
+        ].find(registration => registration.end_date === this.date);
+        const guest = this.guests[registration.full_name];
+        return new ArrivingGuest(registration, movingFromRegistration, guest);
       });
   }
 
   departingGuests() {
     return this.registrations
-      .filter(registration => registration.end_date === this.reservation.date)
+      .filter(registration => registration.end_date === this.date)
       .map(registration => {
         const movingToRegistration = this.registrationsByGuest[
-          this._uniqueGuestKey(registration)
-        ].find(
-          registration => registration.start_date === this.reservation.date
-        );
+          registration.full_name
+        ].find(registration => registration.start_date === this.date);
         return new DepartingGuest(registration, movingToRegistration);
       });
   }
@@ -120,8 +112,8 @@ class Room {
     return this.registrations
       .filter(
         registration =>
-          registration.end_date !== this.reservation.date &&
-          registration.start_date !== this.reservation.date
+          registration.end_date !== this.date &&
+          registration.start_date !== this.date
       )
       .map(registration => new StayingGuest(registration));
   }
@@ -140,7 +132,10 @@ class Room {
         registration =>
           (registration.start_date === date ||
             registration.end_date === date) &&
-          !registration.room.includes('Tent Space')
+          !(
+            registration.room.includes('Tent Space') ||
+            registration.room.includes('Nassau')
+          )
       )
       .map(registration => registration.room_id)
       .uniq()
@@ -148,43 +143,36 @@ class Room {
 
     return Promise.all(
       roomIds.map(async roomId => {
-        const room = ctx.dataSources.local.getRoom(roomId);
-        const reservation = await ctx.dataSources.database.getReservation(
-          roomId,
-          date
-        );
-        return new Room(room, reservation, registrations);
+        const room = await ctx.dataSources.database.getRoom(roomId, date);
+        return new Room(room, registrations);
       })
     );
   }
 
   static async fetchById(ctx, id, date = moment().format('YYYY-MM-DD')) {
-    const [room, reservation, registrations] = await Promise.all([
-      ctx.dataSources.local.getRoom(id),
-      ctx.dataSources.database.getReservation(id, date),
+    const [room, registrations] = await Promise.all([
+      ctx.dataSources.database.getRoom(id, date),
       ctx.dataSources.retreatGuru.getRoomRegistrations(date),
     ]);
-    return new Room(room, reservation, registrations);
+    return new Room(room, registrations);
   }
 
   // Mutations
 
   static async clean(ctx, id, date = moment().format('YYYY-MM-DD')) {
-    const [room, reservation, registrations] = await Promise.all([
-      ctx.dataSources.local.getRoom(id),
+    const [room, registrations] = await Promise.all([
       ctx.dataSources.database.clean(id, date),
       ctx.dataSources.retreatGuru.getRoomRegistrations(date),
     ]);
-    return new Room(room, reservation, registrations);
+    return new Room(room, registrations);
   }
 
-  static async giveKey(ctx, id, date = moment().format('YYYY-MM-DD')) {
-    const [room, reservation, registrations] = await Promise.all([
-      ctx.dataSources.local.getRoom(id),
-      ctx.dataSources.database.giveKey(id, date),
+  static async giveKey(ctx, id, guest, date = moment().format('YYYY-MM-DD')) {
+    const [room, registrations] = await Promise.all([
+      ctx.dataSources.database.giveKey(id, guest, date),
       ctx.dataSources.retreatGuru.getRoomRegistrations(date),
     ]);
-    return new Room(room, reservation, registrations);
+    return new Room(room, registrations);
   }
 
   static async automaticallyPrioritize(
@@ -199,7 +187,6 @@ class Room {
     return await Promise.all(
       rooms.map(async (room, index) => {
         return new Room(
-          room.room,
           await ctx.dataSources.database.prioritize(room.id(), date, index + 1),
           room.registrations
         );

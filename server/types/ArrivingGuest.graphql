@@ -1,7 +1,13 @@
 type ArrivingGuest implements Guest {
+  # from Retreat Guru
   id: Int!
   name: String!
   isSpecial: Boolean!
   flightTime: String
   movingFrom: String
+
+  # from Database
+  givenRoomKey: Boolean
+  givenRoomKeyAt: String
+  givenRoomKeyBy: String
 }

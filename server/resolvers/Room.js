@@ -29,11 +29,8 @@ module.exports = {
     cleanedAt(room, _, ctx) {
       return room.cleanedAt();
     },
-    givenKey(room, _, ctx) {
-      return room.givenKey();
-    },
-    givenKeyAt(room, _, ctx) {
-      return room.givenKeyAt();
+    cleanedBy(room, _, ctx) {
+      return room.cleanedBy();
     },
     housekeeper(room, _, ctx) {
       return room.housekeeper();

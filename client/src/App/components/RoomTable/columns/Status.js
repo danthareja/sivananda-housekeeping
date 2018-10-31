@@ -13,7 +13,9 @@ export default {
           placement="right"
           title={
             room.cleanedAt
-              ? `Last cleaned ${moment(room.cleanedAt).fromNow()}`
+              ? `Last cleaned ${moment(room.cleanedAt).fromNow()} by ${
+                  room.cleanedBy
+                }`
               : 'Never cleaned'
           }
         >

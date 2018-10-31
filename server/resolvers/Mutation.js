@@ -8,8 +8,8 @@ module.exports = {
     cleanRoom(root, { id, date }, ctx) {
       return Room.clean(ctx, id, date);
     },
-    giveRoomKey(root, { id, date }, ctx) {
-      return Room.giveKey(ctx, id, date);
+    giveRoomKey(root, { id, guest, date }, ctx) {
+      return Room.giveKey(ctx, id, guest, date);
     },
   },
 };
