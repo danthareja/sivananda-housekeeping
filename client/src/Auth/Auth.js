@@ -44,7 +44,7 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     // navigate to the app route
-    this.history.replace('/');
+    this.history.replace('/dashboard');
   }
 
   logout() {

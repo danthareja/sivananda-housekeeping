@@ -7,7 +7,7 @@ export default rows => {
     <div style={{ position: 'relative', height: '40px' }}>
       <div style={{ position: 'absolute', left: '16px' }}>
         <h1 style={{ fontSize: '1.5em' }}>
-          Rooms for {moment().format('dddd, MMMM Do YYYY')}
+          {moment().format('dddd, MMMM Do YYYY')}
         </h1>
       </div>
       <div style={{ position: 'absolute', right: '16px' }}>

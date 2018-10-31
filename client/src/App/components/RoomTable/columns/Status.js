@@ -26,22 +26,6 @@ export default {
           )}
         </Tooltip>
       </div>
-      <div>
-        <Tooltip
-          placement="right"
-          title={
-            room.givenKeyAt
-              ? `Last given key ${moment(room.givenKeyAt).fromNow()}`
-              : 'Never given key'
-          }
-        >
-          {room.givenKey ? (
-            <span style={{ color: '#52c41a' }}>with keys</span>
-          ) : (
-            <span style={{ color: '#f5222d' }}>without keys</span>
-          )}
-        </Tooltip>
-      </div>
     </div>
   ),
 };

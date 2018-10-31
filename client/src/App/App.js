@@ -1,29 +1,47 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ApolloProvider } from 'react-apollo';
-import ApolloClient from 'apollo-boost';
-
+import { Route, Link } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
+import client from './apollo';
 import RoomTable from './components/RoomTable';
 
-const client = new ApolloClient({
-  uri:
-    process.env.REACT_APP_GRAPHQL_ENDPOINT || 'http://localhost:4000/graphql',
-  request: async operation => {
-    operation.setContext({
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('id_token')}`,
-      },
-    });
-  },
-});
-
-class App extends Component {
-  render() {
-    return (
-      <ApolloProvider client={client}>
-        <RoomTable />
-      </ApolloProvider>
-    );
-  }
-}
+const App = ({ auth }) => {
+  return (
+    <ApolloProvider client={client}>
+      <div className="App">
+        <Layout className="layout">
+          <Layout.Header>
+            <div className="logo" />
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              defaultSelectedKeys={['1']}
+              style={{ lineHeight: '64px' }}
+            >
+              <Menu.Item key="1">
+                <Link to="/dashboard">Dashboard</Link>
+              </Menu.Item>
+              <Menu.Item
+                onClick={auth.logout}
+                key="2"
+                style={{ float: 'right' }}
+              >
+                Log Out
+              </Menu.Item>
+            </Menu>
+          </Layout.Header>
+          <Layout.Content style={{ padding: '50px 50px' }}>
+            <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+              <Route path="/dashboard" component={RoomTable} />
+            </div>
+          </Layout.Content>
+          <Layout.Footer style={{ textAlign: 'center' }}>
+            Sivananda Bahamas ©2018
+          </Layout.Footer>
+        </Layout>
+      </div>
+    </ApolloProvider>
+  );
+};
 
 export default App;
