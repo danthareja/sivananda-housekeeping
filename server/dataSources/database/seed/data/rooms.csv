@@ -1,4 +1,27 @@
 room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,location
+53,0,38,Dormitory,20,2,main house
+54,1,41,Garden Room Double (Private),12,5,main house
+55,2,41,Garden Room Double (Private),12,5,main house
+56,3,46,Garden Room Single (Private),12,5,main house
+57,4,46,Garden Room Single (Private),12,5,main house
+58,5,41,Garden Room Double (Private),12,5,main house
+59,6,41,Garden Room Double (Private),12,5,main house
+60,7,41,Garden Room Double (Private),12,5,main house
+62,9,41,Garden Room Double (Private),12,5,main house
+63,10,41,Garden Room Double (Private),12,5,main house
+64,11,40,Garden Room (Shared),15,3,main house
+65,12,41,Garden Room Double (Private),12,5,main house
+66,14,40,Garden Room (Shared),15,3,west
+67,15,40,Garden Room (Shared),15,3,west
+70,18,37,Garden Room (Shared) with Bathroom,30,3,bay
+71,19,37,Garden Room (Shared) with Bathroom,30,3,bay
+72,20,37,Garden Room (Shared) with Bathroom,30,3,bay
+73,21,46,Garden Room Single (Private),12,5,west
+74,22,40,Garden Room (Shared),15,3,west
+75,24,40,Garden Room (Shared),15,3,west
+76,25,46,Garden Room Single (Private),12,5,bay
+77,23a,37,Garden Room (Shared) with Bathroom,30,3,bay
+78,23b,37,Garden Room (Shared) with Bathroom,30,3,bay
 5996,Ashram Ground Tent Durga Devi,5991,Ashram Supplied Ground Tent,0,0,
 5993,Ashram Ground Tent Mangala,5991,Ashram Supplied Ground Tent,0,0,
 5995,Ashram Ground Tent Marita,5991,Ashram Supplied Ground Tent,0,0,
@@ -17,79 +40,6 @@ room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,locat
 406,Beach Hut W4,35,Beach Hut (Shared),15,3,north
 407,Beach Hut W5,35,Beach Hut (Shared),15,3,north
 408,Beach Hut W6,35,Beach Hut (Shared),15,3,north
-114,Ganga 1,36,Beachfront Deluxe Room (Private),90,2,north
-115,Ganga 2,36,Beachfront Deluxe Room (Private),90,2,north
-116,Ganga 3,36,Beachfront Deluxe Room (Private),90,2,north
-117,Ganga 4,36,Beachfront Deluxe Room (Private),90,2,north
-433,Yamuna 1,36,Beachfront Deluxe Room (Private),90,2,north
-434,Yamuna 2,36,Beachfront Deluxe Room (Private),90,2,north
-436,Yamuna 4,36,Beachfront Deluxe Room (Private),90,2,north
-53,0,38,Dormitory,20,2,main house
-190,Meditation Room,38,Dormitory,20,1,main house
-251,OM3,38,Dormitory,20,2,west
-257,OM9,38,Dormitory,20,2,west
-258,Om Sweet Om,38,Dormitory,20,2,north west
-402,Vishnu,38,Dormitory,20,2,north west
-64,11,40,Garden Room (Shared),15,3,main house
-66,14,40,Garden Room (Shared),15,3,west
-67,15,40,Garden Room (Shared),15,3,west
-74,22,40,Garden Room (Shared),15,3,west
-75,24,40,Garden Room (Shared),15,3,west
-250,OM2,40,Garden Room (Shared),15,3,west
-256,OM8,40,Garden Room (Shared),15,3,west
-249,OM11,40,Garden Room (Shared),15,3,west
-70,18,37,Garden Room (Shared) with Bathroom,30,3,bay
-71,19,37,Garden Room (Shared) with Bathroom,30,3,bay
-72,20,37,Garden Room (Shared) with Bathroom,30,3,bay
-77,23a,37,Garden Room (Shared) with Bathroom,30,3,bay
-78,23b,37,Garden Room (Shared) with Bathroom,30,3,bay
-54,1,41,Garden Room Double (Private),12,5,main house
-55,2,41,Garden Room Double (Private),12,5,main house
-58,5,41,Garden Room Double (Private),12,5,main house
-59,6,41,Garden Room Double (Private),12,5,main house
-60,7,41,Garden Room Double (Private),12,5,main house
-62,9,41,Garden Room Double (Private),12,5,main house
-63,10,41,Garden Room Double (Private),12,5,main house
-65,12,41,Garden Room Double (Private),12,5,main house
-252,OM4,41,Garden Room Double (Private),12,5,west
-248,OM10,41,Garden Room Double (Private),12,5,west
-56,3,46,Garden Room Single (Private),12,5,main house
-57,4,46,Garden Room Single (Private),12,5,main house
-73,21,46,Garden Room Single (Private),12,5,west
-76,25,46,Garden Room Single (Private),12,5,bay
-118,Gopala,46,Garden Room Single (Private),12,5,main house
-247,OM1,46,Garden Room Single (Private),12,5,west
-253,OM5,46,Garden Room Single (Private),12,5,west
-255,OM7,46,Garden Room Single (Private),12,5,west
-259,Saraswati 1,44,Ocean View Deluxe Room (Private),90,2,north west
-260,Saraswati 2,44,Ocean View Deluxe Room (Private),90,2,north west
-261,Saraswati 3,44,Ocean View Deluxe Room (Private),90,2,north west
-262,Saraswati 4,44,Ocean View Deluxe Room (Private),90,2,north west
-263,Saraswati 5,44,Ocean View Deluxe Room (Private),90,2,north west
-264,Saraswati 6,44,Ocean View Deluxe Room (Private),90,2,north west
-265,Saraswati 7,44,Ocean View Deluxe Room (Private),90,2,north west
-266,Saraswati 8,44,Ocean View Deluxe Room (Private),90,2,north west
-79,Platform A10,47,Platform Tent,10,5,south east
-267,Platform A11,47,Platform Tent,10,5,south east
-269,Platform A13,47,Platform Tent,10,5,south east
-270,Platform A14,47,Platform Tent,10,5,south east
-272,Platform B1 (WBC),47,Platform Tent,10,5,north west
-271,Platform B2 (WBC),47,Platform Tent,10,5,north west
-273,Platform B3 (WBC),47,Platform Tent,10,5,north west
-274,Platform B4 (WBC),47,Platform Tent,10,5,north west
-275,Platform B5 (WBC),47,Platform Tent,10,5,north west
-276,Platform G1 (WBC),47,Platform Tent,10,5,north east
-277,Platform G2,47,Platform Tent,10,5,north east
-278,Platform G3,47,Platform Tent,10,5,north east
-279,Platform G4,47,Platform Tent,10,5,north east
-280,Platform G5,47,Platform Tent,10,5,north east
-281,Platform G6,47,Platform Tent,10,5,north east
-282,Platform G7,47,Platform Tent,10,5,north east
-283,Platform G8,47,Platform Tent,10,5,north east
-284,Platform G9,47,Platform Tent,10,5,north east
-285,Platform G10,47,Platform Tent,10,5,north east
-286,Platform G11 (WBC),47,Platform Tent,10,5,north east
-5973,The Glorious Republic of Ganeshastan,47,Platform Tent,10,5,north west
 82,Dwaraka 01,42,Staff Residence,25,5,south east
 84,Dwaraka 02,42,Staff Residence,25,5,south east
 85,Dwaraka 03,42,Staff Residence,25,5,south east
@@ -100,6 +50,11 @@ room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,locat
 90,Dwaraka 08,42,Staff Residence,25,5,south east
 91,Dwaraka 09,42,Staff Residence,25,5,south east
 83,Dwaraka 10,42,Staff Residence,25,5,south east
+114,Ganga 1,36,Beachfront Deluxe Room (Private),90,2,north
+115,Ganga 2,36,Beachfront Deluxe Room (Private),90,2,north
+116,Ganga 3,36,Beachfront Deluxe Room (Private),90,2,north
+117,Ganga 4,36,Beachfront Deluxe Room (Private),90,2,north
+118,Gopala,46,Garden Room Single (Private),12,5,main house
 127,Kutir Hamsa,42,Staff Residence,0,5,
 119,Kutir Iswari,42,Staff Residence,25,5,south east
 129,Kutir Jnaneshwari Chaitanya,42,Staff Residence,0,5,
@@ -108,17 +63,61 @@ room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,locat
 126,Kutir Rukmini Chaitanya,42,Staff Residence,0,5,
 128,Kutir Swami Brahmananda,42,Staff Residence,0,5,
 131,Kutir Swami Hridyananda,42,Staff Residence,0,5,
-435,Yamuna 3,42,Staff Residence,0,5,
+190,Meditation Room,38,Dormitory,20,1,main house
+191,Nassau 01,43,External Accommodation,0,0,
+202,Nassau 02,43,External Accommodation,0,0,
+204,Nassau 03,43,External Accommodation,0,0,
+205,Nassau 04,43,External Accommodation,0,0,
+206,Nassau 05,43,External Accommodation,0,0,
+207,Nassau 06,43,External Accommodation,0,0,
+208,Nassau 07,43,External Accommodation,0,0,
+209,Nassau 08,43,External Accommodation,0,0,
+210,Nassau 09,43,External Accommodation,0,0,
+192,Nassau 10,43,External Accommodation,0,0,
+258,Om Sweet Om,38,Dormitory,20,2,north west
+247,OM1,46,Garden Room Single (Private),12,5,west
+248,OM10,41,Garden Room Double (Private),12,5,west
+249,OM11,40,Garden Room (Shared),15,3,west
+250,OM2,40,Garden Room (Shared),15,3,west
+251,OM3,38,Dormitory,20,2,west
+252,OM4,41,Garden Room Double (Private),12,5,west
+253,OM5,46,Garden Room Single (Private),12,5,west
+255,OM7,46,Garden Room Single (Private),12,5,west
+256,OM8,40,Garden Room (Shared),15,3,west
+257,OM9,38,Dormitory,20,2,west
+79,Platform A-10,47,Platform Tent,10,5,south east
+267,Platform A-11,47,Platform Tent,10,5,south east
+268,Platform A-12,47,Platform Tent,10,5,south east
+269,Platform A-13,47,Platform Tent,10,5,south east
+270,Platform A-14,47,Platform Tent,10,5,south east
+272,Platform B-1 (WBC),47,Platform Tent,10,5,north west
+271,Platform B-2 (WBC),47,Platform Tent,10,5,north west
+273,Platform B-3 (WBC),47,Platform Tent,10,5,north west
+274,Platform B-4 (WBC),47,Platform Tent,10,5,north west
+275,Platform B-5 (WBC),47,Platform Tent,10,5,north west
+276,Platform G-1 (WBC),47,Platform Tent,10,5,north east
+285,Platform G-10,47,Platform Tent,10,5,north east
+286,Platform G-11 (WBC),47,Platform Tent,10,5,north east
+277,Platform G-2,47,Platform Tent,10,5,north east
+278,Platform G-3,47,Platform Tent,10,5,north east
+279,Platform G-4,47,Platform Tent,10,5,north east
+280,Platform G-5,47,Platform Tent,10,5,north east
+281,Platform G-6,47,Platform Tent,10,5,north east
+282,Platform G-7,47,Platform Tent,10,5,north east
+283,Platform G-8,47,Platform Tent,10,5,north east
+284,Platform G-9,47,Platform Tent,10,5,north east
+259,Saraswati 1,44,Ocean View Deluxe Room (Private),90,2,north west
+260,Saraswati 2,44,Ocean View Deluxe Room (Private),90,2,north west
+261,Saraswati 3,44,Ocean View Deluxe Room (Private),90,2,north west
+262,Saraswati 4,44,Ocean View Deluxe Room (Private),90,2,north west
+263,Saraswati 5,44,Ocean View Deluxe Room (Private),90,2,north west
+264,Saraswati 6,44,Ocean View Deluxe Room (Private),90,2,north west
+265,Saraswati 7,44,Ocean View Deluxe Room (Private),90,2,north west
+266,Saraswati 8,44,Ocean View Deluxe Room (Private),90,2,north west
 98,Tent Hut East 01,49,Tent Hut Double (Private),10,5,east
 106,Tent Hut East 02,49,Tent Hut Double (Private),10,5,east
 107,Tent Hut East 03,49,Tent Hut Double (Private),10,5,east
 108,Tent Hut East 04,49,Tent Hut Double (Private),10,5,east
-409,Tent Hut West 01,49,Tent Hut Double (Private),10,5,west
-420,Tent Hut West 02,49,Tent Hut Double (Private),10,5,west
-426,Tent Hut West 03,49,Tent Hut Double (Private),10,5,west
-427,Tent Hut West 04,49,Tent Hut Double (Private),10,5,west
-428,Tent Hut West 05,49,Tent Hut Double (Private),10,5,west
-429,Tent Hut West 06,49,Tent Hut Double (Private),10,5,west
 109,Tent Hut East 05,48,Tent Hut Single (Private),10,5,east
 110,Tent Hut East 06,48,Tent Hut Single (Private),10,5,east
 111,Tent Hut East 07,48,Tent Hut Single (Private),10,5,east
@@ -159,6 +158,12 @@ room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,locat
 237,Tent Hut North 26,48,Tent Hut Single (Private),10,5,north east
 238,Tent Hut North 27,48,Tent Hut Single (Private),10,5,north east
 239,Tent Hut North 28,48,Tent Hut Single (Private),10,5,north east
+409,Tent Hut West 01,49,Tent Hut Double (Private),10,5,west
+420,Tent Hut West 02,49,Tent Hut Double (Private),10,5,west
+426,Tent Hut West 03,49,Tent Hut Double (Private),10,5,west
+427,Tent Hut West 04,49,Tent Hut Double (Private),10,5,west
+428,Tent Hut West 05,49,Tent Hut Double (Private),10,5,west
+429,Tent Hut West 06,49,Tent Hut Double (Private),10,5,west
 430,Tent Hut West 07,48,Tent Hut Single (Private),10,5,west
 431,Tent Hut West 08,48,Tent Hut Single (Private),10,5,west
 432,Tent Hut West 09,48,Tent Hut Single (Private),10,5,west
@@ -177,3 +182,85 @@ room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,locat
 423,Tent Hut West 22,48,Tent Hut Single (Private),10,5,west
 424,Tent Hut West 23,48,Tent Hut Single (Private),10,5,west
 425,Tent Hut West 24,48,Tent Hut Single (Private),10,5,west
+134,Tent Space 01,50,Tent Space,0,0,
+135,Tent Space 02,50,Tent Space,0,0,
+136,Tent Space 03,50,Tent Space,0,0,
+137,Tent Space 04,50,Tent Space,0,0,
+138,Tent Space 05,50,Tent Space,0,0,
+139,Tent Space 06,50,Tent Space,0,0,
+140,Tent Space 07,50,Tent Space,0,0,
+141,Tent Space 08,50,Tent Space,0,0,
+142,Tent Space 09,50,Tent Space,0,0,
+143,Tent Space 10,50,Tent Space,0,0,
+144,Tent Space 11,50,Tent Space,0,0,
+145,Tent Space 12,50,Tent Space,0,0,
+146,Tent Space 13,50,Tent Space,0,0,
+147,Tent Space 14,50,Tent Space,0,0,
+148,Tent Space 15,50,Tent Space,0,0,
+149,Tent Space 16,50,Tent Space,0,0,
+150,Tent Space 17,50,Tent Space,0,0,
+151,Tent Space 18,50,Tent Space,0,0,
+152,Tent Space 19,50,Tent Space,0,0,
+153,Tent Space 20,50,Tent Space,0,0,
+154,Tent Space 21,50,Tent Space,0,0,
+155,Tent Space 22,50,Tent Space,0,0,
+156,Tent Space 23,50,Tent Space,0,0,
+157,Tent Space 24,50,Tent Space,0,0,
+158,Tent Space 25,50,Tent Space,0,0,
+159,Tent Space 26,50,Tent Space,0,0,
+160,Tent Space 27,50,Tent Space,0,0,
+161,Tent Space 28,50,Tent Space,0,0,
+162,Tent Space 29,50,Tent Space,0,0,
+163,Tent Space 30,50,Tent Space,0,0,
+164,Tent Space 31,50,Tent Space,0,0,
+165,Tent Space 32,50,Tent Space,0,0,
+166,Tent Space 33,50,Tent Space,0,0,
+167,Tent Space 34,50,Tent Space,0,0,
+168,Tent Space 35,50,Tent Space,0,0,
+169,Tent Space 36,50,Tent Space,0,0,
+170,Tent Space 37,50,Tent Space,0,0,
+171,Tent Space 38,50,Tent Space,0,0,
+172,Tent Space 39,50,Tent Space,0,0,
+173,Tent Space 40,50,Tent Space,0,0,
+174,Tent Space 41,50,Tent Space,0,0,
+175,Tent Space 42,50,Tent Space,0,0,
+176,Tent Space 43,50,Tent Space,0,0,
+177,Tent Space 44,50,Tent Space,0,0,
+178,Tent Space 45,50,Tent Space,0,0,
+179,Tent Space 46,50,Tent Space,0,0,
+180,Tent Space 47,50,Tent Space,0,0,
+181,Tent Space 48,50,Tent Space,0,0,
+182,Tent Space 49,50,Tent Space,0,0,
+183,Tent Space 50,50,Tent Space,0,0,
+184,Tent Space 51,50,Tent Space,0,0,
+185,Tent Space 52,50,Tent Space,0,0,
+186,Tent Space 53,50,Tent Space,0,0,
+187,Tent Space 54,50,Tent Space,0,0,
+188,Tent Space 55,50,Tent Space,0,0,
+326,Tent Space 56,50,Tent Space,0,0,
+355,Tent Space 57,50,Tent Space,0,0,
+354,Tent Space 58,50,Tent Space,0,0,
+353,Tent Space 59,50,Tent Space,0,0,
+352,Tent Space 60,50,Tent Space,0,0,
+351,Tent Space 61,50,Tent Space,0,0,
+343,Tent Space 62,50,Tent Space,0,0,
+342,Tent Space 63,50,Tent Space,0,0,
+341,Tent Space 64,50,Tent Space,0,0,
+340,Tent Space 65,50,Tent Space,0,0,
+339,Tent Space 66,50,Tent Space,0,0,
+338,Tent Space 67,50,Tent Space,0,0,
+336,Tent Space 68,50,Tent Space,0,0,
+335,Tent Space 69,50,Tent Space,0,0,
+350,Tent Space 70,50,Tent Space,0,0,
+349,Tent Space 71,50,Tent Space,0,0,
+347,Tent Space 72,50,Tent Space,0,0,
+346,Tent Space 73,50,Tent Space,0,0,
+345,Tent Space 74,50,Tent Space,0,0,
+344,Tent Space 75,50,Tent Space,0,0,
+356,Tent Space 76,50,Tent Space,0,0,
+5973,The Glorious Republic of Ganeshastan,47,Platform Tent,10,5,north west
+402,Vishnu,38,Dormitory,20,2,north west
+433,Yamuna 1,36,Beachfront Deluxe Room (Private),90,2,north
+434,Yamuna 2,36,Beachfront Deluxe Room (Private),90,2,north
+435,Yamuna 3,42,Staff Residence,0,5,
+436,Yamuna 4,36,Beachfront Deluxe Room (Private),90,2,north

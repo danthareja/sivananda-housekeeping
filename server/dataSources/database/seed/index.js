@@ -19,6 +19,7 @@ const seed = async () => {
   }
 
   for (let room of toCreate) {
+    console.log(`creating room ${room.id} ${room.name}`);
     await Room.create(
       _.assign(room, {
         isClean: false,
@@ -28,8 +29,8 @@ const seed = async () => {
   }
 
   for (let room of toRemove) {
+    console.log(`removing room ${room.id} ${room.name}`);
     await room.remove();
-    console.log(`removed room ${room.id} ${room.name}`);
   }
 
   console.log(`done seeding rooms`);
