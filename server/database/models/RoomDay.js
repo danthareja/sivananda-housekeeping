@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const moment = require('moment');
 const mongoose = require('mongoose');
+const cachegoose = require('cachegoose');
 const Schema = mongoose.Schema;
 
 const RoomGuestSchema = new Schema(
@@ -23,6 +24,10 @@ const RoomDaySchema = new Schema({
   comments: [String],
 
   guests: [RoomGuestSchema],
+});
+
+RoomDaySchema.post('save', function() {
+  cachegoose.clearCache('Rooms');
 });
 
 // Make the combination of roomId/date unique

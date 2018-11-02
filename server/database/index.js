@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+const cachegoose = require('cachegoose');
 const models = require('./models');
 const seed = require('./seed');
+
+cachegoose(mongoose);
 
 mongoose
   .connect(

@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const mongoose = require('mongoose');
+const cachegoose = require('cachegoose');
 const Schema = mongoose.Schema;
 
 const RoomSchema = new Schema({
@@ -16,6 +17,10 @@ const RoomSchema = new Schema({
   isClean: { type: Boolean, required: true, default: false },
   lastCleanedAt: Date,
   lastCleanedBy: String,
+});
+
+RoomSchema.post('save', function() {
+  cachegoose.clearCache('Rooms');
 });
 
 RoomSchema.statics.reconcile = async function(proposed) {
