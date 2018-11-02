@@ -1,15 +1,33 @@
-const { Room } = require('../models');
+const moment = require('moment');
 
 module.exports = {
   Mutation: {
-    automaticallyPrioritizeRooms(root, { date }, ctx) {
-      return Room.automaticallyPrioritize(ctx, date);
+    async automaticallyPrioritizeRooms(
+      root,
+      { date = moment().format('YYYY-MM-DD') },
+      ctx
+    ) {
+      return ctx.db.RoomDay.automaticallyPrioritize(date);
     },
-    cleanRoom(root, { id, date }, ctx) {
-      return Room.clean(ctx, id, date);
+    async cleanRoom(
+      root,
+      { roomId, date = moment().format('YYYY-MM-DD') },
+      ctx
+    ) {
+      const room = await ctx.db.Room.clean(roomId, ctx.user.name);
+      const roomDay = await ctx.db.RoomDay.findOne({
+        room: roomId,
+        date,
+      }).exec();
+      roomDay.room = room;
+      return roomDay;
     },
-    giveRoomKey(root, { id, guest, date }, ctx) {
-      return Room.giveKey(ctx, id, guest, date);
+    async giveRoomKey(
+      root,
+      { roomId, guestId, date = moment().format('YYYY-MM-DD') },
+      ctx
+    ) {
+      return ctx.db.RoomDay.giveKey(roomId, guestId, date, ctx.user.name);
     },
   },
 };

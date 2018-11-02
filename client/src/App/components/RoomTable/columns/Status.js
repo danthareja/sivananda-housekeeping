@@ -1,6 +1,5 @@
 import React from 'react';
 import { Tooltip } from 'antd';
-import moment from 'moment';
 
 // Colors from: https://ant.design/docs/react/customize-theme
 export default {
@@ -13,9 +12,7 @@ export default {
           placement="right"
           title={
             room.cleanedAt
-              ? `Last cleaned ${moment(room.cleanedAt).fromNow()} by ${
-                  room.cleanedBy
-                }`
+              ? `Last cleaned ${room.cleanedAt} by ${room.cleanedBy}`
               : 'Never cleaned'
           }
         >

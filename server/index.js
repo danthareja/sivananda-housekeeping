@@ -1,11 +1,10 @@
 const path = require('path');
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const { InMemoryLRUCache } = require('apollo-server-caching');
 const authenticate = require('./authenticate');
 const resolvers = require('./resolvers');
 const typeDefs = require('./types');
-const { DatabaseAPI, RetreatGuruAPI } = require('./dataSources');
+const db = require('./database');
 
 const app = express();
 
@@ -15,18 +14,10 @@ const server = new ApolloServer({
   debug: true,
   typeDefs,
   resolvers,
-  cache: new InMemoryLRUCache({
-    maxSize: 10 * 1000 * 1000, // divided by 2 bytes per string char ~ 5MB cache storage
-  }),
   async context({ req }) {
     return {
       user: await authenticate(req),
-    };
-  },
-  dataSources() {
-    return {
-      database: new DatabaseAPI(),
-      retreatGuru: new RetreatGuruAPI(),
+      db,
     };
   },
 });

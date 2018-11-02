@@ -1,12 +1,18 @@
-const { Room } = require('../models');
+const moment = require('moment');
 
 module.exports = {
   Query: {
-    rooms(root, { date }, ctx) {
-      return Room.fetch(ctx, date);
+    async rooms(root, { date = moment().format('YYYY-MM-DD') }, ctx) {
+      return ctx.db.RoomDay.find({ date })
+        .populate('room')
+        .lean()
+        .exec();
     },
-    room(root, { id, date }, ctx) {
-      return Room.fetchById(ctx, id, date);
+    async room(root, { id, date = moment().format('YYYY-MM-DD') }, ctx) {
+      return ctx.db.RoomDay.findOne({ room: id, date })
+        .populate('room')
+        .lean()
+        .exec();
     },
   },
 };

@@ -4,8 +4,8 @@ import { Mutation } from 'react-apollo';
 import { message, Button } from 'antd';
 
 const GIVE_ROOM_KEY = gql`
-  mutation GiveRoomKey($id: Int!, $guest: String!) {
-    giveRoomKey(id: $id, guest: $guest) {
+  mutation GiveRoomKey($roomId: Int!, $guestId: Int!) {
+    giveRoomKey(roomId: $roomId, guestId: $guestId) {
       id
       arrivingGuests {
         id
@@ -21,7 +21,7 @@ const RoomCleanButton = ({ roomId, guest }) => {
   return (
     <Mutation
       mutation={GIVE_ROOM_KEY}
-      variables={{ id: roomId, guest: guest.name }}
+      variables={{ roomId, guestId: guest.id }}
     >
       {(giveRoomKey, { error, loading }) => {
         if (error) {

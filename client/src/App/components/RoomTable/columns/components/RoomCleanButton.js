@@ -4,8 +4,8 @@ import { Mutation } from 'react-apollo';
 import { message, Button } from 'antd';
 
 const CLEAN_ROOM = gql`
-  mutation CleanRoom($id: Int!) {
-    cleanRoom(id: $id) {
+  mutation CleanRoom($roomId: Int!) {
+    cleanRoom(roomId: $roomId) {
       id
       cleaned
       cleanedAt
@@ -16,7 +16,7 @@ const CLEAN_ROOM = gql`
 
 const RoomCleanButton = ({ room }) => {
   return (
-    <Mutation mutation={CLEAN_ROOM} variables={{ id: room.id }}>
+    <Mutation mutation={CLEAN_ROOM} variables={{ roomId: room.id }}>
       {(cleanRoom, { error, loading }) => {
         if (error) {
           message.error(error.message);

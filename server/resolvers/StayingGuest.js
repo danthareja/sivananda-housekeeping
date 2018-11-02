@@ -1,13 +1,13 @@
 module.exports = {
   StayingGuest: {
     id(guest, _, ctx) {
-      return guest.id();
+      return guest._id;
     },
     name(guest, _, ctx) {
-      return guest.name();
+      return guest.name;
     },
     isSpecial(guest, _, ctx) {
-      return guest.isSpecial();
+      return guest.isSpecial;
     },
   },
 };

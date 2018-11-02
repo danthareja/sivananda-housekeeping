@@ -1,32 +1,32 @@
+const moment = require('moment');
+
 module.exports = {
   ArrivingGuest: {
     id(guest, _, ctx) {
-      return guest.id();
+      return guest._id;
     },
     name(guest, _, ctx) {
-      return guest.name();
+      return guest.name;
     },
     isSpecial(guest, _, ctx) {
-      return guest.isSpecial();
+      return guest.isSpecial;
     },
     flightTime(guest, _, ctx) {
-      const flightTime = guest.flightTime();
-      if (flightTime) {
-        return flightTime.format('h:mm a');
-      }
-      return null;
+      return guest.flightTime ? moment(guest.flightTime).format('h:mma') : null;
     },
     movingFrom(guest, _, ctx) {
-      return guest.movingFrom();
+      return guest.movingFrom;
     },
     givenRoomKey(guest, _, ctx) {
-      return guest.givenRoomKey();
+      return guest.givenRoomKey;
     },
     givenRoomKeyBy(guest, _, ctx) {
-      return guest.givenRoomKeyBy();
+      return guest.givenRoomKeyBy;
     },
     givenRoomKeyAt(guest, _, ctx) {
-      return guest.givenRoomKeyAt();
+      return guest.givenRoomKeyAt
+        ? moment(guest.givenRoomKeyAt).fromNow()
+        : null;
     },
   },
 };

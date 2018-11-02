@@ -1,54 +1,62 @@
-const { Room } = require('../models');
+const moment = require('moment');
 
 module.exports = {
   Room: {
     id(room, _, ctx) {
-      return room.id();
+      return room.room._id;
     },
     name(room, _, ctx) {
-      return room.name();
+      return room.room.name;
     },
     lodgingId(room, _, ctx) {
-      return room.lodgingId();
+      return room.room.lodgingId;
     },
     lodgingName(room, _, ctx) {
-      return room.lodgingName();
+      return room.room.lodgingName;
     },
     location(room, _, ctx) {
-      return room.location();
+      return room.room.location;
     },
     cleaningTime(room, _, ctx) {
-      return room.cleaningTime();
+      return room.room.cleaningTime;
     },
     cleaningCartCost(room, _, ctx) {
-      return room.cleaningCartCost();
+      return room.room.cleaningCartCost;
     },
     cleaned(room, _, ctx) {
-      return room.cleaned();
+      return room.room.isClean;
     },
     cleanedAt(room, _, ctx) {
-      return room.cleanedAt();
+      return room.room.lastCleanedAt
+        ? moment(room.room.lastCleanedAt).fromNow()
+        : null;
     },
     cleanedBy(room, _, ctx) {
-      return room.cleanedBy();
+      return room.room.lastCleanedBy;
     },
     housekeeper(room, _, ctx) {
-      return room.housekeeper();
+      return room.housekeeper;
     },
     priority(room, _, ctx) {
-      return room.priority();
+      return room.priority;
     },
     comments(room, _, ctx) {
-      return room.comments();
+      return room.comments;
     },
     arrivingGuests(room, _, ctx) {
-      return room.arrivingGuests();
+      return room.guests
+        ? room.guests.filter(guest => guest.is === 'ArrivingRoomGuest')
+        : [];
     },
     departingGuests(room, _, ctx) {
-      return room.departingGuests();
+      return room.guests
+        ? room.guests.filter(guest => guest.is === 'DepartingRoomGuest')
+        : [];
     },
     stayingGuests(room, _, ctx) {
-      return room.stayingGuests();
+      return room.guests
+        ? room.guests.filter(guest => guest.is === 'StayingRoomGuest')
+        : [];
     },
   },
 };
