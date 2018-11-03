@@ -4,28 +4,25 @@ const mongoose = require('mongoose');
 const cachegoose = require('cachegoose');
 const Schema = mongoose.Schema;
 
-const RoomGuestSchema = new Schema(
-  {
-    _id: { type: Number, required: true }, // Retreat Guru reservation id
-    name: { type: String, required: true },
-    isSpecial: { type: Boolean, required: true },
-  },
-  {
-    discriminatorKey: 'is',
-  }
-);
+const {
+  RoomDayGuestSchema,
+  ArrivingRoomGuestSchema,
+  DepartingRoomGuestSchema,
+  StayingRoomGuestSchema,
+} = require('./RoomDayGuest');
 
 const RoomDaySchema = new Schema({
-  room: { type: Number, ref: 'Room', required: true },
+  room: { type: Number, ref: 'Room', required: true }, // Retreat Guru room_id
   date: { type: String, required: true },
 
   housekeeper: String,
   priority: Number,
   comments: [String],
 
-  guests: [RoomGuestSchema],
+  guests: [RoomDayGuestSchema],
 });
 
+// We indefinitely cache this query, so we have to manually clear it on update
 RoomDaySchema.post('save', function() {
   cachegoose.clearCache('Rooms');
 });
@@ -35,25 +32,16 @@ RoomDaySchema.index({ room: 1, date: 1 }, { unique: true });
 
 RoomDaySchema.path('guests').discriminator(
   'ArrivingRoomGuest',
-  new Schema({
-    flightTime: Date,
-    movingFrom: String,
-    givenRoomKey: Boolean,
-    givenRoomKeyAt: Date,
-    givenRoomKeyBy: String,
-  })
+  ArrivingRoomGuestSchema
 );
-
 RoomDaySchema.path('guests').discriminator(
   'DepartingRoomGuest',
-  new Schema({
-    flightTime: Date,
-    movingTo: String,
-    lateCheckout: String,
-  })
+  DepartingRoomGuestSchema
 );
-
-RoomDaySchema.path('guests').discriminator('StayingRoomGuest', new Schema({}));
+RoomDaySchema.path('guests').discriminator(
+  'StayingRoomGuest',
+  StayingRoomGuestSchema
+);
 
 RoomDaySchema.methods._earliestArrivalTime = function() {
   const arrivals =
@@ -78,7 +66,15 @@ RoomDaySchema.methods._earliestArrivalTime = function() {
     .value();
 };
 
-RoomDaySchema.statics.reconcile = async function(proposed, date) {
+RoomDaySchema.methods._numberOfArrivals = function() {
+  if (!this.guests) {
+    return null;
+  }
+
+  return -this.guests.filter(guest => guest.is === 'ArrivingRoomGuest').length;
+};
+
+RoomDaySchema.statics.reconcile = async function(date, proposed) {
   const existing = await this.find({ date }).exec();
 
   const toUpdate = _.intersectionBy(proposed, existing, 'room');
@@ -106,7 +102,7 @@ RoomDaySchema.statics.reconcile = async function(proposed, date) {
   }
 };
 
-RoomDaySchema.statics.giveKey = async function(roomId, guestId, date, user) {
+RoomDaySchema.statics.giveKey = async function(date, roomId, guestId, user) {
   const roomDay = await this.findOne({ room: roomId, date })
     .populate('room')
     .exec();
@@ -135,9 +131,7 @@ RoomDaySchema.statics.automaticallyPrioritize = async function(date) {
 
   const prioritizedRoomDays = _.sortBy(roomDays, [
     room => room._earliestArrivalTime(),
-    room =>
-      room.guests &&
-      -room.guests.filter(guest => guest.is === 'ArrivingRoomGuest').length,
+    room => room._numberOfArrivals(),
   ]);
 
   for (let [i, room] of prioritizedRoomDays.entries()) {

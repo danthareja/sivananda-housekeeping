@@ -31,6 +31,8 @@ const getRoomRegistrations = async date => {
     },
   });
 
+  // Registrations filtered out in this step will *never*
+  // be considered in the rest of the application
   return data.filter(
     registration =>
       (registration.status === 'reserved' ||
@@ -68,27 +70,34 @@ const formatFlightTime = (date, timeish) => {
 };
 
 const seed = async (date = moment().format('YYYY-MM-DD')) => {
-  console.log(`seeding from Retreat Guru on ${date}`);
+  console.log(`seeding from Retreat Guru for ${date}`);
   const registrations = await getRoomRegistrations(date);
+
+  // Transform registrations into useful subsets for optimized computing of room days
   const [arrivingOrDeparting, staying] = _.partition(
     registrations,
     registration =>
       registration.start_date === date || registration.end_date === date
   );
-  const stayingByRoomId = _.groupBy(staying, 'room_id');
+  const [arriving, departing] = _.partition(
+    arrivingOrDeparting,
+    registration => registration.start_date === date
+  );
 
+  const stayingByRoomId = _.groupBy(staying, 'room_id');
+  const arrivingByPersonId = _.keyBy(arriving, 'person_id');
+  const departingByPersonId = _.keyBy(departing, 'person_id');
+
+  // Transform registraions into room days
   const roomDays = _.chain(arrivingOrDeparting)
     .groupBy('room_id')
     .map((registrations, roomId) => {
-      const staying = stayingByRoomId[roomId];
       const [arriving, departing] = _.partition(
         registrations,
         registration => registration.start_date === date
       );
-      const arrivingById = _.keyBy(arriving, 'id');
-      const departingById = _.keyBy(departing, 'id');
 
-      const guests = _.concat(
+      let guests = _.concat(
         arriving.map(registration => ({
           is: 'ArrivingRoomGuest',
           _id: registration.id,
@@ -98,8 +107,8 @@ const seed = async (date = moment().format('YYYY-MM-DD')) => {
             date,
             registration.questions.flight_arrival_time_in_nassau_2
           ),
-          movingFrom: departingById[registration.id]
-            ? departingById[registration.id].room
+          movingFrom: departingByPersonId[registration.person_id]
+            ? departingByPersonId[registration.person_id].room
             : undefined,
         })),
         departing.map(registration => ({
@@ -111,14 +120,16 @@ const seed = async (date = moment().format('YYYY-MM-DD')) => {
             date,
             registration.questions.flight_departure_time_from_nassau
           ),
-          movingFrom: arrivingById[registration.id]
-            ? arrivingById[registration.id].room
+          movingTo: arrivingByPersonId[registration.person_id]
+            ? arrivingByPersonId[registration.person_id].room
             : undefined,
         }))
       );
 
+      const staying = stayingByRoomId[roomId];
       if (staying) {
-        guests.push(
+        guests = _.concat(
+          guests,
           staying.map(registration => ({
             is: 'StayingRoomGuest',
             _id: registration.id,
@@ -136,8 +147,8 @@ const seed = async (date = moment().format('YYYY-MM-DD')) => {
     })
     .value();
 
-  await RoomDay.reconcile(roomDays, date);
-  console.log(`done seeding from Retreat Guru on ${date}`);
+  await RoomDay.reconcile(date, roomDays);
+  console.log(`done seeding from Retreat Guru for ${date}`);
 };
 
 module.exports = seed;

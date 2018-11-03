@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const RoomSchema = new Schema({
   // Static data from csv file
-  _id: Number, // Retreat Guru room id
+  _id: { type: Number, required: true, unique: true }, // Retreat Guru room_id
   name: { type: String, required: true },
   lodgingId: { type: Number, required: true },
   lodgingName: { type: String, required: true },

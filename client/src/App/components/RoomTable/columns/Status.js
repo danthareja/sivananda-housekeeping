@@ -5,6 +5,7 @@ import { Tooltip } from 'antd';
 export default {
   title: 'Status',
   key: 'status',
+  width: '100px',
   render: (text, room) => (
     <div>
       <div>

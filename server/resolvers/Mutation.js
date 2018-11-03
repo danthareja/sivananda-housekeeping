@@ -27,7 +27,7 @@ module.exports = {
       { roomId, guestId, date = moment().format('YYYY-MM-DD') },
       ctx
     ) {
-      return ctx.db.RoomDay.giveKey(roomId, guestId, date, ctx.user.name);
+      return ctx.db.RoomDay.giveKey(date, roomId, guestId, ctx.user.name);
     },
   },
 };
