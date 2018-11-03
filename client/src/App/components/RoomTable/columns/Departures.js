@@ -3,18 +3,40 @@ import { List, Icon } from 'antd';
 import GuestName from './components/GuestName';
 
 // Colors from: https://ant.design/docs/react/customize-theme
-export default {
-  title: 'Departures',
-  key: 'departure',
-  render: (text, room) => {
-    return (
-      <div>
-        <DepartingGuestList guests={room.departingGuests} />
-        <StayingGuestList guests={room.stayingGuests} />
-      </div>
-    );
-  },
-};
+export default function(context) {
+  return {
+    title: 'Departures',
+    key: 'departure',
+    filterMultiple: false,
+    filters: [
+      {
+        text: 'Vacant',
+        value: 'vacant',
+      },
+      {
+        text: 'Occupied',
+        value: 'occupied',
+      },
+    ],
+    onFilter: (value, room) => {
+      if (value === 'vacant') {
+        return room.departingGuests.length === 0;
+      }
+      if (value === 'occupied') {
+        return room.departingGuests.length > 0;
+      }
+      return true;
+    },
+    render: (text, room) => {
+      return (
+        <div>
+          <DepartingGuestList guests={room.departingGuests} />
+          <StayingGuestList guests={room.stayingGuests} />
+        </div>
+      );
+    },
+  };
+}
 
 const StayingGuestList = ({ guests }) => {
   if (guests.length === 0) {
@@ -40,7 +62,7 @@ const StayingGuestList = ({ guests }) => {
 
 const DepartingGuestList = ({ guests }) => {
   if (guests.length === 0) {
-    return <span style={{ color: '#52c41a' }}>None</span>;
+    return <span style={{ color: '#52c41a' }}>Vacant</span>;
   }
   return (
     <List
