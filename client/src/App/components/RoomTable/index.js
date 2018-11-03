@@ -63,7 +63,7 @@ class RoomTable extends Component {
 
   render() {
     return (
-      <Query query={GET_ROOMS}>
+      <Query query={GET_ROOMS} pollInterval={3000}>
         {({ loading, error, data }) => {
           if (error) {
             message.error(error.message);
