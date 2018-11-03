@@ -32,6 +32,7 @@ const RoomCleanButton = ({ room }) => {
           >
             {room.cleaned ? (
               <Button
+                size="small"
                 block
                 type="danger"
                 icon="frown"
@@ -41,7 +42,13 @@ const RoomCleanButton = ({ room }) => {
                 Mark Dirty
               </Button>
             ) : (
-              <Button block icon="smile" loading={loading} onClick={cleanRoom}>
+              <Button
+                size="small"
+                block
+                icon="smile"
+                loading={loading}
+                onClick={cleanRoom}
+              >
                 Mark Clean
               </Button>
             )}

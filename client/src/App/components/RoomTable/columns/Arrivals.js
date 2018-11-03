@@ -9,24 +9,32 @@ export default function(context) {
     title: 'Arrivals',
     key: 'arrivals',
     render: (text, room) => {
-      if (room.arrivingGuests.length === 0) {
-        return <span style={{ color: '#52c41a' }}>None</span>;
-      }
       return (
-        <List
-          size="small"
-          grid={{ gutter: 8, xs: 1, sm: 1, md: 2, lg: 2, xl: 2, xxl: 2 }}
-          dataSource={room.arrivingGuests}
-          renderItem={guest => (
-            <List.Item>
-              <ArrivingGuest roomId={room.id} guest={guest} />
-            </List.Item>
-          )}
-        />
+        <div>
+          <ArrivingGuestList roomId={room.id} guests={room.arrivingGuests} />
+        </div>
       );
     },
   };
 }
+
+const ArrivingGuestList = ({ roomId, guests }) => {
+  if (guests.length === 0) {
+    return <span style={{ color: '#52c41a' }}>None</span>;
+  }
+
+  return (
+    <List
+      size="small"
+      dataSource={guests}
+      renderItem={guest => (
+        <List.Item>
+          <ArrivingGuest roomId={roomId} guest={guest} />
+        </List.Item>
+      )}
+    />
+  );
+};
 
 const ArrivingGuest = ({ roomId, guest }) => (
   <div>
