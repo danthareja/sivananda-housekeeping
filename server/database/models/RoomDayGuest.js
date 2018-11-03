@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const RoomDayGuestSchema = new Schema(
   {
-    _id: { type: Number, required: true, unique: true }, // Retreat Guru reservation_id
+    _id: Number, // Retreat Guru reservation_id
     name: { type: String, required: true },
     isSpecial: { type: Boolean, required: true },
   },
