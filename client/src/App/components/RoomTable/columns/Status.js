@@ -6,7 +6,6 @@ export default function(context) {
     title: 'Status',
     key: 'status',
     width: '100px',
-    align: 'center',
     filterMultiple: false,
     filters: [
       {
