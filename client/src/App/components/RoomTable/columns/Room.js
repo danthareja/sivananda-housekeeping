@@ -6,7 +6,7 @@ export default {
   key: 'room',
   width: '150px',
   render: (text, room) => (
-    <Tooltip title={room.lodgingName} placement="right">
+    <Tooltip title={room.lodgingName} placement="bottom">
       <span>{room.name}</span>
     </Tooltip>
   ),

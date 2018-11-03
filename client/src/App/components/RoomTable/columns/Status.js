@@ -10,7 +10,7 @@ export default {
     <div>
       <div>
         <Tooltip
-          placement="right"
+          placement="bottom"
           title={
             room.cleanedAt
               ? `Last cleaned ${room.cleanedAt} by ${room.cleanedBy}`
