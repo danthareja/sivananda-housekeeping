@@ -80,7 +80,7 @@ class RoomTable extends Component {
               loading={loading}
               pagination={false}
               rowKey="id"
-              scroll={{ x: 768 }}
+              scroll={{ x: 650 }}
             />
           );
         }}

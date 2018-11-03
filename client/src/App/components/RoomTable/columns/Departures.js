@@ -7,7 +7,7 @@ export default function(context) {
   return {
     title: 'Departures',
     key: 'departure',
-    width: '300px',
+    width: '200px',
     filterMultiple: false,
     filters: [
       {
