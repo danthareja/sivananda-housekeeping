@@ -28,6 +28,13 @@ const getRoomRegistrations = async date => {
       limit: 0,
       min_stay: date,
       max_stay: date,
+      // ** undocumented feature from support **
+      // eli [4:17 PM]
+      // You can pass "nocache=xxx" in the URL where xxx is the current timestamp
+      // or a random number to bypass the cache.
+      // There are multiple layers of cache (both app side and provider side)
+      // and that ensures you always get fresh data.
+      nocache: 42,
     },
   });
 
