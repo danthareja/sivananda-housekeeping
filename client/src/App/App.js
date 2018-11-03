@@ -13,7 +13,7 @@ const App = ({ auth, match, location, history }) => {
     <ApolloProvider client={client}>
       <div className="App">
         <Layout className="layout">
-          <Layout.Header style={{ padding: '0px 25px' }}>
+          <Layout.Header style={{ padding: '0px 10px' }}>
             <div className="logo" />
             <Menu
               theme="dark"
@@ -33,7 +33,7 @@ const App = ({ auth, match, location, history }) => {
               </Menu.Item>
             </Menu>
           </Layout.Header>
-          <Layout.Content style={{ padding: '25px 25px' }}>
+          <Layout.Content style={{ padding: '10px 10px' }}>
             <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
               <Route path="/dashboard" component={RoomTable} />
             </div>
