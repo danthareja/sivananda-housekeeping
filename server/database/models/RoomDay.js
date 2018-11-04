@@ -77,28 +77,97 @@ RoomDaySchema.methods._numberOfArrivals = function() {
 RoomDaySchema.statics.reconcile = async function(date, proposed) {
   const existing = await this.find({ date }).exec();
 
-  const toUpdate = _.intersectionBy(proposed, existing, 'room');
+  const toUpdate = _.intersectionBy(existing, proposed, 'room');
   const toCreate = _.differenceBy(proposed, existing, 'room');
   const toRemove = _.differenceBy(existing, proposed, 'room');
 
-  for (let roomDay of toUpdate) {
-    const { nModified } = await this.updateOne(
-      { date, room: roomDay.room },
-      roomDay
-    ).exec();
-    if (nModified === 1) {
-      console.log(`updated roomDay ${roomDay.room} on ${roomDay.date}`);
+  // The proposed array only contains information calculated from Retreat Guru reservations,
+  // meaning that any properties only tracked in the database will not exsting on the proposed object
+  //
+  // For example, a proposed arriving room guests will not have a 'givenRoomKey' property,
+  // but it might contain an update 'flightTime' property.
+  //
+  // We have to take care to only update Retreat Guru properties without modifying database-only ones
+
+  for (let existingRoomDay of toUpdate) {
+    console.log(
+      `updating roomDay ${existingRoomDay.room} for ${existingRoomDay.date}`
+    );
+    const proposedRoomDay = proposed.find(
+      roomDay => roomDay.room === existingRoomDay.room
+    );
+
+    // 1. Update the 'guests' array
+    const guestsToUpdate = _.intersectionBy(
+      existingRoomDay.guests,
+      proposedRoomDay.guests,
+      '_id'
+    );
+    const guestsToCreate = _.differenceBy(
+      proposedRoomDay.guests,
+      existingRoomDay.guests,
+      '_id'
+    );
+    const guestsToRemove = _.differenceBy(
+      existingRoomDay.guests,
+      proposedRoomDay.guests,
+      '_id'
+    );
+
+    // We use mutation methods on purpose to affect the existing guest's array
+    // These mutations will get persisted when we call .save() on the roomDay
+    for (let existingGuest of guestsToUpdate) {
+      console.log(
+        `updating guest ${existingGuest.name} in roomDay ${
+          existingRoomDay.room
+        }`
+      );
+      const proposedGuest = proposedRoomDay.guests.find(
+        guest => guest._id === existingGuest._id
+      );
+      _.assign(existingGuest, proposedGuest);
     }
+
+    for (let proposedGuest of guestsToCreate) {
+      console.log(
+        `adding guest ${proposedGuest.name} in roomDay ${existingRoomDay.room}`
+      );
+      existingRoomDay.guests.push(proposedGuest);
+    }
+
+    for (let existingGuest of guestsToRemove) {
+      console.log(
+        `removing guest ${existingGuest.name} in roomDay ${
+          existingRoomDay.room
+        }`
+      );
+      _.remove(
+        existingRoomDay.guests,
+        guest => guest._id === existingGuest._id
+      );
+    }
+
+    existingRoomDay.markModified('guests');
+
+    // 2. Update all other properties
+    _.assign(existingRoomDay, _.omit(proposedRoomDay, 'guests'));
+
+    // 3. Save the result
+    await existingRoomDay.save();
   }
 
-  for (let roomDay of toCreate) {
-    console.log(`creating roomDay ${roomDay.room} on ${roomDay.date}`);
-    await this.create(roomDay);
+  for (let proposedRoomDay of toCreate) {
+    console.log(
+      `creating roomDay ${proposedRoomDay.room} for ${proposedRoomDay.date}`
+    );
+    await this.create(proposedRoomDay);
   }
 
-  for (let roomDay of toRemove) {
-    console.log(`removing roomDay ${roomDay.room} on ${roomDay.date}`);
-    await roomDay.remove();
+  for (let existingRoomDay of toRemove) {
+    console.log(
+      `removing roomDay ${existingRoomDay.room} for ${existingRoomDay.date}`
+    );
+    await existingRoomDay.remove();
   }
 };
 
