@@ -12,6 +12,8 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
 const server = new ApolloServer({
   debug: true,
+  introspection: true,
+  playground: true,
   typeDefs,
   resolvers,
   async context({ req }) {
