@@ -95,10 +95,14 @@ const seed = async (date = moment().format('YYYY-MM-DD')) => {
   const arrivingByPersonId = _.keyBy(arriving, 'person_id');
   const departingByPersonId = _.keyBy(departing, 'person_id');
 
-  // Transform registraions into room days
   const roomDays = _.chain(arrivingOrDeparting)
+    // If a registration is created without a room,
+    // the registration's room_id is set to 0, which does not exist.
+    .filter(registration => registration.room_id !== 0)
     .groupBy('room_id')
     .map((registrations, roomId) => {
+      // Because these registrations are either arriving or departing,
+      // any that are not arriving must be departing
       const [arriving, departing] = _.partition(
         registrations,
         registration => registration.start_date === date
