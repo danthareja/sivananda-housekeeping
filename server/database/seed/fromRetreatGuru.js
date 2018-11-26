@@ -34,7 +34,7 @@ const getRoomRegistrations = async date => {
       // or a random number to bypass the cache.
       // There are multiple layers of cache (both app side and provider side)
       // and that ensures you always get fresh data.
-      nocache: 42,
+      nocache: Date.now(),
     },
   });
 
