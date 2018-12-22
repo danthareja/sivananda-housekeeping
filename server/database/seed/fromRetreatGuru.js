@@ -20,6 +20,8 @@ const roomProgramCategories = {
   ttc: true,
   speaker: true,
   'yvp-lodging': true,
+  babies: true,
+  'visiting-staff': true;
 };
 
 const getRoomRegistrations = async date => {
