@@ -17,7 +17,9 @@ class RetreatGuruAPI extends RESTDataSource {
     // or a random number to bypass the cache.
     // There are multiple layers of cache (both app side and provider side)
     // and that ensures you always get fresh data.
-    // request.params.set('nocache', Date.now());
+    if (process.env.NODE_ENV === 'production') {
+      request.params.set('nocache', Date.now());
+    }
   }
 
   guessFlightTime(date, timeish) {
