@@ -26,10 +26,14 @@ class Room {
     return this.roomDayGuests.stayingGuests;
   }
 
-  static async fetch(ctx, date) {
+  static async fetch(ctx, date, prioritize = true) {
     const { database, retreatGuru } = ctx.dataSources;
 
-    const roomsDayGuests = await retreatGuru.getRoomsDayGuests(date);
+    let roomsDayGuests = await retreatGuru.getRoomsDayGuests(date);
+    if (prioritize) {
+      roomsDayGuests = Room.prioritize(date, roomsDayGuests);
+    }
+
     return Promise.all(
       roomsDayGuests.map(async roomDayGuests => {
         return new Room(
@@ -118,11 +122,7 @@ class Room {
     return new Room(roomDayGuests, roomDay);
   }
 
-  static async automaticallyPrioritize(ctx, date) {
-    const { database, retreatGuru } = ctx.dataSources;
-
-    const roomsDayGuests = await retreatGuru.getRoomsDayGuests(date);
-
+  static prioritize(date, roomsDayGuests) {
     const [arrivals, noArrivals] = _.partition(
       roomsDayGuests,
       roomDayGuests => roomDayGuests.arrivingGuests.length > 0
@@ -152,7 +152,7 @@ class Room {
         )
     );
 
-    const sortedRoomsDayGuests = [].concat(
+    return [].concat(
       // Special guests sorted by arrival time
       _.sortBy(specialGuests, [
         guests =>
@@ -175,29 +175,6 @@ class Room {
             .flightTime,
       ]),
       noArrivals
-    );
-
-    return Promise.all(
-      sortedRoomsDayGuests.map(async (roomDayGuests, index) => {
-        return new Room(
-          roomDayGuests,
-          await database.RoomDay.findOneAndUpdate(
-            {
-              room: roomDayGuests.roomId,
-              date: date,
-            },
-            {
-              priority: index + 1,
-            },
-            {
-              upsert: true,
-              new: true,
-            }
-          )
-            .populate('room')
-            .exec()
-        );
-      })
     );
   }
 }

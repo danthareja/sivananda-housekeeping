@@ -1,4 +1,4 @@
 type Query {
-  rooms(date: String): [Room!]!
+  rooms(date: String, prioritize: Boolean): [Room!]!
   room(id: Int!, date: String): Room
 }

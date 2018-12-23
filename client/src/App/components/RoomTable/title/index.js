@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import AutoPrioritizeButton from './components/AutoPrioritizeButton';
 
 export default rows => {
   return (
@@ -9,9 +8,6 @@ export default rows => {
         <h1 style={{ fontSize: '1.5em' }}>
           {moment().format('dddd, MMMM Do YYYY')}
         </h1>
-      </div>
-      <div style={{ position: 'absolute', right: '16px' }}>
-        <AutoPrioritizeButton />
       </div>
     </div>
   );

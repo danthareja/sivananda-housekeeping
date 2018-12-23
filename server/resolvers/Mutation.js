@@ -3,13 +3,6 @@ const { Room } = require('../models');
 
 module.exports = {
   Mutation: {
-    async automaticallyPrioritizeRooms(
-      root,
-      { date = moment().format('YYYY-MM-DD') },
-      ctx
-    ) {
-      return Room.automaticallyPrioritize(ctx, date);
-    },
     // Rename this to "check in" or something
     async cleanRoom(
       root,
