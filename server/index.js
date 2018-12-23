@@ -4,7 +4,7 @@ const { ApolloServer } = require('apollo-server-express');
 const authenticate = require('./authenticate');
 const resolvers = require('./resolvers');
 const typeDefs = require('./types');
-const db = require('./database');
+const { database, RetreatGuruAPI } = require('./dataSources');
 
 const app = express();
 
@@ -19,7 +19,12 @@ const server = new ApolloServer({
   async context({ req }) {
     return {
       user: await authenticate(req),
-      db,
+    };
+  },
+  dataSources() {
+    return {
+      database,
+      retreatGuru: new RetreatGuruAPI(),
     };
   },
 });

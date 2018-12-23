@@ -1,4 +1,5 @@
 const moment = require('moment');
+const { Room } = require('../models');
 
 module.exports = {
   Mutation: {
@@ -7,27 +8,22 @@ module.exports = {
       { date = moment().format('YYYY-MM-DD') },
       ctx
     ) {
-      return ctx.db.RoomDay.automaticallyPrioritize(date);
+      return Room.automaticallyPrioritize(ctx, date);
     },
+    // Rename this to "check in" or something
     async cleanRoom(
       root,
       { roomId, date = moment().format('YYYY-MM-DD') },
       ctx
     ) {
-      const room = await ctx.db.Room.clean(roomId, ctx.user.name);
-      const roomDay = await ctx.db.RoomDay.findOne({
-        room: roomId,
-        date,
-      }).exec();
-      roomDay.room = room;
-      return roomDay;
+      return Room.clean(ctx, roomId, date);
     },
     async giveRoomKey(
       root,
       { roomId, guestId, date = moment().format('YYYY-MM-DD') },
       ctx
     ) {
-      return ctx.db.RoomDay.giveKey(date, roomId, guestId, ctx.user.name);
+      return Room.giveKey(ctx, date, roomId, guestId);
     },
   },
 };

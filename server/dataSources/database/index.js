@@ -15,10 +15,6 @@ mongoose
       useNewUrlParser: true,
     }
   )
-  .then(() => seed.fromFixtures())
-  .then(() => {
-    seed.fromRetreatGuru();
-    setInterval(() => seed.fromRetreatGuru(), 1000 * 60);
-  });
+  .then(() => seed.fromFixtures());
 
 module.exports = models;

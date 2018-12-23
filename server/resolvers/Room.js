@@ -3,60 +3,54 @@ const moment = require('moment');
 module.exports = {
   Room: {
     id(room, _, ctx) {
-      return room.room._id;
+      return room.roomDay.room._id;
     },
     name(room, _, ctx) {
-      return room.room.name;
+      return room.roomDay.room.name;
     },
     lodgingId(room, _, ctx) {
-      return room.room.lodgingId;
+      return room.roomDay.room.lodgingId;
     },
     lodgingName(room, _, ctx) {
-      return room.room.lodgingName;
+      return room.roomDay.room.lodgingName;
     },
     location(room, _, ctx) {
-      return room.room.location;
+      return room.roomDay.room.location;
     },
     cleaningTime(room, _, ctx) {
-      return room.room.cleaningTime;
+      return room.roomDay.room.cleaningTime;
     },
     cleaningCartCost(room, _, ctx) {
-      return room.room.cleaningCartCost;
+      return room.roomDay.room.cleaningCartCost;
     },
     cleaned(room, _, ctx) {
-      return room.room.isClean;
+      return room.roomDay.room.isClean;
     },
     cleanedAt(room, _, ctx) {
-      return room.room.lastCleanedAt
-        ? moment(room.room.lastCleanedAt).fromNow()
+      return room.roomDay.room.lastCleanedAt
+        ? moment(room.roomDay.room.lastCleanedAt).fromNow()
         : null;
     },
     cleanedBy(room, _, ctx) {
-      return room.room.lastCleanedBy;
+      return room.roomDay.room.lastCleanedBy;
     },
     housekeeper(room, _, ctx) {
-      return room.housekeeper;
+      return room.roomDay.housekeeper;
     },
     priority(room, _, ctx) {
-      return room.priority;
+      return room.roomDay.priority;
     },
     comments(room, _, ctx) {
-      return room.comments;
+      return room.roomDay.comments;
     },
     arrivingGuests(room, _, ctx) {
-      return room.guests
-        ? room.guests.filter(guest => guest.is === 'ArrivingRoomGuest')
-        : [];
+      return room.arrivingGuests();
     },
     departingGuests(room, _, ctx) {
-      return room.guests
-        ? room.guests.filter(guest => guest.is === 'DepartingRoomGuest')
-        : [];
+      return room.departingGuests();
     },
     stayingGuests(room, _, ctx) {
-      return room.guests
-        ? room.guests.filter(guest => guest.is === 'StayingRoomGuest')
-        : [];
+      return room.stayingGuests();
     },
   },
 };

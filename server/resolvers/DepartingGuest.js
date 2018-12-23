@@ -3,7 +3,7 @@ const moment = require('moment');
 module.exports = {
   DepartingGuest: {
     id(guest, _, ctx) {
-      return guest._id;
+      return guest.id;
     },
     name(guest, _, ctx) {
       return guest.name;
