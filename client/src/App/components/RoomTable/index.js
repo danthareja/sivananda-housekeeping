@@ -74,7 +74,7 @@ class RoomTable extends Component {
       <Query
         query={GET_ROOMS}
         variables={{ date: date.format('YYYY-MM-DD') }}
-        pollInterval={3000}
+        pollInterval={5000}
       >
         {({ loading, error, data }) => {
           if (error) {
