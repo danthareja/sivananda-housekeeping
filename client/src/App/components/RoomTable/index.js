@@ -65,7 +65,9 @@ class RoomTable extends Component {
   };
 
   handleDateChange = date => {
-    this.setState({ date });
+    if (date) {
+      this.setState({ date });
+    }
   };
 
   render() {
