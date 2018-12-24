@@ -41,13 +41,13 @@ RoomSchema.statics.reconcile = async function(proposed) {
   }
 
   for (let room of toCreate) {
-    console.log(`creating room ${room._id} ${room.name}`);
     await this.create(room);
+    console.log(`created room ${room._id} ${room.name}`);
   }
 
   for (let room of toRemove) {
-    console.log(`removing room ${room._id} ${room.name}`);
     await room.remove();
+    console.log(`removed room ${room._id} ${room.name}`);
   }
 };
 
