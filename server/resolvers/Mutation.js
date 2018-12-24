@@ -3,7 +3,6 @@ const { Room } = require('../models');
 
 module.exports = {
   Mutation: {
-    // Rename this to "check in" or something
     async cleanRoom(
       root,
       { roomId, date = moment().format('YYYY-MM-DD') },
@@ -11,6 +10,7 @@ module.exports = {
     ) {
       return Room.clean(ctx, roomId, date);
     },
+    // Rename this to "check in" or something
     async giveRoomKey(
       root,
       { roomId, guestId, date = moment().format('YYYY-MM-DD') },

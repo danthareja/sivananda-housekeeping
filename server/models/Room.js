@@ -145,10 +145,21 @@ class Room {
     const [roomDayGuests, room, roomDay] = await Promise.all([
       retreatGuru.getRoomDayGuests(date, id),
       database.Room.clean(date, id, ctx.user.name),
-      database.RoomDay.findOne({
-        room: id,
-        date,
-      }),
+      database.RoomDay.findOneAndUpdate(
+        {
+          room: id,
+          date: date,
+        },
+        {},
+        {
+          new: true,
+          upsert: true,
+        }
+      )
+        .cache(0, `${id}:${date}`)
+        .populate('room')
+        .lean()
+        .exec(),
     ]);
 
     roomDay.room = room;
