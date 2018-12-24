@@ -3,45 +3,43 @@ const moment = require('moment');
 module.exports = {
   Room: {
     id(room, _, ctx) {
-      return room.roomDay.room._id;
+      return room.id();
     },
     name(room, _, ctx) {
-      return room.roomDay.room.name;
+      return room.name();
     },
     lodgingId(room, _, ctx) {
-      return room.roomDay.room.lodgingId;
+      return room.lodgingId();
     },
     lodgingName(room, _, ctx) {
-      return room.roomDay.room.lodgingName;
+      return room.lodgingName();
     },
     location(room, _, ctx) {
-      return room.roomDay.room.location;
+      return room.location();
     },
     cleaningTime(room, _, ctx) {
-      return room.roomDay.room.cleaningTime;
+      return room.cleaningTime();
     },
     cleaningCartCost(room, _, ctx) {
-      return room.roomDay.room.cleaningCartCost;
+      return room.cleaningCartCost();
     },
     cleaned(room, _, ctx) {
-      return room.roomDay.room.isClean;
+      return room.cleaned();
     },
     cleanedAt(room, _, ctx) {
-      return room.roomDay.room.lastCleanedAt
-        ? moment(room.roomDay.room.lastCleanedAt).fromNow()
-        : null;
+      return room.cleanedAt();
     },
     cleanedBy(room, _, ctx) {
-      return room.roomDay.room.lastCleanedBy;
+      return room.cleanedBy();
     },
     housekeeper(room, _, ctx) {
-      return room.roomDay.housekeeper;
+      return room.housekeeper();
     },
     priority(room, _, ctx) {
-      return room.roomDay.priority;
+      return room.priority();
     },
     comments(room, _, ctx) {
-      return room.roomDay.comments;
+      return room.comments();
     },
     arrivingGuests(room, _, ctx) {
       return room.arrivingGuests();

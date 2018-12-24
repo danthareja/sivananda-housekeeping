@@ -19,8 +19,11 @@ const RoomSchema = new Schema({
   lastCleanedBy: String,
 });
 
-RoomSchema.post('save', function() {
-  cachegoose.clearCache('Rooms');
+RoomSchema.post('save', function(room) {
+  // There's no good way to clear all cached RoomDays
+  // that might be affected by this Room's save,
+  // so we're just going to brute force clear it all
+  cachegoose.clearCache();
 });
 
 RoomSchema.statics.reconcile = async function(proposed) {
@@ -48,7 +51,7 @@ RoomSchema.statics.reconcile = async function(proposed) {
   }
 };
 
-RoomSchema.statics.clean = async function(roomId, user) {
+RoomSchema.statics.clean = async function(date, roomId, user) {
   const room = await this.findById(roomId).exec();
 
   room.isClean = !room.isClean;

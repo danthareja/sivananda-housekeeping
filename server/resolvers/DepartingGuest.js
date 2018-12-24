@@ -3,22 +3,22 @@ const moment = require('moment');
 module.exports = {
   DepartingGuest: {
     id(guest, _, ctx) {
-      return guest.id;
+      return guest.id();
     },
     name(guest, _, ctx) {
-      return guest.name;
+      return guest.name();
     },
     isSpecial(guest, _, ctx) {
-      return guest.isSpecial;
+      return guest.isSpecial();
     },
     flightTime(guest, _, ctx) {
-      return guest.flightTime ? moment(guest.flightTime).format('h:mma') : null;
+      return guest.flightTime();
     },
     lateCheckout(guest, _, ctx) {
-      return guest.lateCheckout;
+      return guest.lateCheckout();
     },
     movingTo(guest, _, ctx) {
-      return guest.movingTo;
+      return guest.movingTo();
     },
   },
 };

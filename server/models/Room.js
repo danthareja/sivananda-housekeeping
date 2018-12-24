@@ -1,29 +1,86 @@
 const _ = require('lodash');
 const moment = require('moment');
 
+const ArrivingGuest = require('./ArrivingGuest');
+const DepartingGuest = require('./DepartingGuest');
+const StayingGuest = require('./StayingGuest');
+
 class Room {
   constructor(roomDayGuests, roomDay) {
     this.roomDayGuests = roomDayGuests;
     this.roomDay = roomDay;
   }
 
+  id() {
+    return this.roomDay.room._id;
+  }
+
+  name() {
+    return this.roomDay.room.name;
+  }
+
+  lodgingId() {
+    return this.roomDay.room.lodgingId;
+  }
+
+  lodgingName() {
+    return this.roomDay.room.lodgingName;
+  }
+
+  location() {
+    return this.roomDay.room.location;
+  }
+
+  cleaningTime() {
+    return this.roomDay.room.cleaningTime;
+  }
+
+  cleaningCartCost() {
+    return this.roomDay.room.cleaningCartCost;
+  }
+
+  cleaned() {
+    return this.roomDay.room.isClean;
+  }
+
+  cleanedAt() {
+    return this.roomDay.room.lastCleanedAt
+      ? moment(this.roomDay.room.lastCleanedAt).fromNow()
+      : null;
+  }
+
+  cleanedBy() {
+    return this.roomDay.room.lastCleanedBy;
+  }
+
+  housekeeper() {
+    return this.roomDay.housekeeper;
+  }
+
+  priority() {
+    return this.roomDay.priority;
+  }
+
+  comments() {
+    return Array.isArray(this.roomDay.comments) ? this.roomDay.comments : [];
+  }
+
   arrivingGuests() {
-    return this.roomDayGuests.arrivingGuests.map(guest => {
-      const key = this.roomDay.keys.find(key => key.givenTo === guest.id);
-      return Object.assign({}, guest, {
-        givenRoomKey: Boolean(key),
-        givenRoomKeyBy: key ? key.givenBy : null,
-        givenRoomKeyAt: key ? key.givenAt : null,
-      });
-    });
+    return this.roomDayGuests.arrivingGuests.map(
+      guest => new ArrivingGuest(guest, this.roomDay)
+    );
   }
 
   departingGuests() {
-    return this.roomDayGuests.departingGuests;
+    return this.roomDayGuests.departingGuests.map(
+      guest => new DepartingGuest(guest, this.roomDay)
+    );
   }
 
   stayingGuests() {
-    return this.roomDayGuests.stayingGuests;
+    return this.roomDayGuests.stayingGuests.map(
+      guest => new StayingGuest(guest, this.roomDay)
+    );
   }
 
   static async fetch(ctx, date, prioritize = true) {
@@ -49,7 +106,9 @@ class Room {
               upsert: true,
             }
           )
+            .cache(0, `${roomDayGuests.roomId}:${date}`)
             .populate('room')
+            .lean()
             .exec()
         );
       })
@@ -71,7 +130,9 @@ class Room {
           upsert: true,
         }
       )
+        .cache(0, `${id}:${date}`)
         .populate('room')
+        .lean()
         .exec(),
     ]);
 
@@ -83,7 +144,7 @@ class Room {
 
     const [roomDayGuests, room, roomDay] = await Promise.all([
       retreatGuru.getRoomDayGuests(date, id),
-      database.Room.clean(id, ctx.user.name),
+      database.Room.clean(date, id, ctx.user.name),
       database.RoomDay.findOne({
         room: id,
         date,
@@ -98,26 +159,10 @@ class Room {
   static async giveKey(ctx, date, id, guestId) {
     const { database, retreatGuru } = ctx.dataSources;
 
-    const roomDayGuests = await retreatGuru.getRoomDayGuests(date, id);
-    const roomDay = await database.RoomDay.findOne({
-      room: id,
-      date,
-    })
-      .populate('room')
-      .exec();
-
-    const index = roomDay.keys.findIndex(key => key.givenTo === guestId);
-    if (index > -1) {
-      roomDay.keys.splice(index, 1);
-    } else {
-      roomDay.keys.push({
-        givenTo: guestId,
-        givenBy: ctx.user.name,
-        givenAt: new Date(),
-      });
-    }
-
-    await roomDay.save();
+    const [roomDayGuests, roomDay] = await Promise.all([
+      retreatGuru.getRoomDayGuests(date, id),
+      database.RoomDay.giveKey(date, id, guestId, ctx.user.name),
+    ]);
 
     return new Room(roomDayGuests, roomDay);
   }
