@@ -17,12 +17,33 @@ class RetreatGuruAPI extends RESTDataSource {
     // or a random number to bypass the cache.
     // There are multiple layers of cache (both app side and provider side)
     // and that ensures you always get fresh data.
-    if (process.env.NODE_ENV === 'production') {
-      request.params.set('nocache', Date.now());
-    }
+    request.params.set('nocache', Date.now());
   }
 
-  guessFlightTime(date, timeish) {
+  removeURLParameter(url, parameter) {
+    const urlparts = url.split('?');
+    if (urlparts.length >= 2) {
+      const prefix = encodeURIComponent(parameter) + '=';
+      const pars = urlparts[1].split(/[&;]/g);
+
+      //reverse iteration as may be destructive
+      for (let i = pars.length; i-- > 0; ) {
+        //idiom for string.startsWith
+        if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+          pars.splice(i, 1);
+        }
+      }
+
+      return urlparts[0] + (pars.length > 0 ? '?' + pars.join('&') : '');
+    }
+    return url;
+  }
+
+  cacheKeyFor(request) {
+    return this.removeURLParameter(request.url, 'nocache');
+  }
+
+  guessTime(date, timeish) {
     // TODO: format when timish is "1pm"
     if (!date || !timeish) {
       return;
@@ -66,6 +87,7 @@ class RetreatGuruAPI extends RESTDataSource {
         limit: 0,
         min_stay: date,
         max_stay: date,
+        include: 'all_questions',
       },
       {
         cacheOptions: {
@@ -130,10 +152,11 @@ class RetreatGuruAPI extends RESTDataSource {
             isSpecial:
               registration.program_categories.indexOf('speaker') > -1 ||
               registration.program_categories.indexOf('visiting-staff') > -1,
-            flightTime: this.guessFlightTime(
+            flightTime: this.guessTime(
               date,
               registration.questions.flight_arrival_time_in_nassau_2
             ),
+            roomSetup: registration.questions.room_set_up_notes,
             movingFrom: departingByPersonId[registration.person_id]
               ? departingByPersonId[registration.person_id].room
               : undefined,
@@ -145,10 +168,11 @@ class RetreatGuruAPI extends RESTDataSource {
             isSpecial:
               registration.program_categories.indexOf('speaker') > -1 ||
               registration.program_categories.indexOf('visiting-staff') > -1,
-            flightTime: this.guessFlightTime(
+            flightTime: this.guessTime(
               date,
               registration.questions.flight_departure_time_from_nassau
             ),
+            lateCheckout: registration.questions.late_checkout,
             movingTo: arrivingByPersonId[registration.person_id]
               ? arrivingByPersonId[registration.person_id].room
               : undefined,

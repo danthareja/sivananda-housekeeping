@@ -25,6 +25,7 @@ const GET_ROOMS = gql`
         name
         isSpecial
         flightTime
+        roomSetup
         movingFrom
         givenRoomKey
         givenRoomKeyAt
@@ -35,6 +36,7 @@ const GET_ROOMS = gql`
         name
         isSpecial
         flightTime
+        lateCheckout
         movingTo
       }
       stayingGuests {

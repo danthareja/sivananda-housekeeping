@@ -19,20 +19,27 @@ export default function(context) {
 }
 
 const ArrivingGuestList = ({ roomId, guests }) => {
+  const roomSetup = guests.filter(guest => guest.roomSetup);
+
   if (guests.length === 0) {
     return <span style={{ color: '#52c41a' }}>None</span>;
   }
 
   return (
-    <List
-      size="small"
-      dataSource={guests}
-      renderItem={guest => (
-        <List.Item>
-          <ArrivingGuest roomId={roomId} guest={guest} />
-        </List.Item>
-      )}
-    />
+    <div>
+      <List
+        size="small"
+        dataSource={guests}
+        renderItem={guest => (
+          <List.Item>
+            <ArrivingGuest roomId={roomId} guest={guest} />
+          </List.Item>
+        )}
+      />
+      {roomSetup.length > 0 && <strong>Setup notes:</strong>}
+      {roomSetup.length > 0 &&
+        roomSetup.map(guest => <div key={guest.id}>{guest.roomSetup}</div>)}
+    </div>
   );
 };
 

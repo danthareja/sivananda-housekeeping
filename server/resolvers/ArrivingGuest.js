@@ -14,6 +14,9 @@ module.exports = {
     flightTime(guest, _, ctx) {
       return guest.flightTime ? moment(guest.flightTime).format('h:mma') : null;
     },
+    roomSetup(guest, _, ctx) {
+      return guest.roomSetup;
+    },
     movingFrom(guest, _, ctx) {
       return guest.movingFrom;
     },

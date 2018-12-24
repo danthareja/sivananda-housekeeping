@@ -18,7 +18,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   cache: new InMemoryLRUCache({
-    maxSize: 20 * 1000 * 1000, // divided by 2 bytes per string char ~ 10MB cache storage
+    maxSize: 100 * 1000 * 1000, // divided by 2 bytes per string char ~ 50MB cache storage
   }),
   async context({ req }) {
     return {

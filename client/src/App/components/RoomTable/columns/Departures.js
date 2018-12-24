@@ -80,6 +80,7 @@ const DepartingGuestList = ({ guests }) => {
 const DepartingGuest = ({ guest }) => (
   <div>
     <GuestName guest={guest} />
+    {guest.lateCheckout && <div>(late checkout: {guest.lateCheckout})</div>}
     {guest.movingTo ? (
       <DepartingGuestRoomMove guest={guest} />
     ) : (
