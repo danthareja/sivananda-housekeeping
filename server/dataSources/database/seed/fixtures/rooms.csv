@@ -85,6 +85,7 @@ room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,locat
 255,OM7,46,Garden Room Single (Private),12,5,west
 256,OM8,40,Garden Room (Shared),15,3,west
 257,OM9,38,Dormitory,20,2,west
+6534,Platform A-9,47,Platform Tent,10,5,south east
 79,Platform A-10,47,Platform Tent,10,5,south east
 267,Platform A-11,47,Platform Tent,10,5,south east
 268,Platform A-12,47,Platform Tent,10,5,south east
