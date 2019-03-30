@@ -96,6 +96,7 @@ room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,locat
 273,Platform B-3 (WBC),47,Platform Tent,10,5,north west
 274,Platform B-4 (WBC),47,Platform Tent,10,5,north west
 275,Platform B-5 (WBC),47,Platform Tent,10,5,north west
+5973,Platform B-6,47,Platform Tent,10,5,north west
 276,Platform G-1 (WBC),47,Platform Tent,10,5,north east
 285,Platform G-10,47,Platform Tent,10,5,north east
 286,Platform G-11 (WBC),47,Platform Tent,10,5,north east
@@ -283,7 +284,6 @@ room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,locat
 6399,Tent Space 98,50,Tent Space,0,0,
 6400,Tent Space 99,50,Tent Space,0,0,
 6401,Tent Space 100,50,Tent Space,0,0,
-5973,The Glorious Republic of Ganeshastan,47,Platform Tent,10,5,north west
 402,Vishnu,38,Dormitory,20,2,north west
 433,Yamuna 1,36,Beachfront Deluxe Room (Private),90,2,north
 434,Yamuna 2,36,Beachfront Deluxe Room (Private),90,2,north
