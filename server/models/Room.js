@@ -11,45 +11,79 @@ class Room {
     this.roomDay = roomDay;
   }
 
+  isNotInDatabase() {
+    return this.roomDay.room === null;
+  }
+
   id() {
+    if (this.isNotInDatabase()) {
+      return this.roomDayGuests.room.id;
+    }
     return this.roomDay.room._id;
   }
 
   name() {
+    if (this.isNotInDatabase()) {
+      return this.roomDayGuests.room.name;
+    }
     return this.roomDay.room.name;
   }
 
   lodgingId() {
+    if (this.isNotInDatabase()) {
+      return this.roomDayGuests.room.lodgingId;
+    }
     return this.roomDay.room.lodgingId;
   }
 
   lodgingName() {
+    if (this.isNotInDatabase()) {
+      return this.roomDayGuests.room.lodgingName;
+    }
     return this.roomDay.room.lodgingName;
   }
 
   location() {
+    if (this.isNotInDatabase()) {
+      return '';
+    }
     return this.roomDay.room.location;
   }
 
   cleaningTime() {
+    if (this.isNotInDatabase()) {
+      return 0;
+    }
     return this.roomDay.room.cleaningTime;
   }
 
   cleaningCartCost() {
+    if (this.isNotInDatabase()) {
+      return 0;
+    }
     return this.roomDay.room.cleaningCartCost;
   }
 
   cleaned() {
+    if (this.isNotInDatabase()) {
+      return false;
+    }
     return this.roomDay.room.isClean;
   }
 
   cleanedAt() {
+    if (this.isNotInDatabase()) {
+      return null;
+    }
     return this.roomDay.room.lastCleanedAt
       ? moment(this.roomDay.room.lastCleanedAt).fromNow()
       : null;
   }
 
   cleanedBy() {
+    if (this.isNotInDatabase()) {
+      return null;
+    }
     return this.roomDay.room.lastCleanedBy;
   }
 
@@ -97,7 +131,7 @@ class Room {
           roomDayGuests,
           await database.RoomDay.findOneAndUpdate(
             {
-              room: roomDayGuests.roomId,
+              room: roomDayGuests.room.id,
               date: date,
             },
             {},
@@ -106,7 +140,7 @@ class Room {
               upsert: true,
             }
           )
-            .cache(0, `${roomDayGuests.roomId}:${date}`)
+            .cache(0, `${roomDayGuests.room.id}:${date}`)
             .populate('room')
             .lean()
             .exec()

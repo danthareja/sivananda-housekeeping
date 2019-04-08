@@ -111,7 +111,7 @@ class RetreatGuruAPI extends RESTDataSource {
 
   async getRoomDayGuests(date, roomId) {
     const roomsDayGuests = await this.getRoomsDayGuests(date);
-    return roomsDayGuests.find(roomDayGuest => roomDayGuest.roomId === roomId);
+    return roomsDayGuests.find(roomDayGuest => roomDayGuest.room.id === roomId);
   }
 
   async getRoomsDayGuests(date) {
@@ -191,7 +191,12 @@ class RetreatGuruAPI extends RESTDataSource {
             : [];
 
           return {
-            roomId: parseInt(roomId), // It got converted to a string as an object key in groupBy
+            room: {
+              id: parseInt(roomId), // It got converted to a string as an object key in groupBy
+              name: registrations[0].room,
+              lodgingId: registrations[0].lodging_id,
+              lodgingName: registrations[0].lodging,
+            },
             arrivingGuests,
             departingGuests,
             stayingGuests,

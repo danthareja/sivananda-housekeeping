@@ -11,6 +11,7 @@ import './index.css';
 const GET_ROOMS = gql`
   query GetRooms($date: String!) {
     rooms(date: $date) {
+      isNotInDatabase
       id
       name
       lodgingName
@@ -99,6 +100,7 @@ class RoomTable extends Component {
                 loading={loading}
                 pagination={false}
                 rowKey="id"
+                rowClassName={room => (room.isNotInDatabase ? 'warning' : '')}
                 scroll={{ x: 650 }}
               />
             </div>

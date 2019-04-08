@@ -2,6 +2,9 @@ const moment = require('moment');
 
 module.exports = {
   Room: {
+    isNotInDatabase(room, _, ctx) {
+      return room.isNotInDatabase();
+    },
     id(room, _, ctx) {
       return room.id();
     },

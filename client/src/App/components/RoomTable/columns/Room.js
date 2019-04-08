@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip, Input, Button } from 'antd';
+import { Tooltip, Input, Button, Icon } from 'antd';
 import RoomCleanButton from './components/RoomCleanButton';
 
 export default function(context) {
@@ -46,12 +46,20 @@ export default function(context) {
     render: (text, room) => {
       const { roomSearchText } = context.state;
 
+      let tooltip = room.lodgingName;
+
+      if (room.isNotInDatabase) {
+        tooltip =
+          'Warning! This room is not in the database. Some functionality is limited';
+      }
+
       return (
         <div>
           <div>
-            <Tooltip title={room.lodgingName} placement="top">
+            <Tooltip title={tooltip} placement="top">
               {roomSearchText ? (
                 <span style={{ fontStyle: 'bold' }}>
+                  {room.isNotInDatabase && <Icon type="warning" />}
                   {room.name
                     .split(
                       new RegExp(
@@ -72,7 +80,10 @@ export default function(context) {
                     )}
                 </span>
               ) : (
-                <span style={{ fontStyle: 'bold' }}>{room.name}</span>
+                <span style={{ fontStyle: 'bold' }}>
+                  {room.isNotInDatabase && <Icon type="warning" />}
+                  {room.name}
+                </span>
               )}
             </Tooltip>
           </div>

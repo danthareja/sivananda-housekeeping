@@ -17,47 +17,38 @@ const GIVE_ROOM_KEY = gql`
   }
 `;
 
-const RoomCleanButton = ({ roomId, guest }) => {
+const RoomKeyButton = ({ room, guest }) => {
   return (
     <Mutation
       mutation={GIVE_ROOM_KEY}
-      variables={{ roomId, guestId: guest.id }}
+      variables={{ roomId: room.id, guestId: guest.id }}
     >
       {(giveRoomKey, { error, loading }) => {
         if (error) {
           message.error(error.message);
         }
+
+        let tooltip = guest.givenRoomKeyAt
+          ? `Last given ${guest.givenRoomKeyAt} by ${guest.givenRoomKeyBy}`
+          : 'Never given key';
+
+        if (room.isNotInDatabase) {
+          tooltip =
+            'Warning! This room is not in the database. Some functionality is limited';
+        }
+
         return (
-          <Tooltip
-            placement="bottom"
-            title={
-              guest.givenRoomKeyAt
-                ? `Last given ${guest.givenRoomKeyAt} by ${
-                    guest.givenRoomKeyBy
-                  }`
-                : 'Never given key'
-            }
-          >
-            {guest.givenRoomKey ? (
-              <Button
-                size="small"
-                type="danger"
-                icon="key"
-                loading={loading}
-                onClick={giveRoomKey}
-              >
-                Take Key
-              </Button>
-            ) : (
-              <Button
-                size="small"
-                icon="key"
-                loading={loading}
-                onClick={giveRoomKey}
-              >
-                Give Key
-              </Button>
-            )}
+          <Tooltip placement="bottom" title={tooltip}>
+            <Button
+              disabled={room.isNotInDatabase}
+              size="small"
+              type={guest.givenRoomKey ? 'danger' : 'default'}
+              icon="key"
+              loading={loading}
+              onClick={giveRoomKey}
+            >
+              {guest.givenRoomKey ? 'Take Key' : 'Give Key'}
+            </Button>
           </Tooltip>
         );
       }}
@@ -65,4 +56,4 @@ const RoomCleanButton = ({ roomId, guest }) => {
   );
 };
 
-export default RoomCleanButton;
+export default RoomKeyButton;

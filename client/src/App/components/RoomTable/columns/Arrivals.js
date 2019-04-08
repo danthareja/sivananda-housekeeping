@@ -11,14 +11,14 @@ export default function(context) {
     render: (text, room) => {
       return (
         <div>
-          <ArrivingGuestList roomId={room.id} guests={room.arrivingGuests} />
+          <ArrivingGuestList room={room} guests={room.arrivingGuests} />
         </div>
       );
     },
   };
 }
 
-const ArrivingGuestList = ({ roomId, guests }) => {
+const ArrivingGuestList = ({ room, guests }) => {
   const roomSetup = guests.filter(guest => guest.roomSetup);
 
   if (guests.length === 0) {
@@ -32,7 +32,7 @@ const ArrivingGuestList = ({ roomId, guests }) => {
         dataSource={guests}
         renderItem={guest => (
           <List.Item>
-            <ArrivingGuest roomId={roomId} guest={guest} />
+            <ArrivingGuest room={room} guest={guest} />
           </List.Item>
         )}
       />
@@ -43,7 +43,7 @@ const ArrivingGuestList = ({ roomId, guests }) => {
   );
 };
 
-const ArrivingGuest = ({ roomId, guest }) => (
+const ArrivingGuest = ({ room, guest }) => (
   <div>
     <GuestName guest={guest} />
     {guest.movingFrom ? (
@@ -51,7 +51,7 @@ const ArrivingGuest = ({ roomId, guest }) => (
     ) : (
       <ArrivingGuestFlightTime guest={guest} />
     )}
-    <RoomKeyButton roomId={roomId} guest={guest} />
+    <RoomKeyButton room={room} guest={guest} />
   </div>
 );
 

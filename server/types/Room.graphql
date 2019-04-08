@@ -1,9 +1,14 @@
 type Room {
-  # static from database
+  isNotInDatabase: Boolean!
+
+  # static from database (fallback Retreat Guru)
   id: Int!
   name: String!
   lodgingId: Int!
   lodgingName: String!
+
+  
+  # static from database
   location: String!
   cleaningTime: Int!
   cleaningCartCost: Int!

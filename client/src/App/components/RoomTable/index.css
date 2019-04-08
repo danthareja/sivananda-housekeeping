@@ -17,3 +17,7 @@
 .highlight {
   color: #1890ff;
 }
+
+.warning {
+  background-color: #ffcc00;
+}
