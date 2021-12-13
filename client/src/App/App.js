@@ -39,7 +39,7 @@ const App = ({ auth, match, location, history }) => {
             </div>
           </Layout.Content>
           <Layout.Footer style={{ textAlign: 'center' }}>
-            Sivananda Bahamas ©2018
+            Sivananda Bahamas ©2021
           </Layout.Footer>
         </Layout>
       </div>
