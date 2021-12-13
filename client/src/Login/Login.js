@@ -10,8 +10,8 @@ class Login extends Component {
       <div className="container">
         {isAuthenticated() && <h4>You are logged in!</h4>}
         {!isAuthenticated() && (
-          <h4>
-            You are not logged in! Please{' '}
+          <h2 style={{ marginTop: '2rem', textAlign: 'center' }}>
+            You are not logged in! <br /> Please{' '}
             <a
               href="#"
               style={{ cursor: 'pointer' }}
@@ -20,7 +20,7 @@ class Login extends Component {
               Log In
             </a>{' '}
             to continue.
-          </h4>
+          </h2>
         )}
       </div>
     );
