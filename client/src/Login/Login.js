@@ -6,22 +6,21 @@ class Login extends Component {
   }
   render() {
     const { isAuthenticated } = this.props.auth;
+
+    if (isAuthenticated()) this.props.history.replace('/');
     return (
       <div className="container">
-        {isAuthenticated() && <h4>You are logged in!</h4>}
-        {!isAuthenticated() && (
-          <h2 style={{ marginTop: '2rem', textAlign: 'center' }}>
-            You are not logged in! <br /> Please{' '}
-            <a
-              href="#"
-              style={{ cursor: 'pointer' }}
-              onClick={this.login.bind(this)}
-            >
-              Log In
-            </a>{' '}
-            to continue.
-          </h2>
-        )}
+        <h2 style={{ marginTop: '2rem', textAlign: 'center' }}>
+          You are not logged in! <br /> Please{' '}
+          <a
+            href="#"
+            style={{ cursor: 'pointer' }}
+            onClick={this.login.bind(this)}
+          >
+            Log In
+          </a>{' '}
+          to continue.
+        </h2>
       </div>
     );
   }
