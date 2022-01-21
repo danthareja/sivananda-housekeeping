@@ -6,8 +6,8 @@
   "author": "Dan Thareja <danthareja@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "8.11.x",
-    "npm": "5.6.x"
+    "node": "16.13.x",
+    "npm": "8.1.x"
   },
   "scripts": {
     "start": "node index.js",
