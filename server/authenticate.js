@@ -6,7 +6,7 @@ const client = jwksClient({
   cache: true,
   rateLimit: true,
   jwksRequestsPerMinute: 5,
-  jwksUri: 'https://lingering-cloud-1820.auth0.com/.well-known/jwks.json',
+  jwksUri: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/.well-known/jwks.json`,
 });
 
 function getKey(header, callback) {
@@ -17,7 +17,7 @@ function getKey(header, callback) {
 }
 
 const options = {
-  issuer: 'https://lingering-cloud-1820.auth0.com/',
+  issuer: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/`,
   algorithms: ['RS256'],
 };
 
