@@ -178,7 +178,7 @@ class Room {
 
     const [roomDayGuests, room, roomDay] = await Promise.all([
       retreatGuru.getRoomDayGuests(date, id),
-      database.Room.clean(date, id, ctx.user.name),
+      database.Room.clean(date, id, ''),
       database.RoomDay.findOneAndUpdate(
         {
           room: id,
@@ -206,7 +206,7 @@ class Room {
 
     const [roomDayGuests, roomDay] = await Promise.all([
       retreatGuru.getRoomDayGuests(date, id),
-      database.RoomDay.giveKey(date, id, guestId, ctx.user.name),
+      database.RoomDay.giveKey(date, id, guestId, ''),
     ]);
 
     return new Room(roomDayGuests, roomDay);
