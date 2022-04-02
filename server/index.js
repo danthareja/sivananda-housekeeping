@@ -37,11 +37,12 @@ const server = new ApolloServer({
 server.applyMiddleware({ app });
 
 app.post('/login', express.json(), async (req, res) => {
-  console.log('logging in', req.body);
+  console.log('logging in', req.body.username);
   try {
     const token = await login(req.body.username, req.body.password);
     res.send(token);
   } catch (e) {
+    console.error('error in login', e, req.body.username);
     res.send('error in login');
   }
 });
