@@ -3,7 +3,6 @@ import { Route, Router, Switch, Redirect } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import App from './App/App';
 import Login from './Login/Login';
-import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 
 const history = createHistory();
@@ -14,7 +13,6 @@ export const makeMainRoutes = () => {
     <Router history={history}>
       <Switch>
         <PublicRoute path="/login" component={Login} />
-        <PublicRoute path="/callback" component={Callback} />
         <PrivateRoute path="/" component={App} />
       </Switch>
     </Router>

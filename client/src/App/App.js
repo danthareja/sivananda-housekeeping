@@ -29,7 +29,7 @@ const App = ({ auth, match, location, history }) => {
                 key="2"
                 style={{ float: 'right' }}
               >
-                Log Out
+                Log Out {auth.getUser().username}
               </Menu.Item>
             </Menu>
           </Layout.Header>
@@ -39,7 +39,7 @@ const App = ({ auth, match, location, history }) => {
             </div>
           </Layout.Content>
           <Layout.Footer style={{ textAlign: 'center' }}>
-            Sivananda Bahamas ©2021
+            Sivananda Bahamas ©2022
           </Layout.Footer>
         </Layout>
       </div>

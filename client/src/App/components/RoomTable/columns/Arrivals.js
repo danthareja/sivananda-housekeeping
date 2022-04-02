@@ -2,6 +2,9 @@ import React from 'react';
 import { List, Icon } from 'antd';
 import GuestName from './components/GuestName';
 import RoomKeyButton from './components/RoomKeyButton';
+import Auth from '../../../../Auth/Auth';
+
+const auth = new Auth();
 
 // Colors from: https://ant.design/docs/react/customize-theme
 export default function(context) {
@@ -51,7 +54,9 @@ const ArrivingGuest = ({ room, guest }) => (
     ) : (
       <ArrivingGuestFlightTime guest={guest} />
     )}
-    <RoomKeyButton room={room} guest={guest} />
+    {(auth.getUser().role === 'EDITOR' || auth.getUser().role === 'ADMIN') && (
+      <RoomKeyButton room={room} guest={guest} />
+    )}
   </div>
 );
 

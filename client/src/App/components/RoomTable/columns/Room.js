@@ -1,6 +1,9 @@
 import React from 'react';
 import { Tooltip, Input, Button, Icon } from 'antd';
 import RoomCleanButton from './components/RoomCleanButton';
+import Auth from '../../../../Auth/Auth';
+
+const auth = new Auth();
 
 export default function(context) {
   return {
@@ -87,9 +90,12 @@ export default function(context) {
               )}
             </Tooltip>
           </div>
-          <div style={{ marginTop: '6px' }}>
-            <RoomCleanButton room={room} />
-          </div>
+          {(auth.getUser().role === 'EDITOR' ||
+            auth.getUser().role === 'ADMIN') && (
+            <div style={{ marginTop: '6px' }}>
+              <RoomCleanButton room={room} />
+            </div>
+          )}
         </div>
       );
     },

@@ -2,14 +2,15 @@ const path = require('path');
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const { InMemoryLRUCache } = require('apollo-server-caching');
-const authenticate = require('./authenticate');
+const { authenticate, login } = require('./authenticate');
 const resolvers = require('./resolvers');
 const typeDefs = require('./types');
 const { database, RetreatGuruAPI } = require('./dataSources');
-
+const cors = require('cors');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+app.use(cors('*'));
 
 const server = new ApolloServer({
   debug: true,
@@ -34,6 +35,16 @@ const server = new ApolloServer({
 });
 
 server.applyMiddleware({ app });
+
+app.post('/login', express.json(), async (req, res) => {
+  console.log('logging in', req.body);
+  try {
+    const token = await login(req.body.username, req.body.password);
+    res.send(token);
+  } catch (e) {
+    res.send('error in login');
+  }
+});
 
 // Default routing requests to the client
 app.get('*', function(req, res) {
