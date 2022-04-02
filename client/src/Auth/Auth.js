@@ -27,6 +27,7 @@ export default class Auth {
       this.history.replace('/dashboard');
     } catch {
       console.error('error in login');
+      alert('Login not successful');
     }
   }
 
