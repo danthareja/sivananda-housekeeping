@@ -22,7 +22,9 @@ export default function(context) {
 }
 
 const ArrivingGuestList = ({ room, guests }) => {
-  const roomSetup = guests.filter(guest => guest.roomSetup);
+  const roomSetup = guests.filter(
+    guest => guest.roomSetup[0] || guest.roomSetup[1]
+  );
 
   if (guests.length === 0) {
     return <span style={{ color: '#52c41a' }}>None</span>;
@@ -41,7 +43,13 @@ const ArrivingGuestList = ({ room, guests }) => {
       />
       {roomSetup.length > 0 && <strong>Setup notes:</strong>}
       {roomSetup.length > 0 &&
-        roomSetup.map(guest => <div key={guest.id}>{guest.roomSetup}</div>)}
+        roomSetup.map(guest => (
+          <div key={guest.id}>
+            {guest.roomSetup.map(singleRoomSetup => (
+              <div>{singleRoomSetup}</div>
+            ))}
+          </div>
+        ))}
     </div>
   );
 };

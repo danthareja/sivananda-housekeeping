@@ -156,7 +156,11 @@ class RetreatGuruAPI extends RESTDataSource {
               date,
               registration.questions.flight_arrival_time_in_nassau_2
             ),
-            roomSetup: registration.questions.room_set_up_notes,
+            roomSetup: [
+              registration.questions.room_set_up_notes,
+              registration.questions
+                .for_oceanview_deluxe_rooms_only_do_you_want_1_king_bed_or_2_twin_beds_in_the_room,
+            ],
             movingFrom: departingByPersonId[registration.person_id]
               ? departingByPersonId[registration.person_id].room
               : undefined,
