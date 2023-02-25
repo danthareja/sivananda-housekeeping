@@ -1,291 +1,292 @@
 room_id,room_name,lodging_id,lodging_name,cleaning_time,cleaning_cart_cost,location
-53,0,38,Dormitory,20,2,main house
-54,1,41,Garden Room Double (Private),12,5,main house
-55,2,41,Garden Room Double (Private),12,5,main house
-56,3,46,Garden Room Single (Private),12,5,main house
-57,4,46,Garden Room Single (Private),12,5,main house
-58,5,41,Garden Room Double (Private),12,5,main house
-59,6,41,Garden Room Double (Private),12,5,main house
-60,7,41,Garden Room Double (Private),12,5,main house
-62,9,41,Garden Room Double (Private),12,5,main house
-63,10,41,Garden Room Double (Private),12,5,main house
-64,11,40,Garden Room (Shared),15,3,main house
-65,12,41,Garden Room Double (Private),12,5,main house
-66,14,40,Garden Room (Shared),15,3,west
-67,15,40,Garden Room (Shared),15,3,west
-70,18,37,Garden Room (Shared) with Bathroom,30,3,bay
-71,19,37,Garden Room (Shared) with Bathroom,30,3,bay
-72,20,37,Garden Room (Shared) with Bathroom,30,3,bay
-73,21,46,Garden Room Single (Private),12,5,west
-74,22,40,Garden Room (Shared),15,3,west
-75,24,40,Garden Room (Shared),15,3,west
-76,25,46,Garden Room Single (Private),12,5,bay
-77,23a,37,Garden Room (Shared) with Bathroom,30,3,bay
-78,23b,37,Garden Room (Shared) with Bathroom,30,3,bay
-5996,Ashram Ground Tent Durga Devi,5991,Ashram Supplied Ground Tent,0,0,
-5993,Ashram Ground Tent Mangala,5991,Ashram Supplied Ground Tent,0,0,
-5995,Ashram Ground Tent Marita,5991,Ashram Supplied Ground Tent,0,0,
-5992,Ashram Ground Tent Narayan,5991,Ashram Supplied Ground Tent,0,0,
-6044,Ashram Ground Tent New York,5991,Ashram Supplied Ground Tent,0,0,
-5994,Ashram Ground Tent TTC Assistant,5991,Ashram Supplied Ground Tent,0,0,
-92,Beach Hut E1,35,Beach Hut (Shared),15,3,north
-93,Beach Hut E2,35,Beach Hut (Shared),15,3,north
-94,Beach Hut E3,35,Beach Hut (Shared),15,3,north
-95,Beach Hut E4,35,Beach Hut (Shared),15,3,north
-96,Beach Hut E5,35,Beach Hut (Shared),15,3,north
-97,Beach Hut E6,35,Beach Hut (Shared),15,3,north
-403,Beach Hut W1,35,Beach Hut (Shared),15,3,north
-404,Beach Hut W2,35,Beach Hut (Shared),15,3,north
-405,Beach Hut W3,35,Beach Hut (Shared),15,3,north
-406,Beach Hut W4,35,Beach Hut (Shared),15,3,north
-407,Beach Hut W5,35,Beach Hut (Shared),15,3,north
-408,Beach Hut W6,35,Beach Hut (Shared),15,3,north
-82,Dwaraka 01,42,Staff Residence,25,5,south east
-84,Dwaraka 02,42,Staff Residence,25,5,south east
-85,Dwaraka 03,42,Staff Residence,25,5,south east
-86,Dwaraka 04,42,Staff Residence,25,5,south east
-87,Dwaraka 05,42,Staff Residence,25,5,south east
-88,Dwaraka 06,42,Staff Residence,25,5,south east
-89,Dwaraka 07,42,Staff Residence,25,5,south east
-90,Dwaraka 08,42,Staff Residence,25,5,south east
-91,Dwaraka 09,42,Staff Residence,25,5,south east
-83,Dwaraka 10,42,Staff Residence,25,5,south east
-114,Ganga 1,36,Beachfront Deluxe Room (Private),90,2,north
-115,Ganga 2,36,Beachfront Deluxe Room (Private),90,2,north
-116,Ganga 3,36,Beachfront Deluxe Room (Private),90,2,north
-117,Ganga 4,36,Beachfront Deluxe Room (Private),90,2,north
-118,Gopala,46,Garden Room Single (Private),12,5,main house
-127,Kutir Hamsa,42,Staff Residence,0,5,
-119,Kutir Iswari,42,Staff Residence,25,5,south east
-129,Kutir Jnaneshwari Chaitanya,42,Staff Residence,0,5,
-130,Kutir Lakshmi,42,Staff Residence,10,5,
-588,Kutir Priest,42,Staff Residence,0,5,
-126,Kutir Rukmini Chaitanya,42,Staff Residence,0,5,
-128,Kutir Swami Brahmananda,42,Staff Residence,0,5,
-131,Kutir Swami Hridyananda,42,Staff Residence,0,5,
-190,Meditation Room,38,Dormitory,20,1,main house
-191,Nassau 01,43,External Accommodation,0,0,
-202,Nassau 02,43,External Accommodation,0,0,
-204,Nassau 03,43,External Accommodation,0,0,
-205,Nassau 04,43,External Accommodation,0,0,
-206,Nassau 05,43,External Accommodation,0,0,
-207,Nassau 06,43,External Accommodation,0,0,
-208,Nassau 07,43,External Accommodation,0,0,
-209,Nassau 08,43,External Accommodation,0,0,
-210,Nassau 09,43,External Accommodation,0,0,
-192,Nassau 10,43,External Accommodation,0,0,
-258,Om Sweet Om,38,Dormitory,20,2,north west
-247,OM1,46,Garden Room Single (Private),12,5,west
-248,OM10,41,Garden Room Double (Private),12,5,west
-249,OM11,40,Garden Room (Shared),15,3,west
-250,OM2,40,Garden Room (Shared),15,3,west
-251,OM3,38,Dormitory,20,2,west
-252,OM4,41,Garden Room Double (Private),12,5,west
-253,OM5,46,Garden Room Single (Private),12,5,west
-255,OM7,46,Garden Room Single (Private),12,5,west
-256,OM8,40,Garden Room (Shared),15,3,west
-257,OM9,38,Dormitory,20,2,west
-6534,Platform A-9,47,Platform Tent,10,5,south east
-79,Platform A-10,47,Platform Tent,10,5,south east
-267,Platform A-11,47,Platform Tent,10,5,south east
-268,Platform A-12,47,Platform Tent,10,5,south east
-269,Platform A-13,47,Platform Tent,10,5,south east
-270,Platform A-14,47,Platform Tent,10,5,south east
-272,Platform B-1 (WBC),47,Platform Tent,10,5,north west
-271,Platform B-2 (WBC),47,Platform Tent,10,5,north west
-273,Platform B-3 (WBC),47,Platform Tent,10,5,north west
-274,Platform B-4 (WBC),47,Platform Tent,10,5,north west
-275,Platform B-5 (WBC),47,Platform Tent,10,5,north west
-5973,Platform B-6,47,Platform Tent,10,5,north west
-276,Platform G-1 (WBC),47,Platform Tent,10,5,north east
-285,Platform G-10,47,Platform Tent,10,5,north east
-286,Platform G-11 (WBC),47,Platform Tent,10,5,north east
-277,Platform G-2,47,Platform Tent,10,5,north east
-278,Platform G-3,47,Platform Tent,10,5,north east
-279,Platform G-4,47,Platform Tent,10,5,north east
-280,Platform G-5,47,Platform Tent,10,5,north east
-281,Platform G-6,47,Platform Tent,10,5,north east
-282,Platform G-7,47,Platform Tent,10,5,north east
-283,Platform G-8,47,Platform Tent,10,5,north east
-284,Platform G-9,47,Platform Tent,10,5,north east
-259,Saraswati 1,44,Ocean View Deluxe Room (Private),90,2,north west
-260,Saraswati 2,44,Ocean View Deluxe Room (Private),90,2,north west
-261,Saraswati 3,44,Ocean View Deluxe Room (Private),90,2,north west
-262,Saraswati 4,44,Ocean View Deluxe Room (Private),90,2,north west
-263,Saraswati 5,44,Ocean View Deluxe Room (Private),90,2,north west
-264,Saraswati 6,44,Ocean View Deluxe Room (Private),90,2,north west
-265,Saraswati 7,44,Ocean View Deluxe Room (Private),90,2,north west
-266,Saraswati 8,44,Ocean View Deluxe Room (Private),90,2,north west
-98,Tent Hut East 01,49,Tent Hut Double (Private),10,5,east
-106,Tent Hut East 02,49,Tent Hut Double (Private),10,5,east
-107,Tent Hut East 03,49,Tent Hut Double (Private),10,5,east
-108,Tent Hut East 04,49,Tent Hut Double (Private),10,5,east
-109,Tent Hut East 05,48,Tent Hut Single (Private),10,5,east
-110,Tent Hut East 06,48,Tent Hut Single (Private),10,5,east
-111,Tent Hut East 07,48,Tent Hut Single (Private),10,5,east
-112,Tent Hut East 08,48,Tent Hut Single (Private),10,5,east
-113,Tent Hut East 09,48,Tent Hut Single (Private),10,5,east
-99,Tent Hut East 10,48,Tent Hut Single (Private),10,5,east
-100,Tent Hut East 11,48,Tent Hut Single (Private),10,5,east
-101,Tent Hut East 12,48,Tent Hut Single (Private),10,5,east
-102,Tent Hut East 13,48,Tent Hut Single (Private),10,5,east
-103,Tent Hut East 14,48,Tent Hut Single (Private),10,5,east
-104,Tent Hut East 15,48,Tent Hut Single (Private),10,5,east
-105,Tent Hut East 16,48,Tent Hut Single (Private),10,5,east
-219,Tent Hut North 01,48,Tent Hut Single (Private),10,5,north east
-230,Tent Hut North 02,48,Tent Hut Single (Private),10,5,north east
-240,Tent Hut North 03,48,Tent Hut Single (Private),10,5,north east
-241,Tent Hut North 04,48,Tent Hut Single (Private),10,5,north east
-242,Tent Hut North 05,48,Tent Hut Single (Private),10,5,north east
-243,Tent Hut North 06,48,Tent Hut Single (Private),10,5,north east
-244,Tent Hut North 07,48,Tent Hut Single (Private),10,5,north east
-245,Tent Hut North 08,48,Tent Hut Single (Private),10,5,north east
-246,Tent Hut North 09,48,Tent Hut Single (Private),10,5,north east
-220,Tent Hut North 10,48,Tent Hut Single (Private),10,5,north east
-221,Tent Hut North 11,48,Tent Hut Single (Private),10,5,north east
-222,Tent Hut North 12,48,Tent Hut Single (Private),10,5,north east
-223,Tent Hut North 13,48,Tent Hut Single (Private),10,5,north east
-224,Tent Hut North 14,48,Tent Hut Single (Private),10,5,north east
-225,Tent Hut North 15,48,Tent Hut Single (Private),10,5,north east
-226,Tent Hut North 16,48,Tent Hut Single (Private),10,5,north east
-227,Tent Hut North 17,48,Tent Hut Single (Private),10,5,north east
-228,Tent Hut North 18,48,Tent Hut Single (Private),10,5,north east
-229,Tent Hut North 19,48,Tent Hut Single (Private),10,5,north east
-231,Tent Hut North 20,48,Tent Hut Single (Private),10,5,north east
-232,Tent Hut North 21,48,Tent Hut Single (Private),10,5,north east
-233,Tent Hut North 22,48,Tent Hut Single (Private),10,5,north east
-234,Tent Hut North 23,48,Tent Hut Single (Private),10,5,north east
-235,Tent Hut North 24,48,Tent Hut Single (Private),10,5,north east
-236,Tent Hut North 25,48,Tent Hut Single (Private),10,5,north east
-237,Tent Hut North 26,48,Tent Hut Single (Private),10,5,north east
-238,Tent Hut North 27,48,Tent Hut Single (Private),10,5,north east
-239,Tent Hut North 28,48,Tent Hut Single (Private),10,5,north east
-409,Tent Hut West 01,49,Tent Hut Double (Private),10,5,west
-420,Tent Hut West 02,49,Tent Hut Double (Private),10,5,west
-426,Tent Hut West 03,49,Tent Hut Double (Private),10,5,west
-427,Tent Hut West 04,49,Tent Hut Double (Private),10,5,west
-428,Tent Hut West 05,49,Tent Hut Double (Private),10,5,west
-429,Tent Hut West 06,49,Tent Hut Double (Private),10,5,west
-430,Tent Hut West 07,48,Tent Hut Single (Private),10,5,west
-431,Tent Hut West 08,48,Tent Hut Single (Private),10,5,west
-432,Tent Hut West 09,48,Tent Hut Single (Private),10,5,west
-410,Tent Hut West 10,48,Tent Hut Single (Private),10,5,west
-411,Tent Hut West 11,48,Tent Hut Single (Private),10,5,west
-412,Tent Hut West 12,48,Tent Hut Single (Private),10,5,west
-413,Tent Hut West 13,48,Tent Hut Single (Private),10,5,west
-414,Tent Hut West 14,48,Tent Hut Single (Private),10,5,west
-415,Tent Hut West 15,48,Tent Hut Single (Private),10,5,west
-416,Tent Hut West 16,48,Tent Hut Single (Private),10,5,west
-417,Tent Hut West 17,48,Tent Hut Single (Private),10,5,west
-418,Tent Hut West 18,48,Tent Hut Single (Private),10,5,west
-419,Tent Hut West 19,48,Tent Hut Single (Private),10,5,west
-421,Tent Hut West 20,48,Tent Hut Single (Private),10,5,west
-422,Tent Hut West 21,48,Tent Hut Single (Private),10,5,west
-423,Tent Hut West 22,48,Tent Hut Single (Private),10,5,west
-424,Tent Hut West 23,48,Tent Hut Single (Private),10,5,west
-425,Tent Hut West 24,48,Tent Hut Single (Private),10,5,west
-134,Tent Space 01,50,Tent Space,0,0,
-135,Tent Space 02,50,Tent Space,0,0,
-136,Tent Space 03,50,Tent Space,0,0,
-137,Tent Space 04,50,Tent Space,0,0,
-138,Tent Space 05,50,Tent Space,0,0,
-139,Tent Space 06,50,Tent Space,0,0,
-140,Tent Space 07,50,Tent Space,0,0,
-141,Tent Space 08,50,Tent Space,0,0,
-142,Tent Space 09,50,Tent Space,0,0,
-143,Tent Space 10,50,Tent Space,0,0,
-144,Tent Space 11,50,Tent Space,0,0,
-145,Tent Space 12,50,Tent Space,0,0,
-146,Tent Space 13,50,Tent Space,0,0,
-147,Tent Space 14,50,Tent Space,0,0,
-148,Tent Space 15,50,Tent Space,0,0,
-149,Tent Space 16,50,Tent Space,0,0,
-150,Tent Space 17,50,Tent Space,0,0,
-151,Tent Space 18,50,Tent Space,0,0,
-152,Tent Space 19,50,Tent Space,0,0,
-153,Tent Space 20,50,Tent Space,0,0,
-154,Tent Space 21,50,Tent Space,0,0,
-155,Tent Space 22,50,Tent Space,0,0,
-156,Tent Space 23,50,Tent Space,0,0,
-157,Tent Space 24,50,Tent Space,0,0,
-158,Tent Space 25,50,Tent Space,0,0,
-159,Tent Space 26,50,Tent Space,0,0,
-160,Tent Space 27,50,Tent Space,0,0,
-161,Tent Space 28,50,Tent Space,0,0,
-162,Tent Space 29,50,Tent Space,0,0,
-163,Tent Space 30,50,Tent Space,0,0,
-164,Tent Space 31,50,Tent Space,0,0,
-165,Tent Space 32,50,Tent Space,0,0,
-166,Tent Space 33,50,Tent Space,0,0,
-167,Tent Space 34,50,Tent Space,0,0,
-168,Tent Space 35,50,Tent Space,0,0,
-169,Tent Space 36,50,Tent Space,0,0,
-170,Tent Space 37,50,Tent Space,0,0,
-171,Tent Space 38,50,Tent Space,0,0,
-172,Tent Space 39,50,Tent Space,0,0,
-173,Tent Space 40,50,Tent Space,0,0,
-174,Tent Space 41,50,Tent Space,0,0,
-175,Tent Space 42,50,Tent Space,0,0,
-176,Tent Space 43,50,Tent Space,0,0,
-177,Tent Space 44,50,Tent Space,0,0,
-178,Tent Space 45,50,Tent Space,0,0,
-179,Tent Space 46,50,Tent Space,0,0,
-180,Tent Space 47,50,Tent Space,0,0,
-181,Tent Space 48,50,Tent Space,0,0,
-182,Tent Space 49,50,Tent Space,0,0,
-183,Tent Space 50,50,Tent Space,0,0,
-184,Tent Space 51,50,Tent Space,0,0,
-185,Tent Space 52,50,Tent Space,0,0,
-186,Tent Space 53,50,Tent Space,0,0,
-187,Tent Space 54,50,Tent Space,0,0,
-188,Tent Space 55,50,Tent Space,0,0,
-326,Tent Space 56,50,Tent Space,0,0,
-355,Tent Space 57,50,Tent Space,0,0,
-354,Tent Space 58,50,Tent Space,0,0,
-353,Tent Space 59,50,Tent Space,0,0,
-352,Tent Space 60,50,Tent Space,0,0,
-351,Tent Space 61,50,Tent Space,0,0,
-343,Tent Space 62,50,Tent Space,0,0,
-342,Tent Space 63,50,Tent Space,0,0,
-341,Tent Space 64,50,Tent Space,0,0,
-340,Tent Space 65,50,Tent Space,0,0,
-339,Tent Space 66,50,Tent Space,0,0,
-338,Tent Space 67,50,Tent Space,0,0,
-336,Tent Space 68,50,Tent Space,0,0,
-335,Tent Space 69,50,Tent Space,0,0,
-350,Tent Space 70,50,Tent Space,0,0,
-349,Tent Space 71,50,Tent Space,0,0,
-347,Tent Space 72,50,Tent Space,0,0,
-346,Tent Space 73,50,Tent Space,0,0,
-345,Tent Space 74,50,Tent Space,0,0,
-344,Tent Space 75,50,Tent Space,0,0,
-356,Tent Space 76,50,Tent Space,0,0,
-6252,Tent Space 77,50,Tent Space,0,0,
-6253,Tent Space 78,50,Tent Space,0,0,
-6254,Tent Space 79,50,Tent Space,0,0,
-6255,Tent Space 80,50,Tent Space,0,0,
-6349,Tent Space 81,50,Tent Space,0,0,
-6350,Tent Space 82,50,Tent Space,0,0,
-6351,Tent Space 83,50,Tent Space,0,0,
-6352,Tent Space 84,50,Tent Space,0,0,
-6353,Tent Space 85,50,Tent Space,0,0,
-6387,Tent Space 86,50,Tent Space,0,0,
-6388,Tent Space 87,50,Tent Space,0,0,
-6389,Tent Space 88,50,Tent Space,0,0,
-6390,Tent Space 89,50,Tent Space,0,0,
-6391,Tent Space 90,50,Tent Space,0,0,
-6392,Tent Space 91,50,Tent Space,0,0,
-6393,Tent Space 92,50,Tent Space,0,0,
-6394,Tent Space 93,50,Tent Space,0,0,
-6395,Tent Space 94,50,Tent Space,0,0,
-6396,Tent Space 95,50,Tent Space,0,0,
-6397,Tent Space 96,50,Tent Space,0,0,
-6398,Tent Space 97,50,Tent Space,0,0,
-6399,Tent Space 98,50,Tent Space,0,0,
-6400,Tent Space 99,50,Tent Space,0,0,
-6401,Tent Space 100,50,Tent Space,0,0,
-402,Vishnu,38,Dormitory,20,2,north west
-433,Yamuna 1,36,Beachfront Deluxe Room (Private),90,2,north
-434,Yamuna 2,36,Beachfront Deluxe Room (Private),90,2,north
-435,Yamuna 3,42,Staff Residence,0,5,
-436,Yamuna 4,36,Beachfront Deluxe Room (Private),90,2,north
+53,0,38,Family Room,0,0,0
+54,1,41,Double Bed Room (Private),0,0,0
+55,2,41,Double Bed Room (Private),0,0,0
+56,3,46,Single Room,0,0,0
+57,4,46,Single Room,0,0,0
+58,5,41,Double Bed Room (Private),0,0,0
+59,6,41,Double Bed Room (Private),0,0,0
+60,7,41,Double Bed Room (Private),0,0,0
+62,9,41,Double Bed Room (Private),0,0,0
+63,10,41,Double Bed Room (Private),0,0,0
+65,12,41,Double Bed Room (Private),0,0,0
+66,14,40,Twin Bed (Shared),0,0,0
+67,15,40,Twin Bed (Shared),0,0,0
+70,18,37,Bayside Room with Bathroom (Shared),0,0,0
+71,19,37,Bayside Room with Bathroom (Shared),0,0,0
+72,20,37,Bayside Room with Bathroom (Shared),0,0,0
+73,21,46,Single Room,0,0,0
+74,22,40,Twin Bed (Shared),0,0,0
+77,23a,37,Bayside Room with Bathroom (Shared),0,0,0
+78,23b,37,Bayside Room with Bathroom (Shared),0,0,0
+76,25,46,Single Room,0,0,0
+5993,Ashram Ground Tent 1,5991,Ashram Supplied Ground Tent,0,0,0
+5995,Ashram Ground Tent 2,5991,Ashram Supplied Ground Tent,0,0,0
+6438,Ashram Ground Tent 3,5991,Ashram Supplied Ground Tent,0,0,0
+5996,Ashram Ground Tent 4,5991,Ashram Supplied Ground Tent,0,0,0
+5992,Ashram Ground Tent 6,5991,Ashram Supplied Ground Tent,0,0,0
+92,Beach Hut E1,35,Beach Hut (Shared),0,0,0
+93,Beach Hut E2,35,Beach Hut (Shared),0,0,0
+94,Beach Hut E3,35,Beach Hut (Shared),0,0,0
+95,Beach Hut E4,35,Beach Hut (Shared),0,0,0
+96,Beach Hut E5,35,Beach Hut (Shared),0,0,0
+97,Beach Hut E6,35,Beach Hut (Shared),0,0,0
+403,Beach Hut W1,35,Beach Hut (Shared),0,0,0
+404,Beach Hut W2,35,Beach Hut (Shared),0,0,0
+405,Beach Hut W3,35,Beach Hut (Shared),0,0,0
+406,Beach Hut W4,35,Beach Hut (Shared),0,0,0
+407,Beach Hut W5,35,Beach Hut (Shared),0,0,0
+408,Beach Hut W6,35,Beach Hut (Shared),0,0,0
+82,Dwaraka 01,42,Staff Residence,0,0,0
+84,Dwaraka 02,42,Staff Residence,0,0,0
+85,Dwaraka 03,42,Staff Residence,0,0,0
+86,Dwaraka 04,42,Staff Residence,0,0,0
+87,Dwaraka 05,42,Staff Residence,0,0,0
+88,Dwaraka 06,42,Staff Residence,0,0,0
+89,Dwaraka 07,42,Staff Residence,0,0,0
+90,Dwaraka 08,42,Staff Residence,0,0,0
+91,Dwaraka 09,42,Staff Residence,0,0,0
+83,Dwaraka 10,42,Staff Residence,0,0,0
+114,Ganga 1,36,Beachfront Deluxe (Private),0,0,0
+115,Ganga 2,36,Beachfront Deluxe (Private),0,0,0
+116,Ganga 3,36,Beachfront Deluxe (Private),0,0,0
+117,Ganga 4,36,Beachfront Deluxe (Private),0,0,0
+118,Gopala,42,Staff Residence,0,0,0
+127,Kutir Hamsa,42,Staff Residence,0,0,0
+119,Kutir Iswari,42,Staff Residence,0,0,0
+129,Kutir Jnaneshwari Chaitanya,42,Staff Residence,0,0,0
+130,Kutir Lakshmi,42,Staff Residence,0,0,0
+588,Kutir Priest,42,Staff Residence,0,0,0
+126,Kutir Rukmini Chaitanya,42,Staff Residence,0,0,0
+128,Kutir Swami Brahmananda,42,Staff Residence,0,0,0
+131,Kutir Swami Hridyananda,42,Staff Residence,0,0,0
+190,Meditation Room,43,External Accommodation,0,0,0
+191,Nassau 01,43,External Accommodation,0,0,0
+202,Nassau 02,43,External Accommodation,0,0,0
+204,Nassau 03,43,External Accommodation,0,0,0
+205,Nassau 04,43,External Accommodation,0,0,0
+206,Nassau 05,43,External Accommodation,0,0,0
+207,Nassau 06,43,External Accommodation,0,0,0
+208,Nassau 07,43,External Accommodation,0,0,0
+209,Nassau 08,43,External Accommodation,0,0,0
+210,Nassau 09,43,External Accommodation,0,0,0
+192,Nassau 10,43,External Accommodation,0,0,0
+247,OM1,46,Single Room,0,0,0
+250,OM2,40,Twin Bed (Shared),0,0,0
+251,OM3,38,Family Room,0,0,0
+252,OM4,41,Double Bed Room (Private),0,0,0
+253,OM5,46,Single Room,0,0,0
+255,OM7,46,Single Room,0,0,0
+256,OM8,40,Twin Bed (Shared),0,0,0
+257,OM9,38,Family Room,0,0,0
+248,OM10,41,Double Bed Room (Private),0,0,0
+249,OM11,40,Twin Bed (Shared),0,0,0
+258,Om Sweet Om,43,External Accommodation,0,0,0
+6534,Platform A-9,47,Platform Tent,0,0,0
+79,Platform A-10,47,Platform Tent,0,0,0
+267,Platform A-11,47,Platform Tent,0,0,0
+268,Platform A-12,47,Platform Tent,0,0,0
+269,Platform A-13,47,Platform Tent,0,0,0
+270,Platform A-14,47,Platform Tent,0,0,0
+272,Platform B-1 (WBC),47,Platform Tent,0,0,0
+271,Platform B-2 (WBC),47,Platform Tent,0,0,0
+273,Platform B-3 (WBC),47,Platform Tent,0,0,0
+274,Platform B-4 (WBC),47,Platform Tent,0,0,0
+275,Platform B-5 (WBC),47,Platform Tent,0,0,0
+5973,Platform B-6,47,Platform Tent,0,0,0
+276,Platform G-1 (WBC),47,Platform Tent,0,0,0
+277,Platform G-2,47,Platform Tent,0,0,0
+278,Platform G-3,47,Platform Tent,0,0,0
+279,Platform G-4,47,Platform Tent,0,0,0
+280,Platform G-5,47,Platform Tent,0,0,0
+281,Platform G-6,47,Platform Tent,0,0,0
+282,Platform G-7,47,Platform Tent,0,0,0
+283,Platform G-8,47,Platform Tent,0,0,0
+284,Platform G-9,47,Platform Tent,0,0,0
+285,Platform G-10,47,Platform Tent,0,0,0
+286,Platform G-11 (WBC),47,Platform Tent,0,0,0
+259,Saraswati 1,44,Oceanview Deluxe (Private),0,0,0
+260,Saraswati 2,44,Oceanview Deluxe (Private),0,0,0
+261,Saraswati 3,44,Oceanview Deluxe (Private),0,0,0
+262,Saraswati 4,44,Oceanview Deluxe (Private),0,0,0
+263,Saraswati 5,44,Oceanview Deluxe (Private),0,0,0
+264,Saraswati 6,44,Oceanview Deluxe (Private),0,0,0
+265,Saraswati 7,44,Oceanview Deluxe (Private),0,0,0
+266,Saraswati 8,44,Oceanview Deluxe (Private),0,0,0
+219,Tent Hut North 01,48,Tent Hut Single (Private),0,0,0
+230,Tent Hut North 02,48,Tent Hut Single (Private),0,0,0
+240,Tent Hut North 03,48,Tent Hut Single (Private),0,0,0
+241,Tent Hut North 04,48,Tent Hut Single (Private),0,0,0
+242,Tent Hut North 05,48,Tent Hut Single (Private),0,0,0
+243,Tent Hut North 06,48,Tent Hut Single (Private),0,0,0
+244,Tent Hut North 07,48,Tent Hut Single (Private),0,0,0
+245,Tent Hut North 08,48,Tent Hut Single (Private),0,0,0
+246,Tent Hut North 09,48,Tent Hut Single (Private),0,0,0
+220,Tent Hut North 10,48,Tent Hut Single (Private),0,0,0
+221,Tent Hut North 11,48,Tent Hut Single (Private),0,0,0
+222,Tent Hut North 12,48,Tent Hut Single (Private),0,0,0
+223,Tent Hut North 13,48,Tent Hut Single (Private),0,0,0
+224,Tent Hut North 14,48,Tent Hut Single (Private),0,0,0
+225,Tent Hut North 15,48,Tent Hut Single (Private),0,0,0
+226,Tent Hut North 16,48,Tent Hut Single (Private),0,0,0
+227,Tent Hut North 17,48,Tent Hut Single (Private),0,0,0
+228,Tent Hut North 18,48,Tent Hut Single (Private),0,0,0
+229,Tent Hut North 19,48,Tent Hut Single (Private),0,0,0
+231,Tent Hut North 20,48,Tent Hut Single (Private),0,0,0
+232,Tent Hut North 21,48,Tent Hut Single (Private),0,0,0
+233,Tent Hut North 22,48,Tent Hut Single (Private),0,0,0
+234,Tent Hut North 23,48,Tent Hut Single (Private),0,0,0
+235,Tent Hut North 24,48,Tent Hut Single (Private),0,0,0
+236,Tent Hut North 25,48,Tent Hut Single (Private),0,0,0
+237,Tent Hut North 26,48,Tent Hut Single (Private),0,0,0
+238,Tent Hut North 27,48,Tent Hut Single (Private),0,0,0
+239,Tent Hut North 28,48,Tent Hut Single (Private),0,0,0
+409,Tent Hut West 01,49,Tent Hut Double (Private),0,0,0
+420,Tent Hut West 02,49,Tent Hut Double (Private),0,0,0
+426,Tent Hut West 03,49,Tent Hut Double (Private),0,0,0
+427,Tent Hut West 04,49,Tent Hut Double (Private),0,0,0
+428,Tent Hut West 05,49,Tent Hut Double (Private),0,0,0
+429,Tent Hut West 06,49,Tent Hut Double (Private),0,0,0
+430,Tent Hut West 07,48,Tent Hut Single (Private),0,0,0
+431,Tent Hut West 08,48,Tent Hut Single (Private),0,0,0
+432,Tent Hut West 09,48,Tent Hut Single (Private),0,0,0
+410,Tent Hut West 10,48,Tent Hut Single (Private),0,0,0
+411,Tent Hut West 11,48,Tent Hut Single (Private),0,0,0
+412,Tent Hut West 12,48,Tent Hut Single (Private),0,0,0
+413,Tent Hut West 13,48,Tent Hut Single (Private),0,0,0
+414,Tent Hut West 14,48,Tent Hut Single (Private),0,0,0
+415,Tent Hut West 15,48,Tent Hut Single (Private),0,0,0
+416,Tent Hut West 16,48,Tent Hut Single (Private),0,0,0
+417,Tent Hut West 17,48,Tent Hut Single (Private),0,0,0
+418,Tent Hut West 18,48,Tent Hut Single (Private),0,0,0
+419,Tent Hut West 19,48,Tent Hut Single (Private),0,0,0
+421,Tent Hut West 20,48,Tent Hut Single (Private),0,0,0
+422,Tent Hut West 21,48,Tent Hut Single (Private),0,0,0
+423,Tent Hut West 22,48,Tent Hut Single (Private),0,0,0
+424,Tent Hut West 23,48,Tent Hut Single (Private),0,0,0
+425,Tent Hut West 24,48,Tent Hut Single (Private),0,0,0
+98,Tent Hut ﻿ East 01,49,Tent Hut Double (Private),0,0,0
+106,Tent Hut ﻿ East 02,49,Tent Hut Double (Private),0,0,0
+107,Tent Hut ﻿ East 03,49,Tent Hut Double (Private),0,0,0
+108,Tent Hut ﻿ East 04,49,Tent Hut Double (Private),0,0,0
+109,Tent Hut ﻿ East 05,48,Tent Hut Single (Private),0,0,0
+110,Tent Hut ﻿ East 06,48,Tent Hut Single (Private),0,0,0
+111,Tent Hut ﻿ East 07,48,Tent Hut Single (Private),0,0,0
+112,Tent Hut ﻿ East 08,48,Tent Hut Single (Private),0,0,0
+113,Tent Hut ﻿ East 09,48,Tent Hut Single (Private),0,0,0
+99,Tent Hut ﻿ East 10,48,Tent Hut Single (Private),0,0,0
+100,Tent Hut ﻿ East 11,48,Tent Hut Single (Private),0,0,0
+101,Tent Hut ﻿ East 12,48,Tent Hut Single (Private),0,0,0
+102,Tent Hut ﻿ East 13,48,Tent Hut Single (Private),0,0,0
+103,Tent Hut ﻿ East 14,48,Tent Hut Single (Private),0,0,0
+104,Tent Hut ﻿ East 15,48,Tent Hut Single (Private),0,0,0
+105,Tent Hut ﻿ East 16,48,Tent Hut Single (Private),0,0,0
+134,Tent Space 01,50,Tent Space,0,0,0
+135,Tent Space 02,50,Tent Space,0,0,0
+136,Tent Space 03,50,Tent Space,0,0,0
+137,Tent Space 04,50,Tent Space,0,0,0
+138,Tent Space 05,50,Tent Space,0,0,0
+139,Tent Space 06,50,Tent Space,0,0,0
+140,Tent Space 07,50,Tent Space,0,0,0
+141,Tent Space 08,50,Tent Space,0,0,0
+142,Tent Space 09,50,Tent Space,0,0,0
+143,Tent Space 10,50,Tent Space,0,0,0
+144,Tent Space 11,50,Tent Space,0,0,0
+145,Tent Space 12,50,Tent Space,0,0,0
+146,Tent Space 13,50,Tent Space,0,0,0
+147,Tent Space 14,50,Tent Space,0,0,0
+148,Tent Space 15,50,Tent Space,0,0,0
+149,Tent Space 16,50,Tent Space,0,0,0
+150,Tent Space 17,50,Tent Space,0,0,0
+151,Tent Space 18,50,Tent Space,0,0,0
+152,Tent Space 19,50,Tent Space,0,0,0
+153,Tent Space 20,50,Tent Space,0,0,0
+154,Tent Space 21,50,Tent Space,0,0,0
+155,Tent Space 22,50,Tent Space,0,0,0
+156,Tent Space 23,50,Tent Space,0,0,0
+157,Tent Space 24,50,Tent Space,0,0,0
+158,Tent Space 25,50,Tent Space,0,0,0
+159,Tent Space 26,50,Tent Space,0,0,0
+160,Tent Space 27,50,Tent Space,0,0,0
+161,Tent Space 28,50,Tent Space,0,0,0
+162,Tent Space 29,50,Tent Space,0,0,0
+163,Tent Space 30,50,Tent Space,0,0,0
+164,Tent Space 31,50,Tent Space,0,0,0
+165,Tent Space 32,50,Tent Space,0,0,0
+166,Tent Space 33,50,Tent Space,0,0,0
+167,Tent Space 34,50,Tent Space,0,0,0
+168,Tent Space 35,50,Tent Space,0,0,0
+169,Tent Space 36,50,Tent Space,0,0,0
+170,Tent Space 37,50,Tent Space,0,0,0
+171,Tent Space 38,50,Tent Space,0,0,0
+172,Tent Space 39,50,Tent Space,0,0,0
+173,Tent Space 40,50,Tent Space,0,0,0
+174,Tent Space 41,50,Tent Space,0,0,0
+175,Tent Space 42,50,Tent Space,0,0,0
+176,Tent Space 43,50,Tent Space,0,0,0
+177,Tent Space 44,50,Tent Space,0,0,0
+178,Tent Space 45,50,Tent Space,0,0,0
+179,Tent Space 46,50,Tent Space,0,0,0
+180,Tent Space 47,50,Tent Space,0,0,0
+181,Tent Space 48,50,Tent Space,0,0,0
+182,Tent Space 49,50,Tent Space,0,0,0
+183,Tent Space 50,50,Tent Space,0,0,0
+184,Tent Space 51,50,Tent Space,0,0,0
+185,Tent Space 52,50,Tent Space,0,0,0
+186,Tent Space 53,50,Tent Space,0,0,0
+187,Tent Space 54,50,Tent Space,0,0,0
+188,Tent Space 55,50,Tent Space,0,0,0
+326,Tent Space 56,50,Tent Space,0,0,0
+355,Tent Space 57,50,Tent Space,0,0,0
+354,Tent Space 58,50,Tent Space,0,0,0
+353,Tent Space 59,50,Tent Space,0,0,0
+352,Tent Space 60,50,Tent Space,0,0,0
+351,Tent Space 61,50,Tent Space,0,0,0
+343,Tent Space 62,50,Tent Space,0,0,0
+342,Tent Space 63,50,Tent Space,0,0,0
+341,Tent Space 64,50,Tent Space,0,0,0
+340,Tent Space 65,50,Tent Space,0,0,0
+339,Tent Space 66,50,Tent Space,0,0,0
+338,Tent Space 67,50,Tent Space,0,0,0
+336,Tent Space 68,50,Tent Space,0,0,0
+335,Tent Space 69,50,Tent Space,0,0,0
+350,Tent Space 70,50,Tent Space,0,0,0
+349,Tent Space 71,50,Tent Space,0,0,0
+347,Tent Space 72,50,Tent Space,0,0,0
+346,Tent Space 73,50,Tent Space,0,0,0
+345,Tent Space 74,50,Tent Space,0,0,0
+344,Tent Space 75,50,Tent Space,0,0,0
+356,Tent Space 76,50,Tent Space,0,0,0
+6252,Tent Space 77,50,Tent Space,0,0,0
+6253,Tent Space 78,50,Tent Space,0,0,0
+6254,Tent Space 79,50,Tent Space,0,0,0
+6255,Tent Space 80,50,Tent Space,0,0,0
+6349,Tent Space 81,50,Tent Space,0,0,0
+6350,Tent Space 82,50,Tent Space,0,0,0
+6351,Tent Space 83,50,Tent Space,0,0,0
+6352,Tent Space 84,50,Tent Space,0,0,0
+6353,Tent Space 85,50,Tent Space,0,0,0
+6387,Tent Space 86,50,Tent Space,0,0,0
+6388,Tent Space 87,50,Tent Space,0,0,0
+6389,Tent Space 88,50,Tent Space,0,0,0
+6390,Tent Space 89,50,Tent Space,0,0,0
+6391,Tent Space 90,50,Tent Space,0,0,0
+6392,Tent Space 91,50,Tent Space,0,0,0
+6393,Tent Space 92,50,Tent Space,0,0,0
+6394,Tent Space 93,50,Tent Space,0,0,0
+6395,Tent Space 94,50,Tent Space,0,0,0
+6396,Tent Space 95,50,Tent Space,0,0,0
+6397,Tent Space 96,50,Tent Space,0,0,0
+6398,Tent Space 97,50,Tent Space,0,0,0
+6399,Tent Space 98,50,Tent Space,0,0,0
+6400,Tent Space 99,50,Tent Space,0,0,0
+6401,Tent Space 100,50,Tent Space,0,0,0
+402,Vishnu,43,External Accommodation,0,0,0
+433,Yamuna 1,36,Beachfront Deluxe (Private),0,0,0
+434,Yamuna 2,36,Beachfront Deluxe (Private),0,0,0
+435,Yamuna 3,42,Staff Residence,0,0,0
+436,Yamuna 4,36,Beachfront Deluxe (Private),0,0,0
+5994,z_Ashram Ground Tent 5,43,External Accommodation,0,0,0
+6044,z_Ashram Ground Tent New York,43,External Accommodation,0,0,0
+64,﻿11,40,Twin Bed (Shared),0,0,0
+75,﻿24,40,Twin Bed (Shared),0,0,0

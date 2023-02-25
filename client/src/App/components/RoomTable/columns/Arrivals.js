@@ -2,6 +2,9 @@ import React from 'react';
 import { List, Icon } from 'antd';
 import GuestName from './components/GuestName';
 import RoomKeyButton from './components/RoomKeyButton';
+import Auth from '../../../../Auth/Auth';
+
+const auth = new Auth();
 
 // Colors from: https://ant.design/docs/react/customize-theme
 export default function(context) {
@@ -19,7 +22,9 @@ export default function(context) {
 }
 
 const ArrivingGuestList = ({ room, guests }) => {
-  const roomSetup = guests.filter(guest => guest.roomSetup);
+  const roomSetup = guests.filter(
+    guest => guest.roomSetup[0] || guest.roomSetup[1]
+  );
 
   if (guests.length === 0) {
     return <span style={{ color: '#52c41a' }}>None</span>;
@@ -38,7 +43,13 @@ const ArrivingGuestList = ({ room, guests }) => {
       />
       {roomSetup.length > 0 && <strong>Setup notes:</strong>}
       {roomSetup.length > 0 &&
-        roomSetup.map(guest => <div key={guest.id}>{guest.roomSetup}</div>)}
+        roomSetup.map(guest => (
+          <div key={guest.id}>
+            {guest.roomSetup.map(singleRoomSetup => (
+              <div>{singleRoomSetup}</div>
+            ))}
+          </div>
+        ))}
     </div>
   );
 };
@@ -51,7 +62,9 @@ const ArrivingGuest = ({ room, guest }) => (
     ) : (
       <ArrivingGuestFlightTime guest={guest} />
     )}
-    <RoomKeyButton room={room} guest={guest} />
+    {(auth.getUser().role === 'EDITOR' || auth.getUser().role === 'ADMIN') && (
+      <RoomKeyButton room={room} guest={guest} />
+    )}
   </div>
 );
 
