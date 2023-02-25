@@ -4,6 +4,7 @@ type ArrivingGuest implements Guest {
   name: String!
   isSpecial: Boolean!
   flightTime: String
+  standardFlightTime: String
   roomSetup: [String]
   movingFrom: String
 
