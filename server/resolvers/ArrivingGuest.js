@@ -17,6 +17,9 @@ module.exports = {
     roomSetup(guest, _, ctx) {
       return guest.roomSetup();
     },
+    standardFlightTime(guest, _, ctx) {
+      return guest.standardFlightTime();
+    },
     movingFrom(guest, _, ctx) {
       return guest.movingFrom();
     },

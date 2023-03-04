@@ -19,6 +19,10 @@ class ArrivingGuest extends Guest {
     return this.guest.roomSetup;
   }
 
+  standardFlightTime() {
+    return this.guest.standardFlightTime;
+  }
+
   movingFrom() {
     return this.guest.movingFrom;
   }

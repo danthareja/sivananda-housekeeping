@@ -80,8 +80,6 @@ const ArrivingGuestFlightTime = ({ guest }) => (
     <span role="img" aria-label="plane-arriving" style={{ marginRight: '6px' }}>
       🛬
     </span>
-    if (guest.standardFlightTime) {<span>{guest.standardFlightTime}</span>}
-    else if (guest.flightTime) {<span>guest.flightTime</span>}
-    else {<span>-</span>}
+    <span>{guest.standardFlightTime ? guest.standardFlightTime : '-'}</span>
   </div>
 );

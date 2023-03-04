@@ -159,8 +159,7 @@ class RetreatGuruAPI extends RESTDataSource {
             ),
             roomSetup: [
               registration.questions.room_set_up_notes,
-              registration.questions.king - or - twin,
-              // .for_oceanview_deluxe_rooms_only_do_you_want_1_king_bed_or_2_twin_beds_in_the_room,
+              registration.king_or_twin,
             ],
             movingFrom: departingByPersonId[registration.person_id]
               ? departingByPersonId[registration.person_id].room
