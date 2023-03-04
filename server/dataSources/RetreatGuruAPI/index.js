@@ -159,7 +159,7 @@ class RetreatGuruAPI extends RESTDataSource {
             ),
             roomSetup: [
               registration.questions.room_set_up_notes,
-              registration.king_or_twin,
+              registration.questions.king_or_twin,
             ],
             movingFrom: departingByPersonId[registration.person_id]
               ? departingByPersonId[registration.person_id].room
