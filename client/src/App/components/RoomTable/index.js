@@ -27,6 +27,7 @@ const GET_ROOMS = gql`
         isSpecial
         flightTime
         roomSetup
+        standardFlightTime
         movingFrom
         givenRoomKey
         givenRoomKeyAt
