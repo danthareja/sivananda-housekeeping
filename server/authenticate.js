@@ -1,46 +1,34 @@
 const jwt = require('jsonwebtoken');
-const jwksClient = require('jwks-rsa');
 const { AuthenticationError } = require('apollo-server-express');
 
-const client = jwksClient({
-  cache: true,
-  rateLimit: true,
-  jwksRequestsPerMinute: 5,
-  jwksUri: 'https://lingering-cloud-1820.auth0.com/.well-known/jwks.json',
-});
+module.exports = {
+  authenticate(req) {
+    return new Promise((resolve, reject) => {
+      let token;
 
-function getKey(header, callback) {
-  client.getSigningKey(header.kid, function(err, key) {
-    const signingKey = key.publicKey || key.rsaPublicKey;
-    callback(null, signingKey);
-  });
-}
+      if (!req.headers || !req.headers.authorization) {
+        return reject(
+          new AuthenticationError(
+            'Credentials required. No authorization token was found'
+          )
+        );
+      }
 
-const options = {
-  issuer: 'https://lingering-cloud-1820.auth0.com/',
-  algorithms: ['RS256'],
-};
+      const parts = req.headers.authorization.split(' ');
 
-module.exports = function authorize(req) {
-  return new Promise((resolve, reject) => {
-    let token;
+      if (parts.length == 2) {
+        const scheme = parts[0];
+        const credentials = parts[1];
 
-    if (!req.headers || !req.headers.authorization) {
-      return reject(
-        new AuthenticationError(
-          'Credentials required. No authorization token was found'
-        )
-      );
-    }
-
-    const parts = req.headers.authorization.split(' ');
-
-    if (parts.length == 2) {
-      const scheme = parts[0];
-      const credentials = parts[1];
-
-      if (/^Bearer$/i.test(scheme)) {
-        token = credentials;
+        if (/^Bearer$/i.test(scheme)) {
+          token = credentials;
+        } else {
+          return reject(
+            new AuthenticationError(
+              'Bad credentials scheme. Format is Authorization: Bearer [token]'
+            )
+          );
+        }
       } else {
         return reject(
           new AuthenticationError(
@@ -48,32 +36,54 @@ module.exports = function authorize(req) {
           )
         );
       }
-    } else {
-      return reject(
-        new AuthenticationError(
-          'Bad credentials scheme. Format is Authorization: Bearer [token]'
-        )
-      );
-    }
 
-    if (!token) {
-      return reject(
-        new AuthenticationError(
-          'Credentials required. No authorization token was found'
-        )
-      );
-    }
-
-    jwt.verify(token, getKey, options, (err, user) => {
-      if (err) {
+      if (!token) {
         return reject(
           new AuthenticationError(
-            'Invalid credentials. The provided authorization token could not be verified'
+            'Credentials required. No authorization token was found'
           )
         );
       }
-      // This key is determined by a rule set in the Auth0 dashboard
-      resolve(user['https://sivananda-housekeeping.herokuapp.com/user']);
+
+      jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+        if (err) {
+          return reject(
+            new AuthenticationError(
+              'Invalid credentials. The provided authorization token could not be verified'
+            )
+          );
+        }
+        // This key is determined by a rule set in the Auth0 dashboard
+        console.log('user console log', user);
+        resolve(user);
+      });
     });
-  });
+  },
+  async login(username, password) {
+    const passwordStored =
+      process.env[
+        `USER_${username.toUpperCase().replaceAll(' ', '_')}_VIEWER`
+      ] ||
+      process.env[
+        `USER_${username.toUpperCase().replaceAll(' ', '_')}_EDITOR`
+      ] ||
+      process.env[`USER_${username.toUpperCase().replaceAll(' ', '_')}_ADMIN`];
+
+    if (!passwordStored) throw new Error('user not found');
+    if (password !== passwordStored) throw new Error('password wrong');
+
+    const role = Object.keys(process.env)
+      .find(key =>
+        key.match(
+          new RegExp(`^USER_${username.toUpperCase().replaceAll(' ', '_')}_`)
+        )
+      )
+      ?.match(/(VIEWER|EDITOR|ADMIN)$/)?.[0];
+
+    const user = { username, role };
+    const token = jwt.sign(user, process.env.TOKEN_SECRET, {
+      expiresIn: process.env.SESSION_DURATION,
+    });
+    return token;
+  },
 };

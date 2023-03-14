@@ -152,11 +152,15 @@ class RetreatGuruAPI extends RESTDataSource {
             isSpecial:
               registration.program_categories.indexOf('speaker') > -1 ||
               registration.program_categories.indexOf('visiting-staff') > -1,
+            standardFlightTime: registration.questions.arrival_time,
             flightTime: this.guessTime(
               date,
               registration.questions.flight_arrival_time_in_nassau_2
             ),
-            roomSetup: registration.questions.room_set_up_notes,
+            roomSetup: [
+              registration.questions.room_set_up_notes,
+              registration.king_or_twin,
+            ],
             movingFrom: departingByPersonId[registration.person_id]
               ? departingByPersonId[registration.person_id].room
               : undefined,
@@ -170,7 +174,7 @@ class RetreatGuruAPI extends RESTDataSource {
               registration.program_categories.indexOf('visiting-staff') > -1,
             flightTime: this.guessTime(
               date,
-              registration.questions.flight_departure_time_from_nassau
+              registration.questions.departure_time
             ),
             lateCheckout: registration.questions.late_checkout,
             movingTo: arrivingByPersonId[registration.person_id]
